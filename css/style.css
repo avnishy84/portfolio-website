@@ -13,8 +13,9 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(156deg, #000000 0%, #7e00ff 100%);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Container */
@@ -42,7 +43,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     z-index: -1;
 }
 
@@ -71,7 +72,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -187,7 +188,7 @@ section h2::after {
 
 .skill-category:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
@@ -228,14 +229,14 @@ section h2::after {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e9ecef;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
@@ -361,7 +362,6 @@ footer {
     background: #333;
     color: white;
     text-align: center;
-    padding: 2rem 0;
 }
 
 .social-links {
@@ -387,6 +387,7 @@ footer {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -402,33 +403,33 @@ footer {
     header h1 {
         font-size: 2.5rem;
     }
-    
+
     header p {
         font-size: 1.1rem;
     }
-    
+
     nav ul {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     section {
         padding: 2rem 0;
     }
-    
+
     section h2 {
         font-size: 2rem;
     }
@@ -438,14 +439,414 @@ footer {
     .container {
         padding: 0 15px;
     }
-    
+
     header h1 {
         font-size: 2rem;
     }
-    
+
     .profile-image {
         width: 150px;
         height: 150px;
         font-size: 3rem;
+    }
+}
+
+/* ======================== */
+/* Theming & Mobile Enhancements */
+/* ======================== */
+
+/* Fonts */
+body {
+    font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Theme variables */
+:root {
+    --color-text: #333;
+    --color-text-muted: #666;
+    --color-surface: #ffffff;
+    --color-soft: #f8f9fa;
+    --color-surface-veil: rgba(255, 255, 255, 0.95);
+    --color-accent: #667eea;
+    --color-accent-2: #764ba2;
+    --hover-pop: #FFC72C;
+    --indigo-deep: #1A1A2E;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+    --color-text: #F0F0F0;
+    --color-text-muted: #c7c9d1;
+    --color-surface: #151821;
+    --color-soft: #0f121a;
+    --color-surface-veil: rgba(20, 24, 32, 0.75);
+    --color-accent: #E0BBE4;
+    /* lavender */
+    --color-accent-2: #957DAD;
+    /* plum */
+    --hover-pop: #FFC72C;
+    --indigo-deep: #1A1A2E;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation layout additions */
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.brand {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 1.1rem;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.theme-toggle {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+    color: #fff;
+    border: 0;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+
+/* Use variables for key colors without rewriting base design */
+nav {
+    background: var(--color-surface-veil);
+    box-shadow: 0 2px 20px var(--shadow);
+}
+
+nav a {
+    color: var(--color-text);
+}
+
+nav a:hover {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+}
+
+main {
+    background: var(--color-surface);
+}
+
+section h2 {
+    color: var(--color-text);
+}
+
+#about {
+    background: var(--color-soft);
+}
+
+.about-text {
+    color: var(--color-text-muted);
+}
+
+#skills {
+    background: var(--color-surface);
+}
+
+.skill-category {
+    background: var(--color-soft);
+    border-color: rgba(233, 236, 239, 0.25);
+}
+
+.skill-category h3 {
+    color: var(--color-text);
+}
+
+.skill-tag {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+}
+
+#projects {
+    background: var(--color-soft);
+}
+
+.project-card {
+    background: var(--color-surface);
+    box-shadow: 0 5px 20px var(--shadow);
+    border-color: rgba(233, 236, 239, 0.15);
+}
+
+.project-image {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+}
+
+.project-content h3 {
+    color: var(--color-text);
+}
+
+.project-content p {
+    color: var(--color-text-muted);
+}
+
+.project-links a:first-child {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+}
+
+.project-links a:last-child {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.project-links a:last-child:hover {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+#contact {
+    background: var(--color-surface);
+}
+
+#contact-form input,
+#contact-form textarea {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-color: rgba(233, 236, 239, 0.25);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--color-accent);
+}
+
+#contact-form button {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+}
+
+/* Hero CTA */
+header .cta {
+    margin-top: 1.25rem;
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+header .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile nav behavior */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    nav ul {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: var(--color-surface-veil);
+        backdrop-filter: blur(10px);
+        padding: 0.75rem 1rem 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+}
+
+/* Horizontal skill chips scroll on small screens */
+@media (max-width: 600px) {
+    .skill-tags {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 0.25rem;
+    }
+
+    .skill-tag {
+        white-space: nowrap;
+    }
+}
+
+/* Dark header background treatment */
+.dark body {
+    background: var(--indigo-deep);
+}
+
+.dark header {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Hero avatar glow */
+.hero-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.hero-avatar .profile-image {
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(224, 187, 228, 0.5);
+}
+
+.hero-avatar .profile-image::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(224, 187, 228, 0.6), rgba(224, 187, 228, 0.15), transparent 70%);
+    filter: blur(8px);
+    z-index: -1;
+}
+
+/* CTA pill with glow */
+header .cta {
+    box-shadow: 0 10px 30px rgba(224, 187, 228, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+header .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(255, 199, 44, 0.35);
+    background: linear-gradient(45deg, var(--color-accent), var(--hover-pop));
+}
+
+/* Starfield overlay */
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 0;
+    overflow: hidden;
+}
+.space-shuttle {
+    width: 50px;
+    height: 50px;
+    background: url('/images/space-shuttle.png') no-repeat center/contain;
+    pointer-events: all;
+    z-index: 10;
+    transform: translate(0,0) scale(1);
+    transition: transform 0.2s ease;
+    cursor: grab;
+    position: relative;
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
+    opacity: 0.85;
+}
+.starfield::before,
+.starfield::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: blinkStars 4s infinite alternate ease-in-out;
+}
+
+.starfield::before {
+    background-image: radial-gradient(3px 3px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+                      radial-gradient(2px 2px at 50% 50%, rgba(255, 255, 255, 0.6), transparent),
+                      radial-gradient(2px 2px at 80% 70%, rgba(255, 255, 255, 0.5), transparent),
+                      radial-gradient(4px 4px at 30% 80%, rgba(255, 255, 255, 0.7), transparent),
+                      radial-gradient(3px 3px at 70% 20%, rgba(255, 255, 255, 0.6), transparent),
+                      radial-gradient(2px 2px at 60% 60%, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.starfield::after {
+    background-image: radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.6), transparent),
+                      radial-gradient(3px 3px at 40% 30%, rgba(255, 255, 255, 0.7), transparent),
+                      radial-gradient(2px 2px at 70% 50%, rgba(255, 255, 255, 0.5), transparent),
+                      radial-gradient(4px 4px at 90% 40%, rgba(255, 255, 255, 0.8), transparent),
+                      radial-gradient(3px 3px at 50% 70%, rgba(255, 255, 255, 0.6), transparent),
+                      radial-gradient(2px 2px at 30% 90%, rgba(255, 255, 255, 0.5), transparent);
+    animation-delay: 2s;
+}
+
+@keyframes blinkStars {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+.falling-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fallStar 1s forwards;
+    box-shadow: 0 0 10px 2px white;
+}
+
+@keyframes fallStar {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100px, 200px) scale(0.5);
+        opacity: 0;
+    }
+}
+.falling-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fallStar 1s forwards;
+    box-shadow: 0 0 10px 2px white;
+}
+
+@keyframes fallStar {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--offsetX, 100px), var(--offsetY, 200px)) scale(0.5);
+        opacity: 0;
     }
 }

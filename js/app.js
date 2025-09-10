@@ -19,6 +19,19 @@ const analytics = getAnalytics(app);
 
 // Portfolio JavaScript functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme: apply saved preference early (default to system dark)
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) document.documentElement.classList.add('dark');
+        }
+    } catch (_) {}
+
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     navLinks.forEach(link => {
@@ -199,6 +212,38 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollToTopButton.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1)';
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('nav ul');
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navList.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        // Close on link click (mobile)
+        navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            if (navList.classList.contains('open')) {
+                navList.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        }));
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const root = document.documentElement;
+            const willBeDark = !root.classList.contains('dark');
+            root.classList.toggle('dark');
+            try { localStorage.setItem('theme', willBeDark ? 'dark' : 'light'); } catch (_) {}
+            themeToggle.textContent = willBeDark ? '☀️' : '🌙';
+            themeToggle.setAttribute('aria-label', willBeDark ? 'Switch to light mode' : 'Switch to dark mode');
+        });
+        // Set initial icon
+        themeToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    }
 });
 
 // Add CSS for active navigation state
