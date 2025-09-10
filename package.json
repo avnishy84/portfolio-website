@@ -1,5 +1,26 @@
 {
+  "name": "avnish-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Avnish Yadav",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed - static site ready for deployment'",
+    "start": "npx http-server . -p 3000",
+    "dev": "npx http-server . -p 3000 -o"
+  },
   "dependencies": {
     "firebase": "^12.2.1"
-  }
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "javascript",
+    "firebase",
+    "responsive"
+  ],
+  "author": "Avnish Yadav",
+  "license": "MIT"
 }
