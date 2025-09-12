@@ -211,7 +211,7 @@ section h2::after {
     justify-content: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .skill-tags {
         overflow-x: auto;
         flex-wrap: nowrap;
