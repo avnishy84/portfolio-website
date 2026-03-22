@@ -1,21 +1,5 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyA_CDm1YMIc7RIYMRiDRCD588CKq8-pf2Y",
-  authDomain: "avnish-portfolio-c14e6.firebaseapp.com",
-  projectId: "avnish-portfolio-c14e6",
-  storageBucket: "avnish-portfolio-c14e6.firebasestorage.app",
-  messagingSenderId: "177848360320",
-  appId: "1:177848360320:web:2bed36f4b2939070c47565",
-  measurementId: "G-WSJZHCD9SB"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// Firebase via CDN compat (loaded in index.html as regular scripts)
+// Analytics is initialized via the compat SDK — no imports needed here
 
 // Portfolio JavaScript functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -94,38 +78,52 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Contact form handling
+    // Contact form handling — EmailJS
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const message = this.querySelector('textarea').value;
 
-            // Simple validation
+            const name    = this.querySelector('input[name="from_name"]').value.trim();
+            const email   = this.querySelector('input[name="reply_to"]').value.trim();
+            const message = this.querySelector('textarea[name="message"]').value.trim();
+
+            console.log('[ContactForm] Submit triggered');
+            console.log('[ContactForm] Fields:', { name, email, messageLength: message.length });
+
             if (!name || !email || !message) {
+                console.warn('[ContactForm] Validation failed — missing fields');
                 alert('Please fill in all fields.');
                 return;
             }
 
-            // Simulate form submission (replace with actual form handling)
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
 
-            // Simulate API call
-            setTimeout(() => {
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                this.reset();
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 2000);
+            console.log('[EmailJS] Calling sendForm...');
+
+            emailjs.sendForm('service_dz8v4qb', 'template_s49d2gp', this)
+                .then((response) => {
+                    console.log('[EmailJS] ✅ Email sent successfully!', response.status, response.text);
+                    submitBtn.textContent = 'Sent ✓';
+                    submitBtn.style.background = 'linear-gradient(45deg, #11998e, #38ef7d)';
+                    this.reset();
+                    setTimeout(() => {
+                        submitBtn.textContent = 'Send Message';
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch((err) => {
+                    console.error('[EmailJS] ❌ Send failed');
+                    console.error('[EmailJS] Status:', err.status);
+                    console.error('[EmailJS] Response:', err.text);
+                    alert('Something went wrong. Please try again or email me directly at avnishy84@gmail.com');
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                });
         });
     }
 

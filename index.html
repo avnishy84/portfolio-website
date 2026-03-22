@@ -12,6 +12,25 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function () { emailjs.init({ publicKey: 'gIj6Ftc8C8QGNroUB' }); })();
+    </script>
+    <!-- Firebase compat CDN (no build step required) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+    <script>
+        firebase.initializeApp({
+            apiKey: "AIzaSyA_CDm1YMIc7RIYMRiDRCD588CKq8-pf2Y",
+            authDomain: "avnish-portfolio-c14e6.firebaseapp.com",
+            projectId: "avnish-portfolio-c14e6",
+            storageBucket: "avnish-portfolio-c14e6.firebasestorage.app",
+            messagingSenderId: "177848360720",
+            appId: "1:177848360320:web:2bed36f4b2939070c47565",
+            measurementId: "G-WSJZHCD9SB"
+        });
+        firebase.analytics();
+    </script>
 
 </head>
 
@@ -233,70 +252,78 @@
                 </div>
             </div>
         </section>
-        </div>
-        <!-- <div class="pcard-links">
-                                <a href="#" target="_blank" class="plink-primary">Live Demo</a>
-                                <a href="#" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="projects/ai-dress-tryon.html" class="plink-ghost">Read More →</a>
-                            </div> -->
-        </div>
-        </div>
 
-        </div>
-        </div>
-        </section>
         <!-- Experience Section -->
         <section id="experience">
             <div class="container">
                 <h2>Experience</h2>
-                <div class="projects-grid"> <!-- Reusing the same grid layout class -->
+                <div class="timeline">
 
-                    <div class="project-card">
-                        <div class="project-image">💼</div>
-                        <div class="project-content">
-                            <h3>Software Engineer | Aloha Technology (EleVia Platform)</h3>
-                            <p class="duration">Jan 2022 – Present | Pune</p>
-                            <ul style="color: #c7c9d1;">
-                                <li>Working across two enterprise projects, contributing to legacy maintenance and
-                                    modernization using Sencha Ext JS and React.</li>
-                                <li>Optimized SQL queries and stored procedures, improving performance by up to 30% and
-                                    reducing timeouts.</li>
-                                <li>Led database normalization initiative, resulting in 20% faster query response times.
-                                </li>
-                                <li>Resolved critical production issues across full stack (UI, APIs, database layers).
-                                </li>
-                                <li>Refactored legacy code and enhanced validation logic to improve system stability.
-                                </li>
+                    <div class="tl-item">
+                        <div class="tl-marker">
+                            <span>💼</span>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-card-header">
+                                <div>
+                                    <h3>Software Engineer</h3>
+                                    <p class="tl-company">Aloha Technology — EleVia Platform</p>
+                                </div>
+                                <span class="tl-date">Jan 2022 – Present</span>
+                            </div>
+                            <div class="tl-tags">
+                                <span>C#</span><span>.NET</span><span>React</span><span>Sencha Ext JS</span><span>SQL Server</span>
+                            </div>
+                            <ul class="tl-list">
+                                <li>Working across two enterprise projects — legacy maintenance (Sencha Ext JS) and modernization (React).</li>
+                                <li>Optimized SQL queries and stored procedures, improving performance by up to <strong>30%</strong>.</li>
+                                <li>Led database normalization initiative, resulting in <strong>20% faster</strong> query response times.</li>
+                                <li>Resolved critical production issues across full stack — UI, APIs, and database layers.</li>
+                                <li>Refactored legacy code and enhanced validation logic to improve system stability.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image">👨‍💻</div>
-                        <div class="project-content">
-                            <h3>Full-Stack Developer | Make the Dot</h3>
-                            <p class="duration">Project-Based</p>
-                            <ul style="color: #c7c9d1;">
+                    <div class="tl-item">
+                        <div class="tl-marker">
+                            <span>👨‍💻</span>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-card-header">
+                                <div>
+                                    <h3>Full-Stack Developer</h3>
+                                    <p class="tl-company">Make the Dot</p>
+                                </div>
+                                <span class="tl-date">Project-Based</span>
+                            </div>
+                            <div class="tl-tags">
+                                <span>Angular</span><span>JavaScript</span><span>Python</span><span>REST APIs</span><span>Chrome Extension</span>
+                            </div>
+                            <ul class="tl-list">
                                 <li>Built full-stack application with Angular frontend and JavaScript backend.</li>
-                                <li>Enhanced Chrome extension using Python to automate workflows.</li>
-                                <li>Implemented RESTful communication, improving data flow reliability and performance.
-                                </li>
+                                <li>Enhanced Chrome extension using Python to automate browser workflows.</li>
+                                <li>Implemented RESTful communication, improving data flow reliability and performance.</li>
                                 <li>Debugged cross-component issues, enhancing stability and user experience.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-image">🎓</div>
-                        <div class="project-content">
-                            <h3>Education & Certifications</h3>
-                            <p class="duration">Academic Background</p>
-                            <ul style="color: #c7c9d1;">
-                                <li><strong>Master of Computer Applications (MCA)</strong> - AKTU, Lucknow (2020–2022) -
-                                    77.80%</li>
-                                <li><strong>Bachelor of Computer Applications (BCA)</strong> - CSJMU, Kanpur (2017–2020)
-                                    - 63.00%</li>
-                                <li>Currently learning Generative AI, LLMs, and AI-assisted development workflows.</li>
+                    <div class="tl-item">
+                        <div class="tl-marker">
+                            <span>🎓</span>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-card-header">
+                                <div>
+                                    <h3>Education</h3>
+                                    <p class="tl-company">Academic Background</p>
+                                </div>
+                                <span class="tl-date">2017 – 2022</span>
+                            </div>
+                            <ul class="tl-list">
+                                <li><strong>MCA</strong> — AKTU, Lucknow &nbsp;·&nbsp; 2020–2022 &nbsp;·&nbsp; 77.80%</li>
+                                <li><strong>BCA</strong> — CSJMU, Kanpur &nbsp;·&nbsp; 2017–2020 &nbsp;·&nbsp; 63.00%</li>
+                                <li>Currently exploring Generative AI, LLMs, and AI-assisted development workflows.</li>
                             </ul>
                         </div>
                     </div>
@@ -314,9 +341,9 @@
                         connect and build
                         something amazing together!</p>
                     <form id="contact-form">
-                        <input type="text" placeholder="Your Name" required />
-                        <input type="email" placeholder="Your Email" required />
-                        <textarea placeholder="Your Message" required></textarea>
+                        <input type="text" name="from_name" placeholder="Your Name" required />
+                        <input type="email" name="reply_to" placeholder="Your Email" required />
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                         <button type="submit">Send Message</button>
                     </form>
                 </div>
@@ -345,9 +372,11 @@
     </footer>
     <script>
         const toggle = document.getElementById('theme-toggle');
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-        });
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+            });
+        }
     </script>
     <script>
         document.addEventListener('mousemove', function (e) {

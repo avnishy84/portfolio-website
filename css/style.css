@@ -1264,3 +1264,156 @@ header .cta:hover {
     border-color: rgba(224, 187, 228, 0.3);
     color: var(--color-text);
 }
+
+/* ======================== */
+/* Experience Timeline */
+/* ======================== */
+
+#experience {
+    background: var(--color-soft) !important;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 2.5rem;
+    padding-left: 2rem;
+}
+
+/* Vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-accent), transparent);
+    opacity: 0.3;
+}
+
+.tl-item {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tl-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Dot marker */
+.tl-marker {
+    position: absolute;
+    left: -2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 2px solid rgba(224, 187, 228, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: border-color 0.2s ease;
+}
+
+.tl-item:hover .tl-marker {
+    border-color: var(--color-accent);
+}
+
+/* Card */
+.tl-card {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    margin-left: 1rem;
+}
+
+.tl-item:hover .tl-card {
+    transform: translateX(4px);
+    border-color: rgba(224, 187, 228, 0.2);
+}
+
+.tl-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+}
+
+.tl-card-header h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.2rem;
+}
+
+.tl-company {
+    font-size: 0.88rem;
+    color: var(--color-accent);
+    margin: 0;
+    font-weight: 500;
+}
+
+.tl-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.9rem;
+}
+
+.tl-tags span {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.18rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(224, 187, 228, 0.08);
+    color: var(--color-accent);
+    border: 1px solid rgba(224, 187, 228, 0.2);
+}
+
+.tl-list {
+    padding-left: 1.1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.tl-list li {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+}
+
+.tl-list li strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .timeline { padding-left: 1.5rem; }
+    .tl-marker { left: -1.5rem; width: 32px; height: 32px; font-size: 0.9rem; }
+    .tl-card { margin-left: 0.5rem; padding: 1.1rem; }
+    .tl-date { display: none; }
+}
