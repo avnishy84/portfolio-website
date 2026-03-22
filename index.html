@@ -110,58 +110,96 @@
         <section id="projects">
             <div class="container">
                 <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image"> <img src="images/one-editor-logo.svg" alt="One Note"
-                                class="project-logo" style="width: 330px; margin-left: 80px;">
-                            
+                <div class="projects-grid-new">
+
+                    <div class="pcard">
+                        <div class="pcard-top" style="--accent: #667eea;">
+                            <span class="pcard-emoji">📝</span>
+                            <span class="pcard-badge">Web App</span>
                         </div>
-                        <div class="project-content">
+                        <div class="pcard-body">
                             <h3>One Note</h3>
-                            <p>A simple, fast, and secure note-taking app designed to boost productivity. Built with
-                                Vanilla JavaScript, Firebase, and modern CSS, it offers rich text formatting, keyboard
-                                shortcuts, cloud sync, and secure authentication. Features like dark mode, note export,
-                                and a built-in Snake game make work and play seamless.</p>
-                            <div class="project-links">
-                                <a href="https://notepad-2-e34b1.web.app/" target="_blank">Live Demo</a>
-                                <a href="https://github.com/avnishy84/notepad-2" target="_blank">GitHub</a>
+                            <p>A simple, fast, and secure note-taking app built to boost productivity. Rich text formatting, keyboard shortcuts, cloud sync, secure auth, dark mode, note export — and a hidden Snake game.</p>
+                            <div class="pcard-tags">
+                                <span>JavaScript</span><span>Firebase</span><span>CSS3</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">🗂️</div>
-                        <div class="project-content">
-                            <h3>TeamChatLogs — Chrome Extension</h3>
-                            <p>A Chrome Extension (Manifest V3) that exports your full Microsoft Teams chat history to a clean, readable plain-text file with one click. Solves Teams' lack of personal export options by auto-scrolling through virtualized chat lists, extracting every message with sender, timestamp, and content, then deduplicating and saving as a formatted <code>.txt</code> file.</p>
-                            <p style="margin-top: 0.5rem; color: var(--color-text-muted); font-size: 0.9rem;">Built entirely through agentic AI (Kiro) — spec, architecture, 87 tests, and debugging all driven by natural language conversation.</p>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Chrome Store</a>
-                                <a href="https://github.com/avnishy84" target="_blank">GitHub</a>
-                            </div>
+                        <div class="pcard-footer">
+                            <a href="https://notepad-2-e34b1.web.app/" target="_blank" class="plink-primary">Live Demo</a>
+                            <a href="https://github.com/avnishy84/notepad-2" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="projects/one-note.html" class="plink-ghost">Read More →</a>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <div class="project-image">🌐</div>
-                        <div class="project-content">
-                            <h3>Modern Portfolio Website</h3>
-                            <p>A fully responsive portfolio site built in under a day using AI-assisted development. Features smooth animations, dark mode, starfield effects, and Firebase hosting. Demonstrates the power of prompt engineering and agentic AI in modern web development.</p>
-                            <div class="project-links">
-                                <a href="https://avnish-portfolio-c14e6.web.app/" target="_blank">Live Demo</a>
-                                <a href="https://github.com/avnishy84" target="_blank">GitHub</a>
+
+                    <div class="pcard">
+                        <div class="pcard-top" style="--accent: #11998e;">
+                            <span class="pcard-emoji">🗂️</span>
+                            <span class="pcard-badge">Chrome Extension</span>
+                        </div>
+                        <div class="pcard-body">
+                            <h3>TeamChatLogs</h3>
+                            <p>Exports your full Microsoft Teams chat history to a clean plain-text file with one click. Solves Teams' virtualized DOM rendering with auto-scroll, deduplication, and noise removal. Built with 87 tests.</p>
+                            <div class="pcard-tags">
+                                <span>MV3</span><span>JavaScript</span><span>Jest</span><span>DOM Scraping</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">�</div>
-                        <div class="project-content">
-                            <h3>AI Dress Try-On App</h3>
-                            <p>A virtual dress fitting application powered by Google Gemini Nano and Banana AI that allows users to upload their photos and any dress image to generate realistic try-on results with smart styling suggestions and personalized recommendations.</p>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Live Demo</a>
-                                <a href="#" target="_blank">GitHub</a>
-                            </div>
+                        <div class="pcard-footer">
+                            <a href="#" target="_blank" class="plink-primary">Chrome Store</a>
+                            <a href="https://github.com/avnishy84" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="projects/team-chat-logs.html" class="plink-ghost">Read More →</a>
                         </div>
                     </div>
+
+                    <div class="pcard">
+                        <div class="pcard-top" style="--accent: #f7971e;">
+                            <span class="pcard-emoji">🌐</span>
+                            <span class="pcard-badge">AI-Built</span>
+                        </div>
+                        <div class="pcard-body">
+                            <h3>Portfolio Website</h3>
+                            <p>This site — fully responsive, dark mode, starfield animations, and Firebase hosting. Designed, developed, and deployed in under a day using prompt engineering and agentic AI workflows.</p>
+                            <div class="pcard-tags">
+                                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Firebase</span><span>Kiro AI</span>
+                            </div>
+                        </div>
+                        <div class="pcard-footer">
+                            <a href="https://avnish-portfolio-c14e6.web.app/" target="_blank" class="plink-primary">Live Demo</a>
+                            <a href="https://github.com/avnishy84" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="projects/portfolio.html" class="plink-ghost">Read More →</a>
+                        </div>
+                    </div>
+
+                    <div class="pcard">
+                        <div class="pcard-top" style="--accent: #ee0979;">
+                            <span class="pcard-emoji">💃</span>
+                            <span class="pcard-badge">Generative AI</span>
+                        </div>
+                        <div class="pcard-body">
+                            <h3>AI Dress Try-On</h3>
+                            <p>A virtual fitting room powered by Google Gemini Nano and Banana AI. Upload your photo and any dress image to get a realistic try-on result with smart styling suggestions and personalized recommendations.</p>
+                            <div class="pcard-tags">
+                                <span>Gemini Nano</span><span>Banana AI</span><span>JavaScript</span><span>REST APIs</span>
+                            </div>
+                        </div>
+                        <div class="pcard-footer">
+                            <a href="#" target="_blank" class="plink-primary">Live Demo</a>
+                            <a href="#" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="projects/ai-dress-tryon.html" class="plink-ghost">Read More →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+                            </div>
+                            <!-- <div class="pcard-links">
+                                <a href="#" target="_blank" class="plink-primary">Live Demo</a>
+                                <a href="#" target="_blank" class="plink-ghost"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="projects/ai-dress-tryon.html" class="plink-ghost">Read More →</a>
+                            </div> -->
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Dress Try-On — Avnish Yadav</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <div class="starfield"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">AY</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-detail-hero">
+        <div class="container">
+            <span class="emoji">💃</span>
+            <h1>AI Dress Try-On App</h1>
+            <p>A virtual fitting room powered by Google Gemini Nano and Banana AI — upload your photo and any dress to see a realistic try-on result instantly.</p>
+            <div class="hero-links">
+                <a href="#" target="_blank" class="btn-primary">Demo</a>
+                <a href="#" target="_blank" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h2>Overview</h2>
+                <p>The AI Dress Try-On App is a virtual fitting application that removes the guesswork from online clothes shopping. Users upload a photo of themselves and an image of any dress, and the system generates a realistic composite showing how the outfit would look on them — complete with smart styling suggestions and personalized recommendations.</p>
+                <div class="highlight-box">
+                    <p>"Online shopping's biggest problem is fit uncertainty. This app brings the fitting room to your browser using the latest generative AI models."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Features</h2>
+                <ul>
+                    <li>Upload a personal photo and a dress image — get a realistic try-on result</li>
+                    <li>Powered by Google Gemini Nano for on-device AI inference</li>
+                    <li>Banana AI for scalable cloud-based image generation</li>
+                    <li>Smart styling suggestions based on the outfit and user profile</li>
+                    <li>Personalized recommendations for complementary items</li>
+                    <li>Clean, intuitive UI — no technical knowledge required</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Tech Stack</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Google Gemini Nano</span>
+                    <span class="tech-tag">Banana AI</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Generative AI</span>
+                    <span class="tech-tag">Image Processing</span>
+                    <span class="tech-tag">REST APIs</span>
+                </div>
+                <p style="margin-top: 1.25rem;">The app combines on-device AI (Gemini Nano) for fast, private inference with Banana AI's cloud infrastructure for high-quality image generation at scale. This hybrid approach balances speed, quality, and cost.</p>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Input Processing</h3>
+                        <p>The user uploads two images: a photo of themselves and an image of the desired dress. The app preprocesses both images — normalizing dimensions, extracting body pose data, and identifying garment structure.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">AI Generation</h3>
+                        <p>Gemini Nano handles the understanding layer — analyzing body shape, lighting, and garment fit. Banana AI's diffusion model generates the final composite image with realistic fabric draping and lighting.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Styling Suggestions</h3>
+                        <p>Based on the outfit analysis, the system generates complementary styling recommendations — accessories, shoes, and color pairings that work with the selected dress.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Personalization</h3>
+                        <p>The recommendation engine learns from user preferences and browsing patterns to surface more relevant suggestions over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>What I Learned</h2>
+                <ul>
+                    <li>Integrating on-device AI models (Gemini Nano) with cloud-based generation pipelines</li>
+                    <li>Working with image-to-image diffusion models via API</li>
+                    <li>Handling large binary payloads (images) efficiently in the browser</li>
+                    <li>Designing UX for AI-powered features where output quality varies</li>
+                    <li>Balancing latency vs. quality in generative AI applications</li>
+                </ul>
+                <p style="margin-top: 1rem; color: var(--color-text-muted); font-style: italic;">More details coming soon — this project is actively being developed.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/avnishy84/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/avnishy84" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/avnish__yadav/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:avnishy84@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Avnish Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        try {
+            const t = localStorage.getItem('theme');
+            if (t === 'light') document.body.classList.remove('dark');
+        } catch(_) {}
+
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 150; i++) {
+            const s = document.createElement('div');
+            s.classList.add('star');
+            s.style.top = `${Math.random() * window.innerHeight}px`;
+            s.style.left = `${Math.random() * window.innerWidth}px`;
+            s.style.width = `${Math.random() * 2 + 1}px`;
+            s.style.height = s.style.width;
+            starfield.appendChild(s);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.classList.add('falling-star');
+            const size = Math.random() * 3 + 3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${e.clientX}px`;
+            star.style.top = `${e.clientY}px`;
+            star.style.setProperty('--offsetX', `${Math.random() * 200 - 100}px`);
+            star.style.setProperty('--offsetY', `${Math.random() * 200 + 100}px`);
+            document.body.appendChild(star);
+            star.addEventListener('animationend', () => star.remove());
+        });
+    </script>
+</body>
+</html>

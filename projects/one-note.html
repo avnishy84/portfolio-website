@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Note — Avnish Yadav</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <div class="starfield"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">AY</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-detail-hero">
+        <div class="container">
+            <span class="emoji">📝</span>
+            <h1>One Note</h1>
+            <p>A simple, fast, and secure note-taking app built to boost productivity — with cloud sync, rich text, and even a hidden Snake game.</p>
+            <div class="hero-links">
+                <a href="https://notepad-2-e34b1.web.app/" target="_blank" class="btn-primary">Demo</a>
+                <a href="https://github.com/avnishy84/notepad-2" target="_blank" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h2>Overview</h2>
+                <p>One Note is a productivity-focused note-taking web application that combines the simplicity of a plain text editor with the power of cloud sync and rich formatting. It was built to solve a common problem: most note apps are either too complex or too limited. One Note sits in the sweet spot — fast to open, easy to use, and reliable enough to trust with your important notes.</p>
+                <div class="highlight-box">
+                    <p>"Built with Vanilla JavaScript and Firebase — no frameworks, no bloat. Just fast, clean, and it works."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>The Problem</h2>
+                <p>Most note-taking tools fall into one of two traps: they're either heavyweight apps that take time to load and require accounts, or they're bare-bones editors that lose your data when you close the tab. There was a gap for something that:</p>
+                <ul>
+                    <li>Opens instantly in the browser</li>
+                    <li>Saves automatically to the cloud</li>
+                    <li>Supports basic rich text without a learning curve</li>
+                    <li>Works offline and syncs when back online</li>
+                    <li>Feels personal and fun to use</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Core</h3>
+                        <ul>
+                            <li>Rich text formatting (bold, italic, underline, lists)</li>
+                            <li>Keyboard shortcuts for all common actions</li>
+                            <li>Cloud sync via Firebase Realtime Database</li>
+                            <li>Secure authentication (Google / Email)</li>
+                            <li>Auto-save — never lose a note</li>
+                            <li>Note export to plain text file</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Extras</h3>
+                        <ul>
+                            <li>Dark mode with theme persistence</li>
+                            <li>Responsive layout — works on mobile</li>
+                            <li>Built-in Snake game (hidden easter egg)</li>
+                            <li>Clean, distraction-free UI</li>
+                            <li>Fast load time — no heavy frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Tech Stack</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Vanilla JavaScript</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Firebase Auth</span>
+                    <span class="tech-tag">Firebase Realtime DB</span>
+                    <span class="tech-tag">Firebase Hosting</span>
+                </div>
+                <p style="margin-top: 1.25rem;">Deliberately built without any JavaScript framework. The goal was to keep the bundle small, the load time fast, and the code easy to maintain. Firebase handles authentication and real-time data sync without needing a custom backend.</p>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>What I Learned</h2>
+                <ul>
+                    <li>How to implement rich text editing using the browser's native <code>contenteditable</code> API</li>
+                    <li>Firebase real-time sync patterns and offline persistence</li>
+                    <li>Building secure auth flows without a backend</li>
+                    <li>Keeping UX simple while adding depth through keyboard shortcuts and hidden features</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/avnishy84/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/avnishy84" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/avnish__yadav/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:avnishy84@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Avnish Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        try {
+            const t = localStorage.getItem('theme');
+            if (t === 'light') document.body.classList.remove('dark');
+        } catch(_) {}
+
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 150; i++) {
+            const s = document.createElement('div');
+            s.classList.add('star');
+            s.style.top = `${Math.random() * window.innerHeight}px`;
+            s.style.left = `${Math.random() * window.innerWidth}px`;
+            s.style.width = `${Math.random() * 2 + 1}px`;
+            s.style.height = s.style.width;
+            starfield.appendChild(s);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.classList.add('falling-star');
+            const size = Math.random() * 3 + 3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${e.clientX}px`;
+            star.style.top = `${e.clientY}px`;
+            star.style.setProperty('--offsetX', `${Math.random() * 200 - 100}px`);
+            star.style.setProperty('--offsetY', `${Math.random() * 200 + 100}px`);
+            document.body.appendChild(star);
+            star.addEventListener('animationend', () => star.remove());
+        });
+    </script>
+</body>
+</html>

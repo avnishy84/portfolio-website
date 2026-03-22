@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeamChatLogs — Avnish Yadav</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <div class="starfield"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">AY</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-detail-hero">
+        <div class="container">
+            <span class="emoji">🗂️</span>
+            <h1>TeamChatLogs</h1>
+            <p>A Chrome Extension that exports your full Microsoft Teams chat history to a clean, readable plain-text file — with one click.</p>
+            <div class="hero-links">
+                <a href="#" target="_blank" class="btn-primary">Chrome Store</a>
+                <a href="https://github.com/avnishy84" target="_blank" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h2>The Problem</h2>
+                <p>Microsoft Teams does not provide a simple way for regular users to export or save their chat conversations locally. The built-in export options are either locked behind admin portals, require IT intervention, or produce formats that are difficult to read.</p>
+                <p style="margin-top: 1rem;">On top of that, Teams renders its chat using a <strong style="color: var(--color-text);">virtualized list</strong> — meaning only the messages currently visible on screen exist in the DOM at any given time. Any naive scraping approach would only capture a small window of the conversation, not the full history.</p>
+                <div class="highlight-box">
+                    <p>"For individuals who want a personal record of their conversations — for compliance, reference, or archiving — there was no easy solution. So I built one."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>What It Does</h2>
+                <ul>
+                    <li>Adds a one-click "Save Chat" button via a browser popup</li>
+                    <li>Automatically scrolls back through the entire chat history, triggering Teams to load older messages batch by batch</li>
+                    <li>Extracts every message — sender name, timestamp, and content — from the DOM</li>
+                    <li>Cleans the output by removing UI noise (buttons, reaction labels, system chrome)</li>
+                    <li>Deduplicates messages that appear multiple times due to virtualized rendering</li>
+                    <li>Saves the result as a plain <code>.txt</code> file named after the conversation</li>
+                </ul>
+                <h3 style="color: var(--color-text); margin: 1.5rem 0 0.75rem;">Output Format</h3>
+                <pre style="background: var(--color-soft); padding: 1rem 1.25rem; border-radius: 10px; color: var(--color-text-muted); font-size: 0.95rem; overflow-x: auto;">[2024-03-15 09:32] Alice Johnson: Good morning everyone
+[2024-03-15 09:33] Bob Smith: Morning! Ready for the standup?
+[2024-03-15 09:33] Alice Johnson: Yes, give me 2 minutes</pre>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Architecture</h2>
+                <p>The extension follows the standard Manifest V3 three-layer architecture:</p>
+                <pre style="background: var(--color-soft); padding: 1rem 1.25rem; border-radius: 10px; color: var(--color-text-muted); font-size: 0.95rem; overflow-x: auto;">Popup (popup.js)
+└── sends message to →
+Background Service Worker (background.js)
+└── injects and calls →
+Content Script (scraper.js)
+└── reads from →
+Teams DOM</pre>
+                <div style="margin-top: 1.5rem;">
+                    <ul>
+                        <li><strong style="color: var(--color-text);">popup.js</strong> — Handles the UI, renders the Save Chat button, shows live progress, and displays success or error feedback.</li>
+                        <li><strong style="color: var(--color-text);">background.js</strong> — The orchestrator. Validates the active tab is a Teams page, injects the scraper, relays progress updates, and triggers the file download via <code>chrome.downloads</code>.</li>
+                        <li><strong style="color: var(--color-text);">scraper.js</strong> — The core engine. Contains all DOM extraction logic: scroll loading, message extraction, deduplication, and noise removal.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Key Engineering Challenges</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Virtualized DOM</h3>
+                        <p>Teams only renders visible messages. The scraper uses <code>scrollLoadHistory()</code> — incrementally scrolling to the top, polling for new messages after each scroll until the count stabilises or a 2-minute timeout is hit.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Obfuscated Selectors</h3>
+                        <p>Teams' CSS class names are obfuscated and change with every deployment. The scraper uses a resilience-first approach: <code>data-tid</code> attributes first, then ARIA roles, never class names.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Noise Removal</h3>
+                        <p>Teams injects visually-hidden UI elements (reaction bars, action buttons) inside each message bubble. The scraper collects and strips these strings line-by-line before reading content.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Deduplication</h3>
+                        <p>Virtualized rendering causes the same message to appear multiple times as the user scrolls. A composite key (sender + timestamp + content) is used to deduplicate the final record set.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Testing</h2>
+                <p>The project has a comprehensive test suite of <strong style="color: var(--color-text);">87 tests</strong> using Jest for unit tests and fast-check for property-based tests.</p>
+                <ul>
+                    <li>Filename sanitization never produces invalid characters</li>
+                    <li>Message extraction always produces exactly N records for N bubbles</li>
+                    <li>Deduplication is idempotent</li>
+                    <li>Scroll loop progress values are strictly increasing</li>
+                    <li>Timeout with zero messages throws instead of saving an empty file</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Built with Agentic AI</h2>
+                <p>This entire project — requirements, design, implementation, 87 tests, debugging, and documentation — was produced through conversation with <strong style="color: var(--color-text);">Kiro</strong>, an agentic AI IDE. The human role was to describe the problem, review outputs, test against the real Teams app, and report what was wrong. The agent handled the rest.</p>
+                <div class="highlight-box">
+                    <p>"This demonstrates how agentic AI can compress the full software development lifecycle: from idea to a tested, working, deployable artifact — with the developer acting as a product owner rather than a line-by-line author."</p>
+                </div>
+                <div class="tech-tags" style="margin-top: 1.25rem;">
+                    <span class="tech-tag">Chrome Extension MV3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Jest</span>
+                    <span class="tech-tag">fast-check</span>
+                    <span class="tech-tag">DOM Scraping</span>
+                    <span class="tech-tag">Kiro AI</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/avnishy84/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/avnishy84" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/avnish__yadav/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:avnishy84@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Avnish Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        try {
+            const t = localStorage.getItem('theme');
+            if (t === 'light') document.body.classList.remove('dark');
+        } catch(_) {}
+
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 150; i++) {
+            const s = document.createElement('div');
+            s.classList.add('star');
+            s.style.top = `${Math.random() * window.innerHeight}px`;
+            s.style.left = `${Math.random() * window.innerWidth}px`;
+            s.style.width = `${Math.random() * 2 + 1}px`;
+            s.style.height = s.style.width;
+            starfield.appendChild(s);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.classList.add('falling-star');
+            const size = Math.random() * 3 + 3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${e.clientX}px`;
+            star.style.top = `${e.clientY}px`;
+            star.style.setProperty('--offsetX', `${Math.random() * 200 - 100}px`);
+            star.style.setProperty('--offsetY', `${Math.random() * 200 + 100}px`);
+            document.body.appendChild(star);
+            star.addEventListener('animationend', () => star.remove());
+        });
+    </script>
+</body>
+</html>

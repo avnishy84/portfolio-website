@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website — Avnish Yadav</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <div class="starfield"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">AY</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-detail-hero">
+        <div class="container">
+            <span class="emoji">🌐</span>
+            <h1>Modern Portfolio Website</h1>
+            <p>A fully responsive personal portfolio built in under a day using AI-assisted development, prompt engineering, and agentic AI workflows.</p>
+            <div class="hero-links">
+                <a href="https://avnish-portfolio-c14e6.web.app/" target="_blank" class="btn-primary">Demo</a>
+                <a href="https://github.com/avnishy84" target="_blank" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h2>Overview</h2>
+                <p>This portfolio website is itself a project — a demonstration of what modern AI-assisted development looks like in practice. The entire site was designed, built, and deployed in under a day through natural language conversation with Kiro, an agentic AI IDE. No design tools, no manual CSS tweaking sessions, no hours spent reading Firebase docs.</p>
+                <div class="highlight-box">
+                    <p>"The biggest lesson: scalability isn't about making things faster. It's about controlling how work flows through the system — and AI is the best flow controller I've found."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Visual & UX</h3>
+                        <ul>
+                            <li>Animated starfield background (CSS + JS)</li>
+                            <li>Mouse-trail falling star particle effect</li>
+                            <li>Hero avatar with radial glow ring</li>
+                            <li>Typing animation on page load</li>
+                            <li>Scroll-triggered fade-in for all sections</li>
+                            <li>Dark mode by default, persisted via localStorage</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Navigation & Layout</h3>
+                        <ul>
+                            <li>Sticky nav with active link highlight on scroll</li>
+                            <li>Smooth scroll to all sections</li>
+                            <li>Mobile hamburger menu</li>
+                            <li>Scroll-to-top button</li>
+                            <li>Fully responsive — desktop, tablet, mobile</li>
+                            <li>Project detail pages with Read More navigation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Tech Stack</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Vanilla JavaScript</span>
+                    <span class="tech-tag">Firebase Hosting</span>
+                    <span class="tech-tag">Firebase Analytics</span>
+                    <span class="tech-tag">Google Fonts</span>
+                    <span class="tech-tag">Font Awesome</span>
+                </div>
+                <p style="margin-top: 1.25rem;">Deliberately kept framework-free. No React, no build step, no bundler. The site loads instantly because there's nothing to compile or hydrate — just HTML, CSS, and a single JS file.</p>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>How AI Built This</h2>
+                <p>The development process was entirely driven through conversation with Kiro. Here's what the AI handled:</p>
+                <ul>
+                    <li>Translating design intent ("dark space theme with starfield") into production CSS with custom properties and animations</li>
+                    <li>Implementing all JavaScript features from plain English descriptions</li>
+                    <li>Updating all content from resume data without manual copy-paste</li>
+                    <li>Debugging layout issues from described symptoms</li>
+                    <li>Writing and maintaining a steering context file so the agent always has full project knowledge</li>
+                    <li>Creating this project detail page system from a single request</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>"Proper prompt engineering turns vague ideas into production-ready solutions. These agentic AI tools don't replace developers — they amplify our ability to ship faster and focus on what matters."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>CSS Architecture</h2>
+                <p>The stylesheet uses CSS custom properties for a complete theming system. All colors, shadows, and surfaces switch between light and dark mode by toggling a single <code>.dark</code> class on the body.</p>
+                <ul>
+                    <li>Primary gradient: indigo → plum (<code>#667eea → #764ba2</code>)</li>
+                    <li>Dark accent: lavender (<code>#E0BBE4</code>) and plum (<code>#957DAD</code>)</li>
+                    <li>Responsive breakpoints at 768px and 480px</li>
+                    <li>CSS Grid for skills and project layouts</li>
+                    <li>Keyframe animations: fadeInUp, blinkStars, fallStar</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/avnishy84/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/avnishy84" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/avnish__yadav/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:avnishy84@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Avnish Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        try {
+            const t = localStorage.getItem('theme');
+            if (t === 'light') document.body.classList.remove('dark');
+        } catch(_) {}
+
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 150; i++) {
+            const s = document.createElement('div');
+            s.classList.add('star');
+            s.style.top = `${Math.random() * window.innerHeight}px`;
+            s.style.left = `${Math.random() * window.innerWidth}px`;
+            s.style.width = `${Math.random() * 2 + 1}px`;
+            s.style.height = s.style.width;
+            starfield.appendChild(s);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.classList.add('falling-star');
+            const size = Math.random() * 3 + 3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${e.clientX}px`;
+            star.style.top = `${e.clientY}px`;
+            star.style.setProperty('--offsetX', `${Math.random() * 200 - 100}px`);
+            star.style.setProperty('--offsetY', `${Math.random() * 200 + 100}px`);
+            document.body.appendChild(star);
+            star.addEventListener('animationend', () => star.remove());
+        });
+    </script>
+</body>
+</html>
