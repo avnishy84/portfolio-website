@@ -139,23 +139,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add typing effect to header
+    // Typing effect — only on the name part (after the greeting span)
     const headerTitle = document.querySelector('header h1');
     if (headerTitle) {
-        const text = headerTitle.textContent;
-        headerTitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                headerTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        
-        // Start typing effect after a short delay
-        setTimeout(typeWriter, 500);
+        const greeting = headerTitle.querySelector('.hero-greeting');
+        // Collect text nodes (the name part after the span)
+        const nameNode = Array.from(headerTitle.childNodes).find(
+            n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()
+        );
+        if (nameNode) {
+            const fullName = nameNode.textContent;
+            nameNode.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < fullName.length) {
+                    nameNode.textContent += fullName.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 80);
+                }
+            };
+            setTimeout(typeWriter, 600);
+        }
     }
 
     // Add scroll-to-top functionality
