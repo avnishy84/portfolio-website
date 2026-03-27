@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compufy Technology — Avnish Yadav</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <div class="starfield"></div>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">AY</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-detail-hero">
+        <div class="container">
+            <span class="emoji"><img src="../images/compufy-logo.webp" alt="Compufy" style="width:5rem;height:5rem;object-fit:contain;border-radius:12px;display:inline-block;"></span>
+            <h1>Compufy Technology</h1>
+            <p>A high-performance corporate marketing website built with Angular 18 SSR, Tailwind CSS, and Firebase — featuring a hidden rocket game easter egg.</p>
+            <div class="hero-links">
+                <a href="#" target="_blank" class="btn-primary">Live Demo</a>
+                <a href="https://github.com/avnishy84" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h2>Overview</h2>
+                <p>Compufy Technology is a corporate marketing website that presents the company's brand identity, service offerings, team information, and contact capabilities through a modern, high-performance web experience.</p>
+                <p style="margin-top: 1rem;">Built with a spec-driven development methodology — requirements, design, and tasks documented before a single line of code was written. The result is a production-grade Angular application with SSR, OnPush change detection, Angular Signals, and a comprehensive test suite.</p>
+                <div class="highlight-box">
+                    <p>"Most corporate websites are purely informational. Compufy embeds a fully functional 2D rocket game directly on top of the page — where every visible DOM element becomes a destructible target."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Tech Stack</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Frontend</h3>
+                        <ul>
+                            <li><strong style="color: var(--color-text);">Angular 18.2</strong> — standalone components, no NgModules</li>
+                            <li><strong style="color: var(--color-text);">TypeScript 5.5</strong> — strict mode throughout</li>
+                            <li><strong style="color: var(--color-text);">Tailwind CSS 3.4</strong> — utility-first, dark-mode via class strategy</li>
+                            <li><strong style="color: var(--color-text);">Angular Signals</strong> — signal, computed, effect for zero-boilerplate state</li>
+                            <li><strong style="color: var(--color-text);">Lucide-Angular</strong> — tree-shakeable SVG icons</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Backend & Infrastructure</h3>
+                        <ul>
+                            <li><strong style="color: var(--color-text);">Angular SSR 18</strong> — server-side rendering via Express 4</li>
+                            <li><strong style="color: var(--color-text);">Firebase 12</strong> — Firestore for contact form, Analytics for production tracking</li>
+                            <li><strong style="color: var(--color-text);">@angular/fire 18</strong> — typed Firebase integration</li>
+                            <li><strong style="color: var(--color-text);">RxJS 7.8</strong> — HTTP streams via HttpService wrapper</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tech-tags" style="margin-top: 1.5rem;">
+                    <span class="tech-tag">Angular 18</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Angular SSR</span>
+                    <span class="tech-tag">Angular Signals</span>
+                    <span class="tech-tag">RxJS</span>
+                    <span class="tech-tag">Jasmine</span>
+                    <span class="tech-tag">fast-check</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Architecture</h2>
+                <p>The application follows a feature-based folder structure with lazy-loaded routes, a pure data layer, and a centralized error boundary.</p>
+                <pre style="background: var(--color-soft); padding: 1rem 1.25rem; border-radius: 10px; color: var(--color-text-muted); font-size: 0.88rem; overflow-x: auto; line-height: 1.7;">Browser
+└── Angular Universal (SSR)
+    ├── Express Server ──────────────► Firebase (Firestore / Analytics)
+    └── Angular SPA
+        ├── AppComponent (root shell + navbar + game overlay)
+        ├── Lazy-loaded Feature Routes
+        │     ├── HomeComponent
+        │     ├── ServicesComponent / ServiceDetailsComponent
+        │     ├── ContactComponent
+        │     ├── WhoWeAreComponent
+        │     ├── CareersComponent
+        │     └── AiApproachComponent
+        ├── Shared UI Components (Button, Card, Input, SkeletonLoader)
+        ├── Core Services (Firebase, HttpService, ErrorHandler)
+        └── Rocket Game Overlay (canvas-based, SSR-safe)</pre>
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Design Patterns</h3>
+                    <ul>
+                        <li><strong style="color: var(--color-text);">Standalone components</strong> — no NgModules; each component declares its own imports</li>
+                        <li><strong style="color: var(--color-text);">OnPush change detection</strong> — all components use OnPush for minimal re-renders</li>
+                        <li><strong style="color: var(--color-text);">Signal-first reactivity</strong> — local and shared state via Angular Signals; RxJS reserved for HTTP only</li>
+                        <li><strong style="color: var(--color-text);">Functional DI</strong> — inject() used throughout instead of constructor injection</li>
+                        <li><strong style="color: var(--color-text);">Pure data layer</strong> — src/app/data/ contains only interfaces, constants, and static data with zero Angular dependencies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>The Rocket Game Easter Egg</h2>
+                <p>A fully modular canvas-based mini-game embedded as an easter egg — activated via a gamepad button in the navbar, available on every page.</p>
+                <div class="two-col" style="margin-top: 1.25rem;">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">How It Works</h3>
+                        <ul>
+                            <li>The rocket flies over the live page content</li>
+                            <li>All visible DOM elements — headings, cards, buttons, nav links — become destructible targets</li>
+                            <li>Targets are auto-discovered at activation time via getBoundingClientRect; no manual tagging required</li>
+                            <li>Break animation plays on destruction; elements fade and fall</li>
+                            <li>Particle explosion effect on hit</li>
+                            <li>Auto-scrolls the page as the rocket approaches viewport edges</li>
+                            <li>Full mobile support via virtual D-pad and fire button</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Game Modules</h3>
+                        <ul>
+                            <li><strong style="color: var(--color-text);">entities.ts</strong> — TypeScript interfaces: Rocket, Bullet, Particle, GameState</li>
+                            <li><strong style="color: var(--color-text);">input-handler.ts</strong> — keyboard event capture + touch state injection</li>
+                            <li><strong style="color: var(--color-text);">target-cache.ts</strong> — auto-discovers all shootable DOM elements; refreshes rects each frame</li>
+                            <li><strong style="color: var(--color-text);">collision-handler.ts</strong> — pure AABB intersection functions; no DOM access</li>
+                            <li><strong style="color: var(--color-text);">renderer.ts</strong> — all Canvas 2D draw calls; pure functions with save()/restore() symmetry</li>
+                            <li><strong style="color: var(--color-text);">game-engine.ts</strong> — RAF loop, physics, bullet/particle lifecycle, collision delegation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Performance Optimizations</h2>
+                <div class="two-col">
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Code Splitting</h3>
+                        <p>Every feature route uses loadComponent with dynamic import(). The browser only downloads the JavaScript for a page when the user navigates to it. Initial bundle contains only the root shell.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">SSR + Hydration</h3>
+                        <p>Angular Universal pre-renders HTML on the server. Users see fully rendered content on first load without waiting for JavaScript — improving Core Web Vitals (LCP, FCP) and SEO indexability.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">OnPush + Signals</h3>
+                        <p>Angular only checks a component's template when its Signal inputs change or an event fires within it — not on every global tick. Updates are surgical and targeted.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--color-text); margin-bottom: 0.75rem;">Tree-Shakeable Icons</h3>
+                        <p>Lucide icons are registered explicitly in app.config.ts. Only the icons actually used are included in the production bundle — no icon font bloat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Testing Strategy</h2>
+                <p>The project uses a two-layer testing approach: concrete unit tests with Jasmine 5 + Karma 6, and property-based tests with fast-check 4 running 100+ iterations per property.</p>
+                <h3 style="color: var(--color-text); margin: 1.25rem 0 0.75rem;">Correctness Properties (PBT)</h3>
+                <ul>
+                    <li><strong style="color: var(--color-text);">P1: Rocket bounds clamping</strong> — rocket always stays within canvas bounds for any canvas size</li>
+                    <li><strong style="color: var(--color-text);">P2: Friction convergence</strong> — applying friction 0.85 repeatedly never increases speed</li>
+                    <li><strong style="color: var(--color-text);">P3: Bullet count cap</strong> — active bullet count never exceeds 20</li>
+                    <li><strong style="color: var(--color-text);">P4: OOB bullet removal</strong> — bullets outside canvas bounds are removed after one tick</li>
+                    <li><strong style="color: var(--color-text);">P5: AABB correctness</strong> — collision detection matches reference implementation for arbitrary rect pairs</li>
+                    <li><strong style="color: var(--color-text);">P6: Delta-time cap</strong> — computed dt never exceeds 0.05s for any timestamp pair</li>
+                    <li><strong style="color: var(--color-text);">P7: Particle opacity</strong> — opacity always in [0, 1] for any particle and timestamp</li>
+                    <li><strong style="color: var(--color-text);">P8: Fire-rate limit</strong> — no two consecutive fire events less than 200ms apart</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="container">
+                <h2>Built with Spec-Driven + Agentic AI</h2>
+                <p>The project was built following a spec-driven development methodology using <strong style="color: var(--color-text);">Kiro</strong>, an agentic AI IDE. Before any code was written, the agent produced formal specification documents — requirements, design, and a granular task list — then implemented each task sequentially with tests validating every correctness property.</p>
+                <div class="highlight-box">
+                    <p>"The human role was to describe the problem, review outputs, and report what was wrong. The agent handled requirements, architecture, implementation, testing, and debugging — end to end."</p>
+                </div>
+                <div class="tech-tags" style="margin-top: 1.25rem;">
+                    <span class="tech-tag">Angular 18</span>
+                    <span class="tech-tag">TypeScript 5.5</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Angular SSR</span>
+                    <span class="tech-tag">Angular Signals</span>
+                    <span class="tech-tag">Canvas 2D</span>
+                    <span class="tech-tag">fast-check PBT</span>
+                    <span class="tech-tag">Kiro AI</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/avnishy84/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/avnishy84" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/avnish__yadav/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:avnishy84@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Avnish Yadav. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        try {
+            const t = localStorage.getItem('theme');
+            if (t === 'light') document.body.classList.remove('dark');
+        } catch(_) {}
+
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 150; i++) {
+            const s = document.createElement('div');
+            s.classList.add('star');
+            s.style.top = `${Math.random() * window.innerHeight}px`;
+            s.style.left = `${Math.random() * window.innerWidth}px`;
+            s.style.width = `${Math.random() * 2 + 1}px`;
+            s.style.height = s.style.width;
+            starfield.appendChild(s);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const star = document.createElement('div');
+            star.classList.add('falling-star');
+            const size = Math.random() * 3 + 3;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${e.clientX}px`;
+            star.style.top = `${e.clientY}px`;
+            star.style.setProperty('--offsetX', `${Math.random() * 200 - 100}px`);
+            star.style.setProperty('--offsetY', `${Math.random() * 200 + 100}px`);
+            document.body.appendChild(star);
+            star.addEventListener('animationend', () => star.remove());
+        });
+    </script>
+</body>
+</html>
