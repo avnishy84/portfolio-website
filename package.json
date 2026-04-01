@@ -3,16 +3,20 @@
   "version": "1.0.0",
   "description": "Personal portfolio website for Avnish Yadav",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "build": "echo 'Build completed - static site ready for deployment'",
     "start": "npx http-server . -p 3000",
-    "dev": "npx http-server . -p 3000 -o"
+    "dev": "npx http-server . -p 3000 -o",
+    "test": "node --test tests/seo-google-verification.test.js"
   },
   "dependencies": {
     "firebase": "^12.2.1"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "fast-check": "^4.6.0",
+    "http-server": "^14.1.1",
+    "node-html-parser": "^7.1.0"
   },
   "keywords": [
     "portfolio",
