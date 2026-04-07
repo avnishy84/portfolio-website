@@ -1491,3 +1491,37 @@ header .cta:hover {
     .tl-card { margin-left: 0.5rem; padding: 1.1rem; }
     .tl-date { display: none; }
 }
+
+/* ── Mobile-only Research Papers floating button ── */
+.mobile-research-btn {
+    display: none;
+}
+@media (max-width: 768px) {
+    .mobile-research-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.25rem;
+        z-index: 999;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 0.6rem 1.1rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.45);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mobile-research-btn:hover,
+    .mobile-research-btn:active {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .mobile-research-btn i {
+        font-size: 0.85rem;
+    }
+}
