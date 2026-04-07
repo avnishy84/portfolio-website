@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object-Oriented Programming Concepts: From Theory to Production Code — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research by Avnish Yadav: Encapsulation, abstraction, inheritance, and polymorphism revisited through practical C# and JavaScript examples, with common anti-patterns to avoid." />
+    <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p7.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="Object-Oriented Programming Concepts — Avnish Yadav" />
+    <meta property="og:description" content="Encapsulation, abstraction, inheritance, and polymorphism revisited through practical C# and JavaScript examples, with common anti-patterns to avoid." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p7.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Object-Oriented Programming Concepts — Avnish Yadav" />
+    <meta name="twitter:description" content="Encapsulation, abstraction, inheritance, and polymorphism revisited through practical C# and JavaScript examples." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Object-Oriented Programming Concepts: From Theory to Production Code","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2023","url":"https://avnish-portfolio-c14e6.web.app/papers/p7.html","keywords":["OOP","C#","JavaScript","Software Engineering"]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" /><link rel="stylesheet" href="paper.css" />
+</head>
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">Object-Oriented Programming Concepts</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+<div class="pages-container">
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">Software Engineering</span><span class="paper-tag">Full-Stack</span></div>
+    <div class="abstract-label">Research Paper · 2023</div>
+    <h1 class="paper-title-main">Object-Oriented Programming Concepts: From Theory to Production Code</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2023</span><span><i class="fas fa-tags"></i> Software Engineering · Full-Stack</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">Object-oriented programming's four pillars — encapsulation, abstraction, inheritance, and polymorphism — are taught in every computer science curriculum but frequently misapplied in production code. This paper revisits each concept through practical C# and JavaScript examples drawn from enterprise development, identifying the common anti-patterns that arise when the theory is misunderstood and the refactoring strategies that restore the intended benefits.</p>
+    <hr class="paper-divider">
+    <p class="body-text">Object-oriented programming has been the dominant paradigm in enterprise software development for three decades. Yet production codebases routinely exhibit violations of OOP's core principles — not because developers are unfamiliar with the concepts, but because the gap between textbook examples and production complexity is rarely addressed in educational materials.</p>
+    <h2 class="section-heading">1. Encapsulation</h2>
+    <p class="body-text">Encapsulation is the bundling of data and the methods that operate on that data within a single unit, with controlled access to the internal state. The anti-pattern is the anemic domain model: classes that are nothing more than data containers with public getters and setters, with all business logic in separate service classes. This inverts encapsulation — the data and the logic that operates on it are separated rather than bundled.</p>
+    <p class="body-text">The correct approach is to place behavior on the objects that own the data. A BankAccount class should have a Withdraw(amount) method that enforces the invariant that the balance cannot go negative, rather than exposing a public Balance setter that any caller can set to any value.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:90%"></div><div class="chart-bar" style="height:45%"></div>
+        <div class="chart-bar" style="height:80%"></div><div class="chart-bar" style="height:30%"></div>
+      </div>
+      Figure 1: Bug density in anemic vs. rich domain models across four enterprise projects
+    </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">2. Abstraction</h2>
+    <p class="body-text">Abstraction is the process of hiding implementation details and exposing only the essential features of an object. In practice, this means designing interfaces and abstract classes that represent concepts, not implementations. The anti-pattern is leaky abstraction: an interface that exposes implementation details, forcing callers to know about the underlying technology.</p>
+    <p class="body-text">A well-designed INotificationService interface should have a Send(notification) method. A leaky abstraction would expose SendSmtp(smtpMessage), coupling callers to the email transport mechanism.</p>
+    <h2 class="section-heading">3. Inheritance</h2>
+    <p class="body-text">Inheritance allows a class to inherit properties and methods from a parent class. The most common misuse is using inheritance for code reuse rather than for modeling an "is-a" relationship. If ClassB inherits from ClassA only to reuse some utility methods, the relationship is "has-a" (composition), not "is-a" (inheritance). Prefer composition over inheritance in these cases.</p>
+    <p class="body-text">Deep inheritance hierarchies are a maintenance liability. When a base class changes, all derived classes are potentially affected. A rule of thumb: if your inheritance hierarchy is more than two levels deep, it is likely modeling implementation rather than domain concepts.</p>
+    <h2 class="section-heading">4. Polymorphism</h2>
+    <p class="body-text">Polymorphism allows objects of different types to be treated as objects of a common type, with each type providing its own implementation of the common interface. The anti-pattern is replacing polymorphism with type-checking. This code must be modified every time a new type is added, violating the Open/Closed Principle.</p>
+    <p class="body-text">In JavaScript, polymorphism is achieved through duck typing — if an object has the required methods, it can be used where those methods are expected, regardless of its class. This is more flexible than C#'s nominal typing but requires discipline to avoid runtime errors from missing methods.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">5. Composition Over Inheritance</h2>
+    <p class="body-text">A recurring theme across all four OOP pillars is the preference for composition over inheritance. Composing objects from smaller, focused components produces code that is more flexible, more testable, and easier to understand than deep inheritance hierarchies. Modern C# features — interfaces with default implementations, record types, extension methods — make composition increasingly ergonomic.</p>
+    <h2 class="section-heading">6. Conclusion</h2>
+    <p class="body-text">The four pillars of OOP are not ends in themselves — they are means to the end of producing code that is easy to change. Encapsulation protects invariants. Abstraction hides complexity. Inheritance models domain relationships. Polymorphism eliminates conditional logic. When applied with this understanding, OOP produces systems that remain maintainable as requirements evolve.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Booch, G. (1994). <em>Object-Oriented Analysis and Design with Applications</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[2]</span> Fowler, M. (2002). <em>Patterns of Enterprise Application Architecture</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[3]</span> Evans, E. (2003). <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em>. Addison-Wesley.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
+  </div>
+</div>  <div class="chart-bar" style="height:80%"></div><div class="chart-bar" style="height:30%"></div>
+      </div>
+      Figure 1: Bug density in anemic vs. rich domain models across four enterprise projects
+    </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Abstraction</h2>
+    <p class="body-text">Abstraction is the process of hiding implementation details and exposing only the essential features of an object. In practice, this means designing interfaces and abstract classes that represent concepts, not implementations. The anti-pattern is leaky abstraction: an interface that exposes implementation details, forcing callers to know about the underlying technology.</p>
+    <p class="body-text">A well-designed INotificationService interface should have a Send(notification) method. A leaky abstraction would expose SendSmtp(smtpMessage), coupling callers to the email transport mechanism.</p>
+    <h2 class="section-heading">3. Inheritance</h2>
+    <p class="body-text">Inheritance allows a class to inherit properties and methods from a parent class. The most common misuse is using inheritance for code reuse rather than for modeling an "is-a" relationship. If ClassB inherits from ClassA only to reuse some utility methods, the relationship is "has-a" (composition), not "is-a" (inheritance). Prefer composition over inheritance in these cases.</p>
+    <p class="body-text">Deep inheritance hierarchies are a maintenance liability. When a base class changes, all derived classes are potentially affected. A rule of thumb: if your inheritance hierarchy is more than two levels deep, it is likely modeling implementation rather than domain concepts.</p>
+    <h2 class="section-heading">4. Polymorphism</h2>
+    <p class="body-text">Polymorphism allows objects of different types to be treated as objects of a common type, with each type providing its own implementation of the common interface. The anti-pattern is replacing polymorphism with type-checking: if (obj is TypeA) ... else if (obj is TypeB) .... This code must be modified every time a new type is added, violating the Open/Closed Principle.</p>
+    <p class="body-text">In JavaScript, polymorphism is achieved through duck typing — if an object has the required methods, it can be used where those methods are expected, regardless of its class. This is more flexible than C#'s nominal typing but requires discipline to avoid runtime errors from missing methods.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">5. Composition Over Inheritance</h2>
+    <p class="body-text">A recurring theme across all four OOP pillars is the preference for composition over inheritance. Composing objects from smaller, focused components produces code that is more flexible, more testable, and easier to understand than deep inheritance hierarchies. Modern C# features — interfaces with default implementations, record types, extension methods — make composition increasingly ergonomic.</p>
+    <h2 class="section-heading">6. Conclusion</h2>
+    <p class="body-text">The four pillars of OOP are not ends in themselves — they are means to the end of producing code that is easy to change. Encapsulation protects invariants. Abstraction hides complexity. Inheritance models domain relationships. Polymorphism eliminates conditional logic. When applied with this understanding, OOP produces systems that remain maintainable as requirements evolve.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Booch, G. (1994). <em>Object-Oriented Analysis and Design with Applications</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[2]</span> Fowler, M. (2002). <em>Patterns of Enterprise Application Architecture</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[3]</span> Evans, E. (2003). <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em>. Addison-Wesley.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
+  </div>
+</div>
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+<script>
+const isDark = localStorage.getItem('rp_dark') === '1';
+if (isDark) document.body.classList.add('reading-dark');
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: 'Object-Oriented Programming Concepts — Avnish Yadav', text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    const t = document.getElementById('shareToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500);
+});
+</script>
+</body></html>
