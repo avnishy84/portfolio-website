@@ -975,8 +975,248 @@ PAPERS.push(
     ]
   }
 );
-</script>
-<script>
+
+// ── Project & experience-based papers ────────────────────────────────────────
+PAPERS.push(
+  {
+    id: 'p9',
+    title: 'Building Chrome Extensions with Manifest V3: Architecture, DOM Scraping, and Testing',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Software Engineering', 'Full-Stack'],
+    abstract: 'Chrome Extensions built on Manifest V3 introduce a fundamentally different architecture from their MV2 predecessors. This paper documents the MV3 architecture through the lens of TeamChatLogs — a real-world extension that exports Microsoft Teams chat history — covering the three-layer communication model, virtualized DOM scraping, resilient selector strategies, and a 87-test Jest + fast-check suite.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Chrome Extensions are one of the most underappreciated platforms in web development. They have direct access to the browser's DOM, network requests, and storage — capabilities that no web application can match. Manifest V3 represents a significant architectural shift that improves security and performance at the cost of increased complexity.</p>
+          <p class="body-text">This paper documents the MV3 architecture through the lens of TeamChatLogs — a Chrome Extension that exports full Microsoft Teams chat history to a plain-text file. The extension solves a non-trivial engineering problem: Teams renders its chat using a virtualized list, meaning only the messages currently visible on screen exist in the DOM at any given time.</p>
+          <h2 class="section-heading">1. The MV3 Three-Layer Architecture</h2>
+          <p class="body-text">Every MV3 extension consists of three distinct layers: the <strong>Popup</strong> (UI, user interactions), the <strong>Service Worker</strong> (orchestrator, tab validation, file downloads), and the <strong>Content Script</strong> (DOM access, scraping logic). Each layer communicates via <code>chrome.runtime.sendMessage</code>.</p>
+          <h2 class="section-heading">2. Solving the Virtualized DOM Problem</h2>
+          <p class="body-text">Teams' virtualized list renders only visible messages. The solution is <code>scrollLoadHistory()</code> — incrementally scrolling to the top, waiting for new messages to render, and repeating until the message count stabilizes or a 2-minute timeout is reached.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:15%"></div>
+              <div class="chart-bar" style="height:40%"></div>
+              <div class="chart-bar" style="height:70%"></div>
+              <div class="chart-bar" style="height:100%"></div>
+            </div>
+            Figure 1: Messages captured per scroll iteration (virtualized DOM loading)
+          </div>
+          <h2 class="section-heading">3. Resilient Selector Strategy</h2>
+          <p class="body-text">Teams' CSS class names are obfuscated and change with every deployment. The resilient approach uses <code>data-tid</code> attributes first, then ARIA roles, and never class names. This strategy survived multiple Teams updates without modification.</p>
+        `
+      },
+      {
+        heading: '4. Testing & References',
+        content: `
+          <h2 class="section-heading">4. Testing Strategy: 87 Tests</h2>
+          <p class="body-text">Key property-based tests verified with fast-check:</p>
+          <ul style="font-family:var(--serif);font-size:0.95rem;line-height:1.85;color:var(--ink);padding-left:1.5rem;margin-bottom:1rem;">
+            <li>Filename sanitization never produces invalid characters for any input string</li>
+            <li>Message extraction always produces exactly N records for N message bubbles</li>
+            <li>Deduplication is idempotent — applying it twice produces the same result as once</li>
+            <li>Scroll loop progress values are strictly increasing</li>
+          </ul>
+          <h2 class="section-heading">5. Lessons Learned</h2>
+          <p class="body-text">Resilience must be designed in from the start. An extension scraping a third-party application is inherently fragile. Minimize assumptions about DOM structure and maximize use of stable semantic attributes.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Google. (2023). Manifest V3 Migration Guide. <em>developer.chrome.com</em>.</li>
+            <li><span class="ref-num">[2]</span> Google. (2023). Chrome Extensions Service Workers. <em>developer.chrome.com</em>.</li>
+            <li><span class="ref-num">[3]</span> Dubien, N. (2019). fast-check: Property Based Testing for JavaScript. <em>GitHub</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p10',
+    title: 'Angular 18 SSR with Signals and OnPush: Performance Patterns for Production Applications',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Full-Stack', 'Performance', 'Software Engineering'],
+    abstract: 'Angular 18 introduces a convergence of three performance-critical features: server-side rendering with hydration, Angular Signals for fine-grained reactivity, and OnPush change detection. This paper examines how these features interact in production, with patterns drawn from the Compufy Technology corporate website — an Angular 18 SSR application with lazy-loaded routes and a canvas-based game easter egg.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Angular 18 addresses performance criticism head-on with SSR, fine-grained reactivity via Signals, and aggressive change detection optimization through OnPush. When used together correctly, these features produce applications that are fast on first load and efficient on subsequent interactions.</p>
+          <h2 class="section-heading">1. Server-Side Rendering and Hydration</h2>
+          <p class="body-text">Angular Universal pre-renders HTML on the server, delivering fully rendered content before any JavaScript executes. This dramatically improves FCP and LCP — the Core Web Vitals metrics most correlated with user experience and SEO ranking. Angular 18's incremental hydration progressively enhances server-rendered HTML, avoiding the flash of unstyled content.</p>
+          <h2 class="section-heading">2. Angular Signals</h2>
+          <p class="body-text">Signals replace Zone.js-based change detection with a pull-based reactive system. When a signal changes, only components that depend on that signal re-render — eliminating the "change detection tsunami" that occurs in Zone.js applications when a single event triggers a full component tree check.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:100%"></div>
+              <div class="chart-bar" style="height:45%"></div>
+              <div class="chart-bar" style="height:30%"></div>
+            </div>
+            Figure 1: LCP improvement — no SSR vs. SSR vs. SSR + OnPush + Signals
+          </div>
+        `
+      },
+      {
+        heading: '3. OnPush, Code Splitting & References',
+        content: `
+          <h2 class="section-heading">3. OnPush Change Detection</h2>
+          <p class="body-text">OnPush tells Angular to only check a component when its input references change, an event fires within it, or an async pipe resolves. The practical rule: every component should use OnPush. Combined with Signals, Angular only re-renders components when their data actually changes.</p>
+          <h2 class="section-heading">4. Lazy Loading and Code Splitting</h2>
+          <p class="body-text">Angular 18's standalone components enable route-level code splitting with a single <code>loadComponent</code> call. For the Compufy application, this reduced the initial bundle size by 60% compared to an eagerly-loaded equivalent.</p>
+          <h2 class="section-heading">5. SSR-Safe Canvas Game</h2>
+          <p class="body-text">The Compufy rocket game easter egg must be SSR-safe — it cannot reference <code>window</code> or <code>document</code> during server rendering. The solution: inject Angular's <code>PLATFORM_ID</code> and guard all browser-specific code with <code>isPlatformBrowser()</code>.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Angular Team. (2024). Angular Signals RFC. <em>github.com/angular/angular</em>.</li>
+            <li><span class="ref-num">[2]</span> Angular Team. (2024). Server-Side Rendering Guide. <em>angular.dev</em>.</li>
+            <li><span class="ref-num">[3]</span> Osmani, A. (2021). <em>Learning Patterns</em>. patterns.dev.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p11',
+    title: 'Firebase as a Full-Stack Platform: Authentication, Firestore, and Hosting Patterns',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Full-Stack', 'Database', 'Software Engineering'],
+    abstract: 'Firebase provides a complete backend-as-a-service platform enabling full-stack web applications without managing server infrastructure. This paper documents practical patterns for Firebase Authentication, Cloud Firestore data modeling, security rules, and Hosting — drawn from three production applications: One Note, Compufy Technology, and CVio.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Firebase has evolved from a real-time database into a comprehensive full-stack platform. For applications that do not require custom server logic, Firebase provides everything needed: authentication, a scalable document database, file storage, serverless functions, and global CDN hosting.</p>
+          <h2 class="section-heading">1. Firebase Authentication</h2>
+          <p class="body-text">The key configuration decision is persistence: <code>browserLocalPersistence</code> stores the auth token in localStorage, surviving page refreshes. For server-side verification in Next.js API routes, the Firebase Admin SDK's <code>verifyIdToken()</code> validates the JWT without a network call — enabling stateless API authentication.</p>
+          <h2 class="section-heading">2. Cloud Firestore Data Modeling</h2>
+          <p class="body-text">Effective Firestore modeling requires thinking in access patterns rather than normalized schemas. The key question: what queries does the application need? The data model should be optimized for those queries, even if it means denormalizing data. For CVio, version history stored as sub-collections under each resume keeps queries isolated per user.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:70%"></div>
+              <div class="chart-bar" style="height:85%"></div>
+              <div class="chart-bar" style="height:95%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+            </div>
+            Figure 1: Firebase service adoption across project types (Auth, Firestore, Hosting, Functions)
+          </div>
+        `
+      },
+      {
+        heading: '3. Security Rules, Hosting & References',
+        content: `
+          <h2 class="section-heading">3. Firestore Security Rules</h2>
+          <p class="body-text">The most important rule pattern is user-scoped access: <code>allow read, write: if request.auth.uid == resource.data.userId</code>. Sub-collections inherit the security context of their parent document — version history under <code>/users/{userId}/resumes/{resumeId}/versions/</code> is automatically protected.</p>
+          <h2 class="section-heading">4. Firebase Hosting</h2>
+          <p class="body-text">Firebase Hosting serves static assets from a global CDN with automatic SSL and HTTP/2. A common pitfall is the catch-all rewrite intercepting static files like <code>sitemap.xml</code>. Static files are served before rewrites are evaluated — but understanding Firebase's request resolution order prevents configuration mistakes.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Google. (2024). Firebase Documentation. <em>firebase.google.com</em>.</li>
+            <li><span class="ref-num">[2]</span> Google. (2024). Firestore Security Rules Reference. <em>firebase.google.com/docs/rules</em>.</li>
+            <li><span class="ref-num">[3]</span> Google. (2024). Firebase Hosting Configuration. <em>firebase.google.com/docs/hosting</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p12',
+    title: 'Generative AI for Image Synthesis: Virtual Try-On Systems Using Diffusion Models',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['AI', 'Software Engineering'],
+    abstract: 'Virtual try-on systems represent one of the most commercially valuable applications of generative AI. This paper examines the architecture of a virtual try-on system built with Google Gemini Nano and Banana AI, covering the image preprocessing pipeline, diffusion model inference, and the UX challenges of consumer-facing AI applications where output quality is inherently variable.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Online fashion retail has a fundamental problem: customers cannot try on clothes before buying. Return rates for online clothing are 30–40%, driven primarily by fit and appearance uncertainty. Virtual try-on systems address this by generating a realistic composite image showing how a garment would look on a specific person.</p>
+          <h2 class="section-heading">1. The Technical Challenge</h2>
+          <p class="body-text">A naive approach — overlaying the garment image on the person photo — produces unrealistic results because it ignores body pose, lighting, fabric draping, and occlusion. Production-quality try-on requires understanding the 3D structure of the human body and simulating how fabric behaves on that structure.</p>
+          <h2 class="section-heading">2. Hybrid On-Device / Cloud Architecture</h2>
+          <p class="body-text">The system uses a hybrid architecture: Gemini Nano runs on-device for fast, private preprocessing (body pose estimation, garment structure analysis), while Banana AI's diffusion model runs in the cloud for computationally intensive image generation. This balances latency, quality, and cost.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:30%"></div>
+              <div class="chart-bar" style="height:65%"></div>
+              <div class="chart-bar" style="height:90%"></div>
+            </div>
+            Figure 1: User satisfaction — overlay method vs. warping method vs. diffusion model
+          </div>
+        `
+      },
+      {
+        heading: '3. UX Challenges & References',
+        content: `
+          <h2 class="section-heading">3. UX Challenges of Variable-Quality AI Output</h2>
+          <p class="body-text">The most significant non-technical challenge is managing user expectations when output quality varies. Diffusion models degrade on edge cases — unusual poses, complex patterns, fine details. The UX solution is transparency: show confidence level, provide a "regenerate" option, and set expectations in onboarding.</p>
+          <h2 class="section-heading">4. Styling Recommendations</h2>
+          <p class="body-text">Beyond the try-on result, Gemini Nano's multimodal understanding generates complementary styling recommendations — accessories, shoes, and color pairings — adding value beyond the core try-on functionality.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR 2022</em>.</li>
+            <li><span class="ref-num">[2]</span> Google. (2024). Gemini Nano Technical Report. <em>deepmind.google</em>.</li>
+            <li><span class="ref-num">[3]</span> Han, X. et al. (2018). VITON: An Image-based Virtual Try-on Network. <em>CVPR 2018</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p13',
+    title: 'ATS-Aware Resume Optimization: Scoring Algorithms and AI Rewriting Strategies',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['AI', 'Software Engineering', 'Full-Stack'],
+    abstract: 'Applicant Tracking Systems filter the majority of resumes before a human recruiter sees them. This paper presents the design of a deterministic ATS scoring algorithm and an AI-powered resume rewriting system that optimizes resumes for ATS compatibility without fabricating factual information — implemented in CVio using a weighted 6-category scoring model and GPT-4o with anti-hallucination constraints.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Studies estimate that 75% of resumes are rejected by ATS before reaching a human recruiter — often not because the candidate is unqualified, but because their resume lacks the right keywords or formatting. CVio's two-component pipeline first scores a resume against a job description, then rewrites it to improve the score under strict anti-hallucination constraints.</p>
+          <h2 class="section-heading">1. The ATS Scoring Algorithm</h2>
+          <p class="body-text">CVio's ATS scorer is a pure, deterministic function — no AI, no external I/O. The same resume always produces the same score. The scorer evaluates six weighted categories totalling 100 points: Keyword Match (30), Formatting (20), Section Completeness (15), Impact Metrics (15), Skills Relevance (10), Experience Depth (10).</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:100%"></div>
+              <div class="chart-bar" style="height:67%"></div>
+              <div class="chart-bar" style="height:50%"></div>
+              <div class="chart-bar" style="height:50%"></div>
+              <div class="chart-bar" style="height:33%"></div>
+              <div class="chart-bar" style="height:33%"></div>
+            </div>
+            Figure 1: ATS scoring category weights
+          </div>
+          <h2 class="section-heading">2. Keyword Matching</h2>
+          <p class="body-text">The keyword matching category tokenizes both resume text and job description, normalizes tokens (lowercase, stemming), and computes the intersection. The score is the ratio of matched job description keywords to total keywords, scaled to 30 points.</p>
+        `
+      },
+      {
+        heading: '3. AI Optimization & References',
+        content: `
+          <h2 class="section-heading">3. Anti-Hallucination AI Optimization</h2>
+          <p class="body-text">The AI optimization component sends the full resume JSON to GPT-4o with an explicit constraint: <em>"CRITICAL: Do NOT change employer names, job titles, dates, or educational credentials."</em> Without this, GPT-4o occasionally "improves" a resume by inventing more impressive job titles or extending employment dates.</p>
+          <h2 class="section-heading">4. Role-Specific Optimization</h2>
+          <p class="body-text">CVio's role optimizer injects a <code>ROLE_CONVENTIONS</code> config object into the system prompt for each of five supported roles. This object contains role-specific keywords, tone descriptors, and preferred section ordering — giving GPT-4o concrete guidance rather than relying on general knowledge.</p>
+          <h2 class="section-heading">5. Correctness Properties</h2>
+          <p class="body-text">The ATS scorer is validated with property-based tests: score must equal the sum of breakdown categories, score must be in [0, 100], and at least 3 suggestions must be returned when score is below 80. These properties are verified across thousands of randomly generated resume inputs.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Jobscan. (2023). 2023 Job Seeker Nation Report. <em>jobscan.co</em>.</li>
+            <li><span class="ref-num">[2]</span> OpenAI. (2024). GPT-4o Technical Report. <em>openai.com</em>.</li>
+            <li><span class="ref-num">[3]</span> Manning, C. et al. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
+          </ul>
+        `
+      }
+    ]
+  }
+);
 // ── State ────────────────────────────────────────────────────────────────────
 let currentPaper = null;
 let currentPage = 0;
