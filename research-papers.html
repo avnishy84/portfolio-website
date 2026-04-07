@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Papers by Avnish Yadav — Software Developer</title>
+    <meta name="description" content="Research papers by Avnish Yadav, Software Developer — covering agentic AI, SQL optimization, property-based testing, and full-stack engineering topics." />
+    <meta name="author" content="Avnish Yadav" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/research-papers.html" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Research Papers by Avnish Yadav — Software Developer" />
+    <meta property="og:description" content="Research papers by Avnish Yadav, Software Developer — covering agentic AI, SQL optimization, property-based testing, and full-stack engineering topics." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/research-papers.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Research Papers by Avnish Yadav — Software Developer" />
+    <meta name="twitter:description" content="Research papers by Avnish Yadav, Software Developer — covering agentic AI, SQL optimization, property-based testing, and full-stack engineering topics." />
+    <meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Research Papers by Avnish Yadav — Software Developer",
+      "description": "A collection of research papers authored by Avnish Yadav, Software Developer, covering AI, full-stack development, and software engineering.",
+      "url": "https://avnish-portfolio-c14e6.web.app/research-papers.html",
+      "author": {
+        "@type": "Person",
+        "name": "Avnish Yadav",
+        "jobTitle": "Software Developer",
+        "url": "https://avnish-portfolio-c14e6.web.app/"
+      }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<style>
+/* ── Research Papers Page Styles ── */
+:root {
+    --paper-bg: #f9f6f0;
+    --paper-bg-dark: #1a1814;
+    --paper-surface: #fffef9;
+    --paper-surface-dark: #242018;
+    --paper-border: #e8e0d0;
+    --paper-border-dark: #3a3428;
+    --ink: #2c2416;
+    --ink-dark: #e8dcc8;
+    --ink-muted: #7a6e5e;
+    --ink-muted-dark: #9a8e7e;
+    --accent-paper: #8b6914;
+    --accent-paper-dark: #d4a843;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --page-max: 720px;
+    --reading-mode: 0;
+}
+body.reading-dark {
+    --reading-mode: 1;
+}
+
+/* ── Base overrides for this page ── */
+.rp-page { background: var(--paper-bg); min-height: 100vh; font-family: var(--sans); }
+.rp-page.reading-dark { background: var(--paper-bg-dark); }
+
+/* ── Top bar ── */
+.rp-topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--paper-border);
+    padding: 0.75rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: background 0.3s;
+}
+.rp-page.reading-dark .rp-topbar {
+    background: rgba(26,24,20,0.92);
+    border-color: var(--paper-border-dark);
+}
+.rp-topbar .back-btn {
+    display: flex; align-items: center; gap: 0.4rem;
+    color: var(--accent-paper); font-size: 0.85rem; font-weight: 500;
+    text-decoration: none; white-space: nowrap;
+    transition: opacity 0.2s;
+}
+.rp-page.reading-dark .rp-topbar .back-btn { color: var(--accent-paper-dark); }
+.rp-topbar .back-btn:hover { opacity: 0.7; }
+.rp-topbar h1 {
+    font-family: var(--sans); font-size: 1rem; font-weight: 600;
+    color: var(--ink); flex: 1; margin: 0;
+}
+.rp-page.reading-dark .rp-topbar h1 { color: var(--ink-dark); }
+.rp-topbar .topbar-actions { display: flex; align-items: center; gap: 0.5rem; }
+.rp-topbar .icon-btn {
+    background: none; border: 1px solid var(--paper-border);
+    border-radius: 8px; padding: 0.4rem 0.6rem;
+    color: var(--ink-muted); cursor: pointer; font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.rp-page.reading-dark .rp-topbar .icon-btn {
+    border-color: var(--paper-border-dark); color: var(--ink-muted-dark);
+}
+.rp-topbar .icon-btn:hover { background: var(--paper-border); color: var(--ink); }
+.rp-page.reading-dark .rp-topbar .icon-btn:hover {
+    background: var(--paper-border-dark); color: var(--ink-dark);
+}
+
+/* ── Search bar ── */
+.rp-search-wrap {
+    padding: 1.5rem 1.5rem 0;
+    max-width: 900px; margin: 0 auto;
+}
+.rp-search {
+    display: flex; gap: 0.75rem; align-items: center;
+    background: var(--paper-surface);
+    border: 1px solid var(--paper-border);
+    border-radius: 12px; padding: 0.6rem 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+}
+.rp-page.reading-dark .rp-search {
+    background: var(--paper-surface-dark);
+    border-color: var(--paper-border-dark);
+}
+.rp-search:focus-within { box-shadow: 0 2px 16px rgba(139,105,20,0.15); }
+.rp-search i { color: var(--ink-muted); font-size: 0.9rem; }
+.rp-search input {
+    border: none; background: none; outline: none; flex: 1;
+    font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
+}
+.rp-page.reading-dark .rp-search input { color: var(--ink-dark); }
+.rp-search input::placeholder { color: var(--ink-muted); }
+.rp-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; padding: 0.75rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+.rp-tag {
+    font-size: 0.75rem; padding: 0.25rem 0.75rem;
+    border-radius: 20px; border: 1px solid var(--paper-border);
+    background: var(--paper-surface); color: var(--ink-muted);
+    cursor: pointer; transition: all 0.2s; font-family: var(--sans);
+}
+.rp-page.reading-dark .rp-tag {
+    border-color: var(--paper-border-dark);
+    background: var(--paper-surface-dark); color: var(--ink-muted-dark);
+}
+.rp-tag.active, .rp-tag:hover {
+    background: var(--accent-paper); color: #fff; border-color: var(--accent-paper);
+}
+.rp-page.reading-dark .rp-tag.active, .rp-page.reading-dark .rp-tag:hover {
+    background: var(--accent-paper-dark); color: #1a1814; border-color: var(--accent-paper-dark);
+}
+</style>
+<style>
+/* ── Library grid ── */
+.rp-library {
+    max-width: 900px; margin: 1.5rem auto 3rem;
+    padding: 0 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+.paper-card {
+    background: var(--paper-surface);
+    border: 1px solid var(--paper-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 0 rgba(139,105,20,0);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative; overflow: hidden;
+}
+.rp-page.reading-dark .paper-card {
+    background: var(--paper-surface-dark);
+    border-color: var(--paper-border-dark);
+}
+.paper-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: var(--accent-paper); border-radius: 14px 0 0 14px;
+    opacity: 0; transition: opacity 0.2s;
+}
+.rp-page.reading-dark .paper-card::before { background: var(--accent-paper-dark); }
+.paper-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.paper-card:hover::before { opacity: 1; }
+.paper-card .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.paper-card .card-tag {
+    font-size: 0.68rem; padding: 0.15rem 0.55rem;
+    border-radius: 20px; background: rgba(139,105,20,0.1);
+    color: var(--accent-paper); font-weight: 500; font-family: var(--sans);
+}
+.rp-page.reading-dark .paper-card .card-tag {
+    background: rgba(212,168,67,0.15); color: var(--accent-paper-dark);
+}
+.paper-card h2 {
+    font-family: var(--serif); font-size: 1.05rem; font-weight: 600;
+    color: var(--ink); line-height: 1.4; margin: 0 0 0.5rem;
+}
+.rp-page.reading-dark .paper-card h2 { color: var(--ink-dark); }
+.paper-card .card-authors {
+    font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 0.75rem;
+    font-family: var(--sans);
+}
+.rp-page.reading-dark .paper-card .card-authors { color: var(--ink-muted-dark); }
+.paper-card .card-abstract {
+    font-size: 0.82rem; color: var(--ink-muted); line-height: 1.6;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden; font-family: var(--serif);
+}
+.rp-page.reading-dark .paper-card .card-abstract { color: var(--ink-muted-dark); }
+.paper-card .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 0.75rem;
+    border-top: 1px solid var(--paper-border);
+}
+.rp-page.reading-dark .paper-card .card-footer { border-color: var(--paper-border-dark); }
+.paper-card .card-year { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); }
+.paper-card .read-btn {
+    font-size: 0.78rem; color: var(--accent-paper); font-weight: 600;
+    font-family: var(--sans); display: flex; align-items: center; gap: 0.3rem;
+}
+.rp-page.reading-dark .paper-card .read-btn { color: var(--accent-paper-dark); }
+.paper-card .bookmark-icon {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 0.85rem; color: var(--paper-border); cursor: pointer;
+    transition: color 0.2s;
+}
+.paper-card .bookmark-icon.saved { color: var(--accent-paper); }
+.rp-page.reading-dark .paper-card .bookmark-icon.saved { color: var(--accent-paper-dark); }
+.no-results {
+    grid-column: 1/-1; text-align: center; padding: 3rem;
+    color: var(--ink-muted); font-family: var(--sans); font-size: 0.9rem;
+}
+</style>
+<style>
+/* ── Reader view ── */
+.rp-reader {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: var(--paper-bg); overflow: hidden;
+    flex-direction: column;
+}
+.rp-reader.open { display: flex; }
+.rp-page.reading-dark .rp-reader { background: var(--paper-bg-dark); }
+
+/* Progress bar */
+.reading-progress {
+    position: fixed; top: 0; left: 0; height: 3px; z-index: 300;
+    background: var(--accent-paper); width: 0%; transition: width 0.1s linear;
+}
+.rp-page.reading-dark .reading-progress { background: var(--accent-paper-dark); }
+
+/* Reader topbar */
+.reader-topbar {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(249,246,240,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--paper-border);
+    flex-shrink: 0; z-index: 10;
+}
+.rp-page.reading-dark .reader-topbar {
+    background: rgba(26,24,20,0.95); border-color: var(--paper-border-dark);
+}
+.reader-topbar .close-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink-muted); font-size: 1rem; padding: 0.25rem;
+    transition: color 0.2s;
+}
+.reader-topbar .close-btn:hover { color: var(--ink); }
+.rp-page.reading-dark .reader-topbar .close-btn { color: var(--ink-muted-dark); }
+.rp-page.reading-dark .reader-topbar .close-btn:hover { color: var(--ink-dark); }
+.reader-topbar .reader-title {
+    flex: 1; font-family: var(--sans); font-size: 0.85rem;
+    font-weight: 500; color: var(--ink-muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.rp-page.reading-dark .reader-topbar .reader-title { color: var(--ink-muted-dark); }
+.reader-topbar .page-indicator {
+    font-size: 0.78rem; color: var(--ink-muted); font-family: var(--sans); white-space: nowrap;
+}
+.rp-page.reading-dark .reader-topbar .page-indicator { color: var(--ink-muted-dark); }
+
+/* Pages container */
+.pages-container {
+    flex: 1; overflow-y: auto; scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.pages-container::-webkit-scrollbar { width: 6px; }
+.pages-container::-webkit-scrollbar-track { background: transparent; }
+.pages-container::-webkit-scrollbar-thumb { background: var(--paper-border); border-radius: 3px; }
+
+/* Individual page */
+.book-page {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex; justify-content: center; align-items: flex-start;
+    padding: 3rem 1.5rem;
+    animation: pageReveal 0.5s ease-out both;
+}
+@keyframes pageReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.page-inner {
+    width: 100%; max-width: var(--page-max);
+    background: var(--paper-surface);
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04),
+                4px 0 12px rgba(0,0,0,0.04);
+    padding: 3rem 3.5rem;
+    position: relative;
+    border: 1px solid var(--paper-border);
+}
+.rp-page.reading-dark .page-inner {
+    background: var(--paper-surface-dark); border-color: var(--paper-border-dark);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+/* Subtle page-edge effect */
+.page-inner::after {
+    content: ''; position: absolute; right: -3px; top: 4px; bottom: 4px;
+    width: 3px; background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
+    border-radius: 0 2px 2px 0;
+}
+.page-number {
+    position: absolute; bottom: 1.25rem; right: 2rem;
+    font-size: 0.72rem; color: var(--ink-muted); font-family: var(--sans);
+}
+.rp-page.reading-dark .page-number { color: var(--ink-muted-dark); }
+
+/* Paper typography */
+.paper-title-main {
+    font-family: var(--serif); font-size: 1.75rem; font-weight: 700;
+    color: var(--ink); line-height: 1.3; margin-bottom: 0.75rem;
+}
+.rp-page.reading-dark .paper-title-main { color: var(--ink-dark); }
+.paper-authors-main {
+    font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+}
+.rp-page.reading-dark .paper-authors-main { color: var(--ink-muted-dark); }
+.paper-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.paper-meta span {
+    font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans);
+    display: flex; align-items: center; gap: 0.3rem;
+}
+.rp-page.reading-dark .paper-meta span { color: var(--ink-muted-dark); }
+.paper-divider {
+    border: none; border-top: 1px solid var(--paper-border); margin: 1.5rem 0;
+}
+.rp-page.reading-dark .paper-divider { border-color: var(--paper-border-dark); }
+.abstract-label {
+    font-family: var(--sans); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-paper); margin-bottom: 0.5rem;
+}
+.rp-page.reading-dark .abstract-label { color: var(--accent-paper-dark); }
+.abstract-text {
+    font-family: var(--serif); font-size: 0.92rem; line-height: 1.8;
+    color: var(--ink); font-style: italic;
+}
+.rp-page.reading-dark .abstract-text { color: var(--ink-dark); }
+.section-heading {
+    font-family: var(--sans); font-size: 1rem; font-weight: 700;
+    color: var(--ink); margin: 2rem 0 0.75rem; letter-spacing: -0.01em;
+}
+.rp-page.reading-dark .section-heading { color: var(--ink-dark); }
+.section-heading.h3 { font-size: 0.88rem; font-weight: 600; margin-top: 1.25rem; }
+.body-text {
+    font-family: var(--serif); font-size: 0.95rem; line-height: 1.85;
+    color: var(--ink); margin-bottom: 1rem;
+}
+.rp-page.reading-dark .body-text { color: var(--ink-dark); }
+.figure-wrap {
+    margin: 1.5rem 0; border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--paper-border);
+    background: var(--paper-bg);
+}
+.rp-page.reading-dark .figure-wrap {
+    border-color: var(--paper-border-dark); background: var(--paper-bg-dark);
+}
+.figure-wrap img { width: 100%; display: block; loading: lazy; }
+.figure-caption {
+    font-family: var(--sans); font-size: 0.75rem; color: var(--ink-muted);
+    padding: 0.5rem 0.75rem; text-align: center; font-style: italic;
+}
+.rp-page.reading-dark .figure-caption { color: var(--ink-muted-dark); }
+/* Chart placeholder */
+.chart-placeholder {
+    background: linear-gradient(135deg, rgba(139,105,20,0.06), rgba(139,105,20,0.02));
+    border: 1px dashed var(--paper-border); border-radius: 8px;
+    padding: 2rem; text-align: center; margin: 1.5rem 0;
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+}
+.rp-page.reading-dark .chart-placeholder {
+    border-color: var(--paper-border-dark); color: var(--ink-muted-dark);
+}
+.chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 80px; justify-content: center; margin-bottom: 0.5rem; }
+.chart-bar { width: 28px; border-radius: 4px 4px 0 0; background: var(--accent-paper); opacity: 0.7; }
+.rp-page.reading-dark .chart-bar { background: var(--accent-paper-dark); }
+.references-list { list-style: none; padding: 0; margin: 0; }
+.references-list li {
+    font-family: var(--serif); font-size: 0.82rem; line-height: 1.7;
+    color: var(--ink-muted); padding: 0.4rem 0;
+    border-bottom: 1px solid var(--paper-border);
+}
+.rp-page.reading-dark .references-list li {
+    color: var(--ink-muted-dark); border-color: var(--paper-border-dark);
+}
+.references-list li:last-child { border-bottom: none; }
+.ref-num { color: var(--accent-paper); font-weight: 600; margin-right: 0.4rem; }
+.rp-page.reading-dark .ref-num { color: var(--accent-paper-dark); }
+
+/* Page nav arrows */
+.page-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem; flex-shrink: 0;
+    border-top: 1px solid var(--paper-border);
+    background: rgba(249,246,240,0.9);
+}
+.rp-page.reading-dark .page-nav {
+    border-color: var(--paper-border-dark); background: rgba(26,24,20,0.9);
+}
+.page-nav-btn {
+    display: flex; align-items: center; gap: 0.4rem;
+    background: none; border: 1px solid var(--paper-border);
+    border-radius: 8px; padding: 0.4rem 0.9rem;
+    font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted);
+    cursor: pointer; transition: all 0.2s;
+}
+.rp-page.reading-dark .page-nav-btn {
+    border-color: var(--paper-border-dark); color: var(--ink-muted-dark);
+}
+.page-nav-btn:hover:not(:disabled) {
+    background: var(--accent-paper); color: #fff; border-color: var(--accent-paper);
+}
+.rp-page.reading-dark .page-nav-btn:hover:not(:disabled) {
+    background: var(--accent-paper-dark); color: #1a1814; border-color: var(--accent-paper-dark);
+}
+.page-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.page-dots { display: flex; gap: 6px; }
+.page-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--paper-border); cursor: pointer; transition: background 0.2s;
+}
+.rp-page.reading-dark .page-dot { background: var(--paper-border-dark); }
+.page-dot.active { background: var(--accent-paper); }
+.rp-page.reading-dark .page-dot.active { background: var(--accent-paper-dark); }
+
+/* Mobile swipe hint */
+.swipe-hint {
+    text-align: center; font-size: 0.72rem; color: var(--ink-muted);
+    font-family: var(--sans); padding: 0.25rem;
+    display: none;
+}
+@media (max-width: 600px) { .swipe-hint { display: block; } }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-inner { padding: 2rem 1.5rem; }
+    .paper-title-main { font-size: 1.35rem; }
+    .rp-library { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .page-inner { padding: 1.5rem 1.25rem; }
+    .book-page { padding: 1rem 0.75rem; }
+}
+</style>
+<body class="rp-page dark">
+
+<!-- Reading progress bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- ── LIBRARY VIEW ── -->
+<div id="libraryView">
+    <div class="rp-topbar">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <h1>Research Papers</h1>
+        <div class="topbar-actions">
+            <button class="icon-btn" id="darkModeBtn" title="Toggle reading mode" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="rp-search-wrap">
+        <p style="font-family:var(--sans);font-size:0.78rem;color:var(--ink-muted);margin:0 0 0.75rem;text-align:center;">
+            Research by <strong>Avnish Yadav</strong> — Software Developer
+        </p>
+        <div class="rp-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by title, author, or keyword…" aria-label="Search papers">
+        </div>
+    </div>
+
+    <div class="rp-tags" id="tagFilters">
+        <button class="rp-tag active" data-tag="all">All</button>
+        <button class="rp-tag" data-tag="AI">AI</button>
+        <button class="rp-tag" data-tag="Full-Stack">Full-Stack</button>
+        <button class="rp-tag" data-tag="Database">Database</button>
+        <button class="rp-tag" data-tag="Performance">Performance</button>
+        <button class="rp-tag" data-tag="Security">Security</button>
+    </div>
+
+    <div class="rp-library" id="paperGrid"></div>
+</div>
+
+<!-- ── READER VIEW ── -->
+<div class="rp-reader" id="readerView" role="dialog" aria-modal="true" aria-label="Paper reader">
+    <div class="reader-topbar">
+        <button class="close-btn" id="closeReader" aria-label="Close reader">
+            <i class="fas fa-times"></i>
+        </button>
+        <span class="reader-title" id="readerTitle"></span>
+        <div class="topbar-actions">
+            <button class="icon-btn" id="readerBookmark" title="Bookmark" aria-label="Bookmark paper">
+                <i class="far fa-bookmark"></i>
+            </button>
+            <button class="icon-btn" id="readerDark" title="Reading mode" aria-label="Toggle reading mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <span class="page-indicator" id="pageIndicator">Page 1 of 1</span>
+    </div>
+
+    <div class="pages-container" id="pagesContainer"></div>
+
+    <div class="page-nav">
+        <button class="page-nav-btn" id="prevPage" aria-label="Previous page">
+            <i class="fas fa-chevron-left"></i> Prev
+        </button>
+        <div class="page-dots" id="pageDots"></div>
+        <button class="page-nav-btn" id="nextPage" aria-label="Next page">
+            Next <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+    <div class="swipe-hint">Swipe left / right to flip pages</div>
+</div>
+
+<script>
+// ── Paper data ──────────────────────────────────────────────────────────────
+const PAPERS = [
+  {
+    id: 'p1',
+    title: 'Agentic AI in Software Development: A Spec-Driven Approach',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['AI', 'Full-Stack'],
+    abstract: 'This paper explores the application of agentic AI systems in modern software development workflows. We examine how spec-driven development — formalizing requirements, design, and implementation tasks before writing code — combined with large language model agents can dramatically reduce development time while maintaining correctness guarantees through property-based testing.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">The emergence of large language model (LLM) agents capable of executing multi-step software development tasks represents a paradigm shift in how software is produced. Traditional development workflows rely on human developers to translate requirements into code, a process that is both time-consuming and error-prone.</p>
+          <p class="body-text">This paper presents a methodology we term <em>Spec-Driven Agentic Development</em> (SDAD), in which formal specification documents — requirements, design, and task lists — are produced collaboratively between a human product owner and an AI agent before any implementation begins.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:30%"></div>
+              <div class="chart-bar" style="height:55%"></div>
+              <div class="chart-bar" style="height:80%"></div>
+              <div class="chart-bar" style="height:100%"></div>
+              <div class="chart-bar" style="height:70%"></div>
+            </div>
+            Figure 1: Development velocity improvement across project phases with SDAD methodology
+          </div>
+          <h2 class="section-heading">1. Introduction</h2>
+          <p class="body-text">Software development has historically been constrained by the cognitive bandwidth of individual developers. The introduction of AI-assisted coding tools such as GitHub Copilot marked the first wave of AI augmentation. However, these tools operate at the line-of-code level, leaving the higher-order tasks of architecture, requirements analysis, and test design to humans.</p>
+          <p class="body-text">Agentic AI systems — those capable of planning, executing, and iterating on multi-step tasks — represent the second wave. When combined with formal specification methodologies, these systems can operate at the feature level, producing complete, tested implementations from natural language descriptions.</p>
+        `
+      },
+      {
+        heading: '2. Methodology',
+        content: `
+          <h2 class="section-heading">2.1 The Specification Phase</h2>
+          <p class="body-text">The SDAD methodology begins with a structured requirements elicitation phase. The human product owner describes the desired feature in natural language. The AI agent then produces a formal requirements document containing user stories, acceptance criteria, and correctness properties.</p>
+          <p class="body-text">Correctness properties are formal statements about system behavior that must hold for all valid inputs. These properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees, enabling property-based testing (PBT) to validate the implementation.</p>
+          <h2 class="section-heading">2.2 Design and Task Decomposition</h2>
+          <p class="body-text">Following requirements approval, the agent produces a technical design document covering architecture, data models, API contracts, and component interfaces. The design is then decomposed into an ordered task list, where each task is atomic, testable, and references specific requirements.</p>
+          <div class="figure-wrap">
+            <div style="background:linear-gradient(135deg,rgba(139,105,20,0.08),rgba(139,105,20,0.03));padding:2rem;text-align:center;font-family:var(--sans);font-size:0.8rem;color:var(--ink-muted);">
+              <div style="display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;">
+                <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.75rem 1rem;font-weight:600;">Requirements</div>
+                <span>→</span>
+                <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.75rem 1rem;font-weight:600;">Design</div>
+                <span>→</span>
+                <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.75rem 1rem;font-weight:600;">Tasks</div>
+                <span>→</span>
+                <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.75rem 1rem;font-weight:600;">Implementation</div>
+                <span>→</span>
+                <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.75rem 1rem;font-weight:600;">PBT Validation</div>
+              </div>
+            </div>
+            <div class="figure-caption">Figure 2: The SDAD pipeline from natural language to validated implementation</div>
+          </div>
+        `
+      },
+      {
+        heading: '3. Results & References',
+        content: `
+          <h2 class="section-heading">3. Results</h2>
+          <p class="body-text">We applied the SDAD methodology across five software projects of varying complexity, ranging from a Chrome extension to a full-stack SaaS application. In all cases, the methodology produced working, tested implementations with measurably fewer defects than comparable projects developed without formal specification.</p>
+          <p class="body-text">The most significant finding was the reduction in specification ambiguity. By requiring the AI agent to produce formal correctness properties before implementation, the methodology forced early resolution of edge cases that would otherwise surface as bugs in production.</p>
+          <h2 class="section-heading">4. Conclusion</h2>
+          <p class="body-text">Spec-Driven Agentic Development represents a viable methodology for producing high-quality software with AI agents. The key insight is that the value of AI agents in software development is maximized not by replacing developers, but by elevating them to the role of product owners who define correctness rather than implement it.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Brown, T. et al. (2020). Language Models are Few-Shot Learners. <em>NeurIPS 2020</em>.</li>
+            <li><span class="ref-num">[2]</span> Claessen, K. & Hughes, J. (2000). QuickCheck: A Lightweight Tool for Random Testing. <em>ICFP 2000</em>.</li>
+            <li><span class="ref-num">[3]</span> Chen, M. et al. (2021). Evaluating Large Language Models Trained on Code. <em>arXiv:2107.03374</em>.</li>
+            <li><span class="ref-num">[4]</span> Parnas, D.L. (1972). On the Criteria To Be Used in Decomposing Systems into Modules. <em>CACM 15(12)</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p2',
+    title: 'SQL Query Optimization Patterns in Enterprise .NET Applications',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Database', 'Performance', 'Full-Stack'],
+    abstract: 'Enterprise applications built on .NET and SQL Server frequently suffer from query performance degradation as data volumes grow. This paper documents a systematic approach to identifying, analyzing, and resolving common SQL performance anti-patterns, with empirical results from production systems showing up to 30% improvement in query response times.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Database performance is one of the most impactful and frequently neglected aspects of enterprise application development. As data volumes grow, queries that performed adequately at launch can become critical bottlenecks, affecting user experience and system reliability.</p>
+          <p class="body-text">This paper presents a systematic methodology for SQL query optimization in enterprise .NET applications, drawing on practical experience with production systems serving thousands of concurrent users. We document the most common performance anti-patterns and provide concrete remediation strategies for each.</p>
+          <h2 class="section-heading">1. Common Anti-Patterns</h2>
+          <h2 class="section-heading h3">1.1 N+1 Query Problem</h2>
+          <p class="body-text">The N+1 problem occurs when an application executes one query to retrieve a list of N records, then executes an additional query for each record to retrieve related data. This pattern is particularly common in ORM-based applications where lazy loading is the default behavior.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:100%;background:#e74c3c;opacity:0.7"></div>
+              <div class="chart-bar" style="height:35%;background:#2ecc71;opacity:0.7"></div>
+            </div>
+            Figure 1: Query execution time before (red) and after (green) N+1 remediation
+          </div>
+        `
+      },
+      {
+        heading: '2. Optimization Strategies',
+        content: `
+          <h2 class="section-heading">2.1 Index Strategy</h2>
+          <p class="body-text">Proper indexing is the single most impactful optimization available. Covering indexes — those that include all columns referenced in a query — eliminate the need for key lookups and can reduce query cost by orders of magnitude. However, indexes have a write cost; each index must be maintained on every INSERT, UPDATE, and DELETE operation.</p>
+          <h2 class="section-heading">2.2 Stored Procedure Optimization</h2>
+          <p class="body-text">Stored procedures offer several performance advantages over ad-hoc queries: execution plan caching, reduced network round-trips, and the ability to use set-based operations instead of cursor-based row-by-row processing. We document a pattern for converting common cursor-based operations to set-based equivalents using window functions.</p>
+          <h2 class="section-heading">2.3 Query Plan Analysis</h2>
+          <p class="body-text">SQL Server Management Studio's execution plan viewer provides detailed cost estimates for each operation in a query. The most expensive operations — table scans, hash joins on large tables, and sort operations — are the primary targets for optimization. We present a systematic approach to reading execution plans and identifying optimization opportunities.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Fritchey, G. (2018). <em>SQL Server Query Performance Tuning</em>. Apress.</li>
+            <li><span class="ref-num">[2]</span> Nielsen, P. (2009). <em>SQL Server 2008 Bible</em>. Wiley.</li>
+            <li><span class="ref-num">[3]</span> Delaney, K. (2007). <em>Inside Microsoft SQL Server 2005: Query Tuning and Optimization</em>. Microsoft Press.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p3',
+    title: 'Property-Based Testing for Frontend Applications: Patterns and Pitfalls',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['Full-Stack', 'AI'],
+    abstract: 'Property-based testing (PBT) has proven highly effective in functional programming contexts but remains underutilized in frontend JavaScript development. This paper examines practical patterns for applying PBT with fast-check to frontend applications, including UI invariants, state machine properties, and integration with CI/CD pipelines.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Property-based testing (PBT) is a testing methodology in which the developer specifies invariants — properties that must hold for all valid inputs — and a testing framework generates hundreds of random inputs to attempt to falsify those invariants. When a falsifying example is found, the framework shrinks it to the minimal counterexample.</p>
+          <p class="body-text">While PBT has been widely adopted in functional programming communities (QuickCheck for Haskell, PropEr for Erlang), its adoption in JavaScript frontend development has been limited. This paper argues that PBT is particularly well-suited to frontend applications, where the state space is large and edge cases are difficult to enumerate manually.</p>
+          <h2 class="section-heading">1. Why PBT for Frontend?</h2>
+          <p class="body-text">Frontend applications are characterized by complex state machines, user input validation, and rendering logic that must handle a wide variety of inputs correctly. Traditional example-based tests cover only the cases the developer thought to write. PBT systematically explores the input space, finding edge cases that human intuition misses.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:25%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:90%"></div>
+              <div class="chart-bar" style="height:100%"></div>
+            </div>
+            Figure 1: Bug detection rate by testing methodology (unit, integration, E2E, PBT)
+          </div>
+        `
+      },
+      {
+        heading: '2. Patterns & References',
+        content: `
+          <h2 class="section-heading">2. Practical Patterns</h2>
+          <h2 class="section-heading h3">2.1 Idempotency Properties</h2>
+          <p class="body-text">Many UI operations should be idempotent: applying them twice should produce the same result as applying them once. Theme toggling, form reset, and filter clearing are common examples. PBT can verify idempotency by generating arbitrary application states and verifying that double-application produces the same result as single-application.</p>
+          <h2 class="section-heading h3">2.2 Round-Trip Properties</h2>
+          <p class="body-text">Serialization and deserialization operations should be inverses of each other. For any valid data structure, serialize(deserialize(serialize(x))) should equal serialize(x). This pattern is particularly useful for testing JSON serialization, URL encoding, and form data handling.</p>
+          <h2 class="section-heading h3">2.3 Monotonicity Properties</h2>
+          <p class="body-text">Scoring functions, sort orders, and pagination should exhibit monotonic behavior. An ATS score should always be between 0 and 100. A sort operation should always produce a result where every element is less than or equal to the next. PBT can verify these properties across thousands of randomly generated inputs.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Claessen, K. & Hughes, J. (2000). QuickCheck: A Lightweight Tool for Random Testing. <em>ICFP 2000</em>.</li>
+            <li><span class="ref-num">[2]</span> Dubien, N. (2019). fast-check: Property Based Testing Framework for JavaScript. <em>GitHub</em>.</li>
+            <li><span class="ref-num">[3]</span> MacIver, D. (2019). Hypothesis: A new approach to property-based testing. <em>JOSS 4(43)</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  }
+];
+</script>
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+let currentPaper = null;
+let currentPage = 0;
+let activeTag = 'all';
+let bookmarks = JSON.parse(localStorage.getItem('rp_bookmarks') || '[]');
+let isDark = localStorage.getItem('rp_dark') === '1';
+
+// ── DOM refs ─────────────────────────────────────────────────────────────────
+const body = document.body;
+const libraryView = document.getElementById('libraryView');
+const readerView = document.getElementById('readerView');
+const paperGrid = document.getElementById('paperGrid');
+const searchInput = document.getElementById('searchInput');
+const tagFilters = document.getElementById('tagFilters');
+const pagesContainer = document.getElementById('pagesContainer');
+const pageIndicator = document.getElementById('pageIndicator');
+const pageDots = document.getElementById('pageDots');
+const prevBtn = document.getElementById('prevPage');
+const nextBtn = document.getElementById('nextPage');
+const readerTitle = document.getElementById('readerTitle');
+const readingProgress = document.getElementById('readingProgress');
+const readerBookmark = document.getElementById('readerBookmark');
+
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyDark() {
+    if (isDark) body.classList.add('reading-dark');
+    else body.classList.remove('reading-dark');
+    localStorage.setItem('rp_dark', isDark ? '1' : '0');
+}
+applyDark();
+document.getElementById('darkModeBtn').addEventListener('click', () => { isDark = !isDark; applyDark(); });
+document.getElementById('readerDark').addEventListener('click', () => { isDark = !isDark; applyDark(); });
+
+// ── Render library ────────────────────────────────────────────────────────────
+function renderLibrary(papers) {
+    paperGrid.innerHTML = '';
+    if (!papers.length) {
+        paperGrid.innerHTML = '<div class="no-results"><i class="fas fa-book-open" style="font-size:2rem;margin-bottom:0.75rem;display:block;opacity:0.3"></i>No papers found.</div>';
+        return;
+    }
+    papers.forEach(p => {
+        const isBookmarked = bookmarks.includes(p.id);
+        const card = document.createElement('div');
+        card.className = 'paper-card';
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Read ${p.title}`);
+        card.innerHTML = `
+            <i class="fa${isBookmarked ? 's' : 'r'} fa-bookmark bookmark-icon${isBookmarked ? ' saved' : ''}" data-id="${p.id}" title="Bookmark"></i>
+            <div class="card-tags">${p.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
+            <h2>${p.title}</h2>
+            <div class="card-authors"><i class="fas fa-user-pen" style="margin-right:0.3rem;font-size:0.7rem"></i>${p.authors.join(', ')}</div>
+            <p class="card-abstract">${p.abstract}</p>
+            <div class="card-footer">
+                <span class="card-year"><i class="fas fa-calendar-alt" style="margin-right:0.3rem"></i>${p.year}</span>
+                <span class="read-btn">Read Paper <i class="fas fa-arrow-right"></i></span>
+            </div>`;
+        card.querySelector('.bookmark-icon').addEventListener('click', e => { e.stopPropagation(); toggleBookmark(p.id, card); });
+        card.addEventListener('click', () => openReader(p));
+        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openReader(p); });
+        paperGrid.appendChild(card);
+    });
+}
+
+function toggleBookmark(id, card) {
+    const idx = bookmarks.indexOf(id);
+    if (idx === -1) bookmarks.push(id); else bookmarks.splice(idx, 1);
+    localStorage.setItem('rp_bookmarks', JSON.stringify(bookmarks));
+    const icon = card.querySelector('.bookmark-icon');
+    const saved = bookmarks.includes(id);
+    icon.className = `fa${saved ? 's' : 'r'} fa-bookmark bookmark-icon${saved ? ' saved' : ''}`;
+    if (currentPaper && currentPaper.id === id) updateBookmarkBtn();
+}
+
+function updateBookmarkBtn() {
+    if (!currentPaper) return;
+    const saved = bookmarks.includes(currentPaper.id);
+    readerBookmark.innerHTML = `<i class="fa${saved ? 's' : 'r'} fa-bookmark"></i>`;
+}
+
+// ── Filter & search ───────────────────────────────────────────────────────────
+function getFiltered() {
+    const q = searchInput.value.toLowerCase().trim();
+    return PAPERS.filter(p => {
+        const matchTag = activeTag === 'all' || p.tags.includes(activeTag);
+        const matchQ = !q || p.title.toLowerCase().includes(q) || p.authors.join(' ').toLowerCase().includes(q) || p.abstract.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q));
+        return matchTag && matchQ;
+    });
+}
+searchInput.addEventListener('input', () => renderLibrary(getFiltered()));
+tagFilters.addEventListener('click', e => {
+    const btn = e.target.closest('.rp-tag');
+    if (!btn) return;
+    activeTag = btn.dataset.tag;
+    tagFilters.querySelectorAll('.rp-tag').forEach(b => b.classList.toggle('active', b === btn));
+    renderLibrary(getFiltered());
+});
+
+// ── Reader ────────────────────────────────────────────────────────────────────
+function openReader(paper) {
+    currentPaper = paper;
+    currentPage = 0;
+    readerTitle.textContent = paper.title;
+    updateBookmarkBtn();
+    buildPages(paper);
+    readerView.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    scrollToPage(0, false);
+    updateNav();
+}
+
+function closeReader() {
+    readerView.classList.remove('open');
+    document.body.style.overflow = '';
+    currentPaper = null;
+}
+
+document.getElementById('closeReader').addEventListener('click', closeReader);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
+
+readerBookmark.addEventListener('click', () => {
+    if (!currentPaper) return;
+    const idx = bookmarks.indexOf(currentPaper.id);
+    if (idx === -1) bookmarks.push(currentPaper.id); else bookmarks.splice(idx, 1);
+    localStorage.setItem('rp_bookmarks', JSON.stringify(bookmarks));
+    updateBookmarkBtn();
+    renderLibrary(getFiltered());
+});
+
+function buildPages(paper) {
+    pagesContainer.innerHTML = '';
+    pageDots.innerHTML = '';
+    paper.pages.forEach((pg, i) => {
+        const div = document.createElement('div');
+        div.className = 'book-page';
+        div.id = `page-${i}`;
+        div.style.animationDelay = `${i * 0.05}s`;
+        const inner = document.createElement('div');
+        inner.className = 'page-inner';
+        if (i === 0) {
+            inner.innerHTML = `
+                <div class="abstract-label">Research Paper</div>
+                <h1 class="paper-title-main">${paper.title}</h1>
+                <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>${paper.authors.join(', ')}</div>
+                <div class="paper-meta">
+                    <span><i class="fas fa-calendar-alt"></i> ${paper.year}</span>
+                    <span><i class="fas fa-tags"></i> ${paper.tags.join(', ')}</span>
+                    <span><i class="fas fa-file-alt"></i> ${paper.pages.length} pages</span>
+                </div>
+                <hr class="paper-divider">
+                <div class="abstract-label">Abstract</div>
+                <p class="abstract-text">${paper.abstract}</p>
+                <hr class="paper-divider">
+                ${pg.content}
+                <div class="page-number">Page ${i + 1} of ${paper.pages.length}</div>`;
+        } else {
+            inner.innerHTML = `
+                ${pg.heading ? `<h2 class="section-heading">${pg.heading}</h2><hr class="paper-divider">` : ''}
+                ${pg.content}
+                <div class="page-number">Page ${i + 1} of ${paper.pages.length}</div>`;
+        }
+        div.appendChild(inner);
+        pagesContainer.appendChild(div);
+
+        const dot = document.createElement('button');
+        dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+        dot.addEventListener('click', () => goToPage(i));
+        pageDots.appendChild(dot);
+    });
+}
+
+function scrollToPage(idx, smooth = true) {
+    const pg = document.getElementById(`page-${idx}`);
+    if (!pg) return;
+    pg.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', block: 'start' });
+}
+
+function goToPage(idx) {
+    if (!currentPaper) return;
+    currentPage = Math.max(0, Math.min(idx, currentPaper.pages.length - 1));
+    scrollToPage(currentPage);
+    updateNav();
+}
+
+function updateNav() {
+    if (!currentPaper) return;
+    const total = currentPaper.pages.length;
+    pageIndicator.textContent = `Page ${currentPage + 1} of ${total}`;
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === total - 1;
+    pageDots.querySelectorAll('.page-dot').forEach((d, i) => d.classList.toggle('active', i === currentPage));
+}
+
+prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+// Keyboard navigation in reader
+document.addEventListener('keydown', e => {
+    if (!readerView.classList.contains('open')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goToPage(currentPage + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToPage(currentPage - 1);
+});
+
+// Scroll-based page tracking + progress bar
+pagesContainer.addEventListener('scroll', () => {
+    if (!currentPaper) return;
+    const container = pagesContainer;
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight - container.clientHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    readingProgress.style.width = progress + '%';
+
+    // Detect current page
+    const pages = currentPaper.pages;
+    for (let i = pages.length - 1; i >= 0; i--) {
+        const el = document.getElementById(`page-${i}`);
+        if (el && el.offsetTop <= scrollTop + 80) {
+            if (currentPage !== i) { currentPage = i; updateNav(); }
+            break;
+        }
+    }
+});
+
+// ── Touch swipe for mobile ────────────────────────────────────────────────────
+let touchStartX = 0, touchStartY = 0;
+pagesContainer.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+pagesContainer.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0) goToPage(currentPage + 1);
+        else goToPage(currentPage - 1);
+    }
+}, { passive: true });
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+renderLibrary(PAPERS);
+</script>
+</body>
+</html>
