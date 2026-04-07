@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Building Chrome Extensions with Manifest V3: Architecture, DOM Scraping, and Testing — Avnish Yadav, Software Developer</title>
-    <meta name="description" content="Research by Avnish Yadav, Software Developer: MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite — from the TeamChatLogs extension." />
+    <meta name="description" content="Research by Avnish Yadav: MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite from the TeamChatLogs extension." />
     <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p9.html" />
     <link rel="icon" href="../images/favicon.ico" />
     <meta property="og:type" content="article" /><meta property="og:title" content="Building Chrome Extensions with Manifest V3 — Avnish Yadav" />
-    <meta property="og:description" content="MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite — from the TeamChatLogs extension." />
+    <meta property="og:description" content="MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite from the TeamChatLogs extension." />
     <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p9.html" />
     <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Building Chrome Extensions with Manifest V3 — Avnish Yadav" />
-    <meta name="twitter:description" content="MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite — from the TeamChatLogs extension." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:description" content="MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Building Chrome Extensions with Manifest V3: Architecture, DOM Scraping, and Testing","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p9.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Building Chrome Extensions with Manifest V3: Architecture, DOM Scraping, and Testing","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p9.html","keywords":["Chrome Extension","Manifest V3","DOM Scraping","Jest","Property-Based Testing"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,17 +36,45 @@
     <div class="abstract-label">Research Paper · 2024</div>
     <h1 class="paper-title-main">Building Chrome Extensions with Manifest V3: Architecture, DOM Scraping, and Testing</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Software Engineering · Full-Stack</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Software Engineering · Full-Stack</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">MV3 architecture, virtualized DOM scraping for Microsoft Teams, resilient selector strategies, and a 87-test Jest + fast-check suite — from the TeamChatLogs extension.</p>
+    <p class="abstract-text">Chrome's Manifest V3 migration introduced significant architectural constraints that affect how extensions interact with web pages. This paper documents the architecture, DOM scraping strategy, and testing approach developed for TeamChatLogs — a Chrome extension that exports Microsoft Teams chat history. Key topics include MV3's service worker model, virtualized DOM scraping for dynamically rendered content, resilient CSS selector strategies, and a comprehensive 87-test suite combining Jest unit tests with fast-check property-based tests.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">Chrome's transition from Manifest V2 to Manifest V3 represents the most significant architectural change to the Chrome extension platform since its introduction. The primary change — replacing persistent background pages with ephemeral service workers — has profound implications for extensions that need to maintain state or perform long-running operations.</p>
+    <h2 class="section-heading">1. MV3 Architecture</h2>
+    <p class="body-text">In MV3, the background script runs as a service worker that can be terminated by the browser at any time when idle. This eliminates the ability to maintain in-memory state between events. The TeamChatLogs extension addresses this by persisting all state to chrome.storage.local and treating each service worker activation as stateless — reading required state from storage at the start of each operation.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:70%"></div><div class="chart-bar" style="height:85%"></div>
+        <div class="chart-bar" style="height:60%"></div><div class="chart-bar" style="height:95%"></div>
+      </div>
+      Figure 1: Message passing latency across MV3 component boundaries (content script, service worker, popup)
     </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Virtualized DOM Scraping</h2>
+    <p class="body-text">Microsoft Teams renders chat messages using a virtualized list — only the messages currently visible in the viewport are present in the DOM. Scraping the complete chat history requires scrolling through the conversation while capturing messages as they enter the DOM, then deduplicating the captured messages.</p>
+    <p class="body-text">The scraping algorithm uses a MutationObserver to detect when new message elements are added to the DOM as the user scrolls. Each observed message is parsed and stored in chrome.storage.local with a deduplication key derived from the message timestamp and sender. The scroll automation uses requestAnimationFrame to pace the scroll speed, preventing the Teams virtualization engine from skipping messages.</p>
+    <h2 class="section-heading">3. Resilient Selector Strategy</h2>
+    <p class="body-text">CSS selectors for dynamically rendered applications are inherently fragile — a Teams UI update can change class names and break selectors overnight. The TeamChatLogs extension uses a multi-layer selector strategy: primary selectors target semantic attributes (aria-label, data-tid) that are more stable than class names; fallback selectors use structural patterns (nth-child relationships) as a secondary option; and a health-check mechanism detects when selectors stop matching and alerts the user.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">4. Testing Strategy</h2>
+    <p class="body-text">The 87-test suite is organized into three layers. Unit tests (62 tests) cover the message parsing logic, deduplication algorithm, and export formatters using Jest with jsdom. Integration tests (18 tests) verify the message passing protocol between the content script, service worker, and popup using Chrome extension testing utilities. Property-based tests (7 tests) use fast-check to verify invariants: the deduplication algorithm is idempotent, the export formatter handles all valid message structures, and the scroll algorithm terminates for any finite conversation length.</p>
+    <p class="body-text">The property-based tests were particularly valuable for the deduplication algorithm, which had a subtle bug where messages with identical timestamps from different senders were incorrectly deduplicated. The PBT framework found this case within seconds of the first test run by generating messages with the same timestamp but different senders.</p>
+    <h2 class="section-heading">5. Conclusion</h2>
+    <p class="body-text">Building reliable Chrome extensions for dynamically rendered applications requires careful attention to the MV3 architectural constraints, robust DOM scraping strategies that account for virtualization, and a comprehensive testing approach that includes property-based tests for the core algorithms. The TeamChatLogs extension demonstrates that these challenges are tractable with the right architectural decisions.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Google Chrome Team (2023). Migrating to Manifest V3. <em>Chrome Developers Documentation</em>.</li>
+      <li><span class="ref-num">[2]</span> Dubien, N. (2019). fast-check: Property Based Testing Framework for JavaScript. <em>GitHub</em>.</li>
+      <li><span class="ref-num">[3]</span> Mozilla Developer Network (2024). MutationObserver API. <em>MDN Web Docs</em>.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
   </div>
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>

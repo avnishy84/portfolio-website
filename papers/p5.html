@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Creational Design Patterns in Modern Software Engineering — Avnish Yadav" />
     <meta name="twitter:description" content="Singleton, Factory Method, Abstract Factory, Builder, and Prototype — examined through modern C# and TypeScript with guidance on when to apply each pattern." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Creational Design Patterns in Modern Software Engineering: A Practical Guide","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p5.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Creational Design Patterns in Modern Software Engineering: A Practical Guide","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p5.html","keywords":["Design Patterns","Creational Patterns","C#","TypeScript","Software Engineering"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,23 +31,60 @@
     </div>
 </div>
 <div class="pages-container">
+
   <div class="book-page">
     <div class="paper-tags"><span class="paper-tag">Software Engineering</span><span class="paper-tag">Design Patterns</span></div>
     <div class="abstract-label">Research Paper · 2024</div>
     <h1 class="paper-title-main">Creational Design Patterns in Modern Software Engineering: A Practical Guide</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Software Engineering · Design Patterns</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Software Engineering · Design Patterns</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">Singleton, Factory Method, Abstract Factory, Builder, and Prototype — examined through modern C# and TypeScript with guidance on when to apply each pattern.</p>
+    <p class="abstract-text">Creational design patterns solve the problem of object creation in a way that is decoupled from the specific classes being instantiated. This paper examines the five canonical creational patterns — Singleton, Factory Method, Abstract Factory, Builder, and Prototype — through modern C# and TypeScript implementations, with practical guidance on when each pattern is appropriate and when it introduces unnecessary complexity.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">The Gang of Four creational patterns were documented in 1994, but their relevance has only grown as software systems have become more complex and the cost of tight coupling between object creation and business logic has become more apparent. Modern languages have introduced features — generics, dependency injection frameworks, record types — that change how these patterns are best implemented.</p>
+    <h2 class="section-heading">1. Singleton</h2>
+    <p class="body-text">The Singleton pattern ensures a class has only one instance and provides a global access point to it. In C#, the thread-safe implementation using <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">Lazy&lt;T&gt;</code> is the modern standard. However, Singleton is frequently overused — it creates hidden global state that makes unit testing difficult. Prefer dependency injection with a singleton lifetime over the Singleton pattern in most enterprise applications.</p>
+    <h2 class="section-heading">2. Factory Method</h2>
+    <p class="body-text">Factory Method defines an interface for creating objects but lets subclasses decide which class to instantiate. This is the correct pattern when the exact type of object to create is determined at runtime based on configuration or user input. In a .NET application, this commonly appears as a service factory that returns different implementations of an interface based on a configuration key.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:60%"></div><div class="chart-bar" style="height:80%"></div>
+        <div class="chart-bar" style="height:45%"></div><div class="chart-bar" style="height:90%"></div>
+        <div class="chart-bar" style="height:35%"></div>
+      </div>
+      Figure 1: Relative complexity vs. flexibility trade-off across the five creational patterns
     </div>
+    <div class="page-number">Page 1 of 3</div>
   </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">3. Abstract Factory</h2>
+    <p class="body-text">Abstract Factory provides an interface for creating families of related objects without specifying their concrete classes. This pattern is appropriate when a system must be independent of how its products are created and when it needs to work with multiple families of products. A common enterprise example is a data access layer that must support multiple database backends — SQL Server, PostgreSQL, SQLite — where each backend requires a family of related objects: connection, command, transaction.</p>
+    <h2 class="section-heading">4. Builder</h2>
+    <p class="body-text">The Builder pattern separates the construction of a complex object from its representation, allowing the same construction process to create different representations. In modern C#, the fluent builder pattern — where each method returns <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">this</code> to enable method chaining — is the idiomatic implementation. This pattern is particularly valuable for objects with many optional parameters, replacing telescoping constructors with a readable, self-documenting construction API.</p>
+    <p class="body-text">In TypeScript, the Builder pattern is often implemented using a plain object accumulator with a terminal <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">build()</code> method that validates the accumulated configuration and returns the final immutable object.</p>
+    <h2 class="section-heading">5. Prototype</h2>
+    <p class="body-text">The Prototype pattern creates new objects by copying an existing object (the prototype). This is most useful when object creation is expensive and a similar object already exists. In JavaScript and TypeScript, the spread operator and <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">structuredClone()</code> provide native prototype-style cloning without requiring explicit pattern implementation.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">6. Pattern Selection Guide</h2>
+    <p class="body-text">Choosing the right creational pattern requires understanding the specific problem being solved. Use Singleton (via DI) when you need one shared instance across the application. Use Factory Method when the type to create is determined at runtime. Use Abstract Factory when you need families of related objects. Use Builder when constructing complex objects with many optional parameters. Use Prototype when cloning an existing object is cheaper than creating a new one from scratch.</p>
+    <p class="body-text">A common mistake is applying creational patterns prematurely. If you are creating objects of a single known type with a small number of required parameters, a simple constructor is the right tool. Patterns add indirection; indirection has a cost in readability and maintainability that must be justified by the flexibility it provides.</p>
+    <h2 class="section-heading">7. Conclusion</h2>
+    <p class="body-text">The five creational patterns remain as relevant today as when they were first documented. Modern language features have changed their implementation details but not their fundamental purpose: decoupling object creation from object use. The key to applying them effectively is understanding not just what each pattern does, but what problem it solves and when that problem is actually present in your codebase.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Gamma, E., Helm, R., Johnson, R., Vlissides, J. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[2]</span> Freeman, E. & Robson, E. (2020). <em>Head First Design Patterns</em>, 2nd ed. O'Reilly.</li>
+      <li><span class="ref-num">[3]</span> Martin, R.C. (2017). <em>Clean Architecture: A Craftsman's Guide to Software Structure and Design</em>. Prentice Hall.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
+  </div>
+
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
 <script>

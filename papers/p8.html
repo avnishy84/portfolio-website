@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modern Software Engineering Practices: From Requirements to Deployment — Avnish Yadav, Software Developer</title>
-    <meta name="description" content="Research by Avnish Yadav, Software Developer: How modern teams approach requirements, design, testing, and CI/CD — and how AI agents are transforming each phase of the software development lifecycle." />
+    <meta name="description" content="Research by Avnish Yadav: How modern teams approach requirements, design, testing, and CI/CD — and how AI agents are transforming each phase of the software development lifecycle." />
     <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p8.html" />
     <link rel="icon" href="../images/favicon.ico" />
@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Modern Software Engineering Practices — Avnish Yadav" />
     <meta name="twitter:description" content="How modern teams approach requirements, design, testing, and CI/CD — and how AI agents are transforming each phase of the software development lifecycle." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Modern Software Engineering Practices: From Requirements to Deployment","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p8.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Modern Software Engineering Practices: From Requirements to Deployment","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p8.html","keywords":["Software Engineering","CI/CD","Agile","AI","DevOps"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,17 +36,49 @@
     <div class="abstract-label">Research Paper · 2025</div>
     <h1 class="paper-title-main">Modern Software Engineering Practices: From Requirements to Deployment</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> Software Engineering · AI</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> Software Engineering · AI</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">How modern teams approach requirements, design, testing, and CI/CD — and how AI agents are transforming each phase of the software development lifecycle.</p>
+    <p class="abstract-text">Software engineering has evolved from waterfall to agile to continuous delivery, and now to AI-augmented development. This paper surveys the current state of modern software engineering practices — requirements elicitation, technical design, testing strategy, and CI/CD — and examines how AI agents are beginning to transform each phase, with particular attention to the practices that remain irreducibly human.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">The software development lifecycle has been in continuous evolution since the discipline emerged in the 1960s. Each generation of tooling and methodology has shifted the bottleneck: from machine time to developer time, from individual productivity to team coordination, from feature delivery to reliability and maintainability. The current generation of AI-assisted development tools is shifting the bottleneck again.</p>
+    <h2 class="section-heading">1. Requirements Engineering</h2>
+    <p class="body-text">Modern requirements engineering has moved away from exhaustive upfront specification toward iterative refinement. User stories, acceptance criteria, and definition of done provide just enough specification to begin implementation while leaving room for discovery. The key discipline is distinguishing between requirements (what the system must do) and design (how it will do it) — a distinction that is frequently blurred in practice.</p>
+    <p class="body-text">AI agents are beginning to assist with requirements elicitation by generating structured requirements documents from natural language descriptions, identifying ambiguities and edge cases, and producing formal correctness properties that can be validated through property-based testing.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:40%"></div><div class="chart-bar" style="height:60%"></div>
+        <div class="chart-bar" style="height:75%"></div><div class="chart-bar" style="height:90%"></div>
+        <div class="chart-bar" style="height:100%"></div>
+      </div>
+      Figure 1: AI augmentation level across SDLC phases (requirements, design, implementation, testing, deployment)
     </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Technical Design</h2>
+    <p class="body-text">Technical design bridges requirements and implementation. A good design document specifies the architecture, data models, API contracts, and component interfaces at a level of detail sufficient to guide implementation without over-constraining it. The most common failure mode is designing at the wrong level of abstraction — either too high (leaving too many decisions to implementation) or too low (specifying implementation details that should be left to the developer).</p>
+    <p class="body-text">Architecture Decision Records (ADRs) have emerged as a lightweight practice for documenting significant design decisions, their context, and the alternatives considered. ADRs create a historical record that helps future developers understand why the system is designed the way it is, reducing the risk of inadvertently reversing good decisions.</p>
+    <h2 class="section-heading">3. Testing Strategy</h2>
+    <p class="body-text">The testing pyramid — unit tests at the base, integration tests in the middle, end-to-end tests at the top — remains the dominant mental model for test strategy. The key insight is that tests at each level have different cost/benefit profiles: unit tests are cheap to write and fast to run but test in isolation; E2E tests provide high confidence but are slow and brittle.</p>
+    <p class="body-text">Property-based testing has emerged as a powerful complement to example-based testing, particularly for functions with complex input spaces. By specifying invariants rather than examples, PBT can find edge cases that human intuition misses, providing a higher level of confidence in correctness.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">4. CI/CD and Deployment</h2>
+    <p class="body-text">Continuous integration and continuous deployment have become standard practice in modern software teams. The key discipline is keeping the main branch always deployable: every commit must pass all automated tests before merging, and the deployment pipeline must be fast enough that developers receive feedback within minutes.</p>
+    <p class="body-text">Feature flags have emerged as a critical tool for decoupling deployment from release. Code can be deployed to production in a disabled state, enabled for a subset of users for testing, and then gradually rolled out. This eliminates the risk of big-bang releases and enables rapid rollback if issues are detected.</p>
+    <h2 class="section-heading">5. The Human Element</h2>
+    <p class="body-text">Despite the rapid advancement of AI-assisted development tools, several aspects of software engineering remain irreducibly human: understanding the business domain deeply enough to ask the right questions, making architectural decisions that balance competing concerns, and taking responsibility for the correctness and reliability of systems that affect real users. AI tools amplify human capability; they do not replace human judgment.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Humble, J. & Farley, D. (2010). <em>Continuous Delivery</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[2]</span> Kim, G. et al. (2016). <em>The DevOps Handbook</em>. IT Revolution Press.</li>
+      <li><span class="ref-num">[3]</span> Forsgren, N. et al. (2018). <em>Accelerate: The Science of Lean Software and DevOps</em>. IT Revolution Press.</li>
+      <li><span class="ref-num">[4]</span> Nygard, M. (2018). <em>Release It!</em>, 2nd ed. Pragmatic Bookshelf.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
   </div>
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>

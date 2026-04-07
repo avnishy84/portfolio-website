@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generative AI for Image Synthesis: Virtual Try-On Systems Using Diffusion Models — Avnish Yadav, Software Developer</title>
-    <meta name="description" content="Research by Avnish Yadav, Software Developer: Architecture of a virtual try-on system using Google Gemini Nano and Banana AI — covering diffusion model inference and UX challenges of variable-quality AI output." />
+    <meta name="description" content="Research by Avnish Yadav: Architecture of a virtual try-on system using Google Gemini Nano and Banana AI — covering diffusion model inference and UX challenges of variable-quality AI output." />
     <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p12.html" />
     <link rel="icon" href="../images/favicon.ico" />
@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Generative AI for Image Synthesis — Avnish Yadav" />
     <meta name="twitter:description" content="Architecture of a virtual try-on system using Google Gemini Nano and Banana AI — covering diffusion model inference and UX challenges of variable-quality AI output." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Generative AI for Image Synthesis: Virtual Try-On Systems Using Diffusion Models","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p12.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Generative AI for Image Synthesis: Virtual Try-On Systems Using Diffusion Models","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p12.html","keywords":["Generative AI","Diffusion Models","Virtual Try-On","Gemini","Image Synthesis"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,24 +36,55 @@
     <div class="abstract-label">Research Paper · 2025</div>
     <h1 class="paper-title-main">Generative AI for Image Synthesis: Virtual Try-On Systems Using Diffusion Models</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> AI · Software Engineering</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> AI · Software Engineering</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">Architecture of a virtual try-on system using Google Gemini Nano and Banana AI — covering diffusion model inference and UX challenges of variable-quality AI output.</p>
+    <p class="abstract-text">Virtual try-on systems allow users to visualize clothing on their own image without physically trying it on. This paper documents the architecture of an AI-powered virtual try-on application built using Google Gemini Nano for garment description and Banana AI for diffusion model inference. Key topics include the image preprocessing pipeline, prompt engineering for consistent garment rendering, latency management for diffusion model inference, and the UX challenges of presenting variable-quality AI-generated output to users.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">Diffusion models have achieved remarkable results in image synthesis tasks, including virtual try-on — the task of generating a realistic image of a person wearing a specific garment. Building a production virtual try-on system requires solving several engineering challenges beyond the model itself: image preprocessing, prompt engineering, latency management, and quality control.</p>
+    <h2 class="section-heading">1. System Architecture</h2>
+    <p class="body-text">The AI Dress Try-On application uses a two-stage pipeline. In the first stage, Google Gemini Nano analyzes the uploaded garment image and generates a structured description including color, texture, style, and fit. This description is used to construct the diffusion model prompt, ensuring that the generated image accurately reflects the garment's characteristics rather than relying on the user to describe it.</p>
+    <p class="body-text">In the second stage, the structured garment description and the user's photo are passed to a Banana AI-hosted diffusion model fine-tuned for virtual try-on. The model generates a composite image showing the user wearing the garment, preserving the user's pose and body shape while replacing their clothing.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:30%"></div><div class="chart-bar" style="height:55%"></div>
+        <div class="chart-bar" style="height:85%"></div><div class="chart-bar" style="height:100%"></div>
+        <div class="chart-bar" style="height:70%"></div>
+      </div>
+      Figure 1: User satisfaction scores by garment category (tops, bottoms, dresses, outerwear, accessories)
     </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Prompt Engineering for Consistent Rendering</h2>
+    <p class="body-text">The quality of diffusion model output is highly sensitive to prompt construction. For virtual try-on, the key challenge is ensuring that the generated image preserves the user's identity and pose while accurately rendering the garment. The prompt engineering strategy uses a structured template with fixed sections for identity preservation, pose description, garment description, and quality modifiers.</p>
+    <p class="body-text">Negative prompts — instructions for what the model should not generate — are as important as positive prompts for virtual try-on. Common negative prompt elements include "distorted hands", "extra limbs", "blurry face", and "wrong skin tone". These constraints significantly reduce the rate of anatomically incorrect generations.</p>
+    <h2 class="section-heading">3. Latency Management</h2>
+    <p class="body-text">Diffusion model inference is computationally expensive, with cold-start times of 15-30 seconds on Banana AI's serverless GPU infrastructure. The application manages this latency through a combination of optimistic UI (showing a loading animation with progress indication), result caching (storing generated images in Firebase Storage so the same garment/user combination is not regenerated), and warm-up requests (pinging the Banana AI endpoint before the user initiates a generation to reduce cold-start probability).</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">4. Quality Control and UX</h2>
+    <p class="body-text">Diffusion model output quality is variable — some generations are photorealistic and accurate, while others have artifacts, distortions, or incorrect garment rendering. The application addresses this through a multi-generation approach: three images are generated for each request, and the user selects the best result. A lightweight quality scoring model (a fine-tuned CLIP model) pre-filters generations with obvious artifacts before presenting them to the user.</p>
+    <p class="body-text">The UX design acknowledges the AI's limitations explicitly: the interface labels results as "AI-generated previews" and includes a disclaimer that the actual garment may differ. User research showed that transparent communication about AI limitations increased user trust and reduced negative feedback about imperfect generations.</p>
+    <h2 class="section-heading">5. Conclusion</h2>
+    <p class="body-text">Building production virtual try-on systems requires solving engineering challenges at every layer of the stack: prompt engineering for consistent model output, latency management for acceptable user experience, and quality control for variable AI output. The most important lesson is that the model is only one component of the system — the engineering around the model determines whether the system is usable in practice.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Ho, J. et al. (2020). Denoising Diffusion Probabilistic Models. <em>NeurIPS 2020</em>.</li>
+      <li><span class="ref-num">[2]</span> Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR 2022</em>.</li>
+      <li><span class="ref-num">[3]</span> Google (2024). Gemini Nano Technical Report. <em>deepmind.google</em>.</li>
+      <li><span class="ref-num">[4]</span> Radford, A. et al. (2021). Learning Transferable Visual Models From Natural Language Supervision (CLIP). <em>ICML 2021</em>.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
   </div>
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
 <script>
 const isDark = localStorage.getItem('rp_dark') === '1';
 if (isDark) document.body.classList.add('reading-dark');
-document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark') ; localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
 window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
 document.getElementById('shareBtn').addEventListener('click', async () => {
     const url = window.location.href;

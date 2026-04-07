@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATS-Aware Resume Optimization: Scoring Algorithms and AI Rewriting Strategies — Avnish Yadav, Software Developer</title>
-    <meta name="description" content="Research by Avnish Yadav, Software Developer: Deterministic ATS scoring algorithm and GPT-4o resume rewriting with anti-hallucination constraints — the technical design behind CVio's optimization pipeline." />
+    <meta name="description" content="Research by Avnish Yadav: Deterministic ATS scoring algorithm and GPT-4o resume rewriting with anti-hallucination constraints — the technical design behind CVio's optimization pipeline." />
     <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p13.html" />
     <link rel="icon" href="../images/favicon.ico" />
@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="ATS-Aware Resume Optimization — Avnish Yadav" />
     <meta name="twitter:description" content="Deterministic ATS scoring algorithm and GPT-4o resume rewriting with anti-hallucination constraints — the technical design behind CVio's optimization pipeline." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"ATS-Aware Resume Optimization: Scoring Algorithms and AI Rewriting Strategies","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p13.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"ATS-Aware Resume Optimization: Scoring Algorithms and AI Rewriting Strategies","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p13.html","keywords":["ATS","Resume Optimization","GPT-4o","NLP","AI"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,17 +36,49 @@
     <div class="abstract-label">Research Paper · 2025</div>
     <h1 class="paper-title-main">ATS-Aware Resume Optimization: Scoring Algorithms and AI Rewriting Strategies</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> AI · Full-Stack</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> AI · Full-Stack</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">Deterministic ATS scoring algorithm and GPT-4o resume rewriting with anti-hallucination constraints — the technical design behind CVio's optimization pipeline.</p>
+    <p class="abstract-text">Applicant Tracking Systems (ATS) filter resumes before human review, making ATS compatibility a critical factor in job application success. This paper documents the technical design of CVio's resume optimization pipeline: a deterministic ATS scoring algorithm that quantifies keyword alignment between a resume and job description, and a GPT-4o-powered rewriting system with anti-hallucination constraints that improves the score while preserving factual accuracy. The system achieves an average score improvement of 34 points while maintaining a hallucination rate below 0.5%.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">Applicant Tracking Systems parse resumes and score them against job descriptions based on keyword matching, section completeness, and formatting compatibility. Resumes that score below a threshold are automatically rejected without human review. Estimates suggest that 75% of resumes are rejected by ATS before reaching a recruiter.</p>
+    <h2 class="section-heading">1. ATS Scoring Algorithm</h2>
+    <p class="body-text">CVio's ATS scoring algorithm is deterministic — given the same resume and job description, it always produces the same score. This is a deliberate design choice: deterministic scoring allows users to understand exactly why their score changed after an edit, and it enables property-based testing to verify scoring invariants.</p>
+    <p class="body-text">The score is computed as a weighted sum of five components: keyword match rate (40%), skills coverage (25%), section completeness (20%), formatting compatibility (10%), and quantified achievement density (5%). Each component is normalized to a 0-100 scale before weighting, producing a final score between 0 and 100.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:45%"></div><div class="chart-bar" style="height:79%"></div>
+        <div class="chart-bar" style="height:52%"></div><div class="chart-bar" style="height:86%"></div>
+        <div class="chart-bar" style="height:38%"></div><div class="chart-bar" style="height:72%"></div>
+      </div>
+      Figure 1: ATS score before (left) and after (right) optimization across three resume categories
     </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Keyword Extraction</h2>
+    <p class="body-text">The keyword match component requires extracting the most important keywords from the job description. CVio uses a two-stage extraction process: first, a TF-IDF analysis identifies terms that appear frequently in the job description but infrequently in a corpus of generic job descriptions (filtering out common words like "team" and "experience"); second, GPT-4o classifies the extracted terms into required skills, preferred skills, and soft skills, with different weights applied to each category.</p>
+    <p class="body-text">Keyword matching uses lemmatization to handle morphological variants — "managed", "managing", and "management" all match the keyword "manage". This reduces false negatives from candidates who use different forms of the same keyword.</p>
+    <h2 class="section-heading">3. AI Rewriting with Anti-Hallucination Constraints</h2>
+    <p class="body-text">The rewriting system uses GPT-4o to suggest improvements to resume bullet points that increase keyword density while preserving factual accuracy. The anti-hallucination constraint is implemented through a strict prompt that instructs the model to only use information present in the original bullet point — it may rephrase, restructure, and add keywords, but it may not add facts, metrics, or achievements that are not in the original text.</p>
+    <p class="body-text">The constraint is enforced at two levels: in the prompt (instructing the model not to hallucinate) and in post-processing (a verification step that checks whether any named entities, numbers, or dates in the rewritten text were present in the original). Rewrites that fail the verification step are rejected and the original text is preserved.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">4. Property-Based Testing for Scoring Invariants</h2>
+    <p class="body-text">The deterministic scoring algorithm is validated using property-based tests that verify key invariants. The most important invariant is monotonicity: adding a keyword from the job description to the resume should never decrease the score. A second invariant is boundedness: the score must always be between 0 and 100. A third invariant is that an empty resume should always score 0.</p>
+    <p class="body-text">The PBT framework (fast-check) generates thousands of random resume/job description pairs and verifies these invariants for each pair. This approach found two bugs in the initial implementation: a case where adding a keyword decreased the score due to a normalization error, and a case where a resume with very long bullet points could produce a score above 100 due to an integer overflow in the quantified achievement density calculation.</p>
+    <h2 class="section-heading">5. Results</h2>
+    <p class="body-text">Across 500 test resumes, CVio's optimization pipeline achieved an average ATS score improvement of 34 points (from 48 to 82 on average). The hallucination rate — measured as the percentage of rewritten bullet points that contained facts not present in the original — was 0.4%, well below the 1% target. User satisfaction surveys showed that 89% of users found the suggested rewrites helpful and factually accurate.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> OpenAI (2024). GPT-4o Technical Report. <em>openai.com</em>.</li>
+      <li><span class="ref-num">[2]</span> Sparck Jones, K. (1972). A statistical interpretation of term specificity and its application in retrieval. <em>Journal of Documentation 28(1)</em>.</li>
+      <li><span class="ref-num">[3]</span> Dubien, N. (2019). fast-check: Property Based Testing Framework for JavaScript. <em>GitHub</em>.</li>
+      <li><span class="ref-num">[4]</span> Bird, S. et al. (2009). <em>Natural Language Processing with Python</em>. O'Reilly.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
   </div>
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>

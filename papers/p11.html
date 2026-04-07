@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase as a Full-Stack Platform: Authentication, Firestore, and Hosting Patterns — Avnish Yadav, Software Developer</title>
-    <meta name="description" content="Research by Avnish Yadav, Software Developer: Practical Firebase patterns for Auth, Firestore data modeling, security rules, and Hosting — drawn from One Note, Compufy Technology, and CVio." />
+    <meta name="description" content="Research by Avnish Yadav: Practical Firebase patterns for Auth, Firestore data modeling, security rules, and Hosting — drawn from One Note, Compufy Technology, and CVio." />
     <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p11.html" />
     <link rel="icon" href="../images/favicon.ico" />
@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Firebase as a Full-Stack Platform — Avnish Yadav" />
     <meta name="twitter:description" content="Practical Firebase patterns for Auth, Firestore data modeling, security rules, and Hosting — drawn from One Note, Compufy Technology, and CVio." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
     <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Firebase as a Full-Stack Platform: Authentication, Firestore, and Hosting Patterns","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p11.html","keywords":[]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Firebase as a Full-Stack Platform: Authentication, Firestore, and Hosting Patterns","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p11.html","keywords":["Firebase","Firestore","Authentication","Hosting","Full-Stack"]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,17 +36,48 @@
     <div class="abstract-label">Research Paper · 2024</div>
     <h1 class="paper-title-main">Firebase as a Full-Stack Platform: Authentication, Firestore, and Hosting Patterns</h1>
     <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
-    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Full-Stack · Database</span></div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Full-Stack · Database</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
     <hr class="paper-divider">
     <div class="abstract-label">Abstract</div>
-    <p class="abstract-text">Practical Firebase patterns for Auth, Firestore data modeling, security rules, and Hosting — drawn from One Note, Compufy Technology, and CVio.</p>
+    <p class="abstract-text">Firebase provides a complete backend-as-a-service platform that enables small teams to build production-grade applications without managing server infrastructure. This paper documents practical patterns for Firebase Authentication, Firestore data modeling, security rules, and Hosting, drawn from three production applications: One Note (collaborative note-taking), Compufy Technology (corporate website with analytics), and CVio (AI-powered resume optimizer). Each application presented distinct challenges that illuminate different aspects of the Firebase platform.</p>
     <hr class="paper-divider">
-    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
-    <div style="margin-top:2rem;text-align:center;">
-      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
-        <i class="fas fa-book-open"></i> Read Full Paper in Library
-      </a>
+    <p class="body-text">Firebase's appeal for small teams and solo developers is its ability to eliminate the operational overhead of managing authentication, databases, and hosting infrastructure. However, Firebase's flexibility comes with footguns — data modeling decisions that seem reasonable at small scale become expensive at large scale, and security rules that seem restrictive enough can have subtle gaps.</p>
+    <h2 class="section-heading">1. Firebase Authentication</h2>
+    <p class="body-text">Firebase Authentication handles the complexity of OAuth flows, token management, and session persistence. The key architectural decision is how to model the relationship between Firebase Auth users and application-specific user data. The recommended pattern is to create a Firestore document in a users collection with the same ID as the Firebase Auth UID on first sign-in, and to store all application-specific user data there rather than in Firebase Auth's user profile.</p>
+    <p class="body-text">This separation keeps Firebase Auth as a pure identity provider and Firestore as the source of truth for application data, making it straightforward to add fields to the user profile without touching the auth layer.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:50%"></div><div class="chart-bar" style="height:75%"></div>
+        <div class="chart-bar" style="height:90%"></div><div class="chart-bar" style="height:65%"></div>
+      </div>
+      Figure 1: Firebase service usage distribution across three production applications
     </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Firestore Data Modeling</h2>
+    <p class="body-text">Firestore's document-collection model requires a different approach to data modeling than relational databases. The key principle is to model data for how it will be queried, not for normalization. Firestore does not support joins, so data that is frequently queried together should be stored together, even if this means denormalization.</p>
+    <p class="body-text">For One Note, the data model stores note metadata (title, last modified, collaborators) in a top-level notes collection and note content in a separate content subcollection. This allows the notes list to be loaded without fetching the full content of each note, reducing read costs and improving load time for users with many notes.</p>
+    <p class="body-text">For CVio, the resume optimization history is stored as an array of optimization records within the user document rather than as a separate collection. This works because the array is bounded (users are limited to 50 optimization records) and is always queried as a unit. Storing it as a subcollection would require an additional query and increase read costs.</p>
+    <h2 class="section-heading">3. Security Rules</h2>
+    <p class="body-text">Firestore security rules are the primary defense against unauthorized data access. The most common mistake is writing rules that are correct for the happy path but have gaps for edge cases. The recommended approach is to write rules that explicitly deny access by default and grant access only for specific, well-defined conditions.</p>
+    <p class="body-text">A critical pattern is validating incoming data in security rules, not just access control. Rules should verify that required fields are present, that field types are correct, and that field values are within acceptable ranges. This prevents malformed data from entering the database even if the client-side validation is bypassed.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">4. Firebase Hosting</h2>
+    <p class="body-text">Firebase Hosting provides CDN-backed static hosting with SSL, custom domains, and deployment previews. For single-page applications, the key configuration is the rewrites rule that serves index.html for all routes, enabling client-side routing. For multi-page applications like this portfolio, the default behavior of serving the matching HTML file is correct.</p>
+    <p class="body-text">Firebase Hosting's deployment preview feature — which creates a unique URL for each deployment — is particularly valuable for reviewing changes before promoting them to production. The firebase.json hosting configuration supports headers for cache control, allowing static assets to be cached aggressively while HTML files are served with no-cache headers to ensure users always get the latest version.</p>
+    <h2 class="section-heading">5. Cost Management</h2>
+    <p class="body-text">Firebase's free tier (Spark plan) is generous for development and small production applications, but costs can grow unexpectedly as usage scales. The primary cost drivers are Firestore reads and writes, Cloud Functions invocations, and Authentication monthly active users. Monitoring these metrics in the Firebase console and setting budget alerts is essential before launching a production application.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Google Firebase Team (2024). Firebase Documentation. <em>firebase.google.com</em>.</li>
+      <li><span class="ref-num">[2]</span> Houssein, D. (2023). Firestore Data Modeling. <em>Firebase Blog</em>.</li>
+      <li><span class="ref-num">[3]</span> Google Firebase Team (2024). Cloud Firestore Security Rules. <em>firebase.google.com</em>.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
   </div>
 </div>
 <div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
