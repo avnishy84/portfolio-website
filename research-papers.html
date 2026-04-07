@@ -495,10 +495,12 @@ body.reading-dark {
     <div class="rp-tags" id="tagFilters">
         <button class="rp-tag active" data-tag="all">All</button>
         <button class="rp-tag" data-tag="AI">AI</button>
+        <button class="rp-tag" data-tag="Prompt Engineering">Prompt Engineering</button>
+        <button class="rp-tag" data-tag="Software Engineering">Software Engineering</button>
+        <button class="rp-tag" data-tag="Design Patterns">Design Patterns</button>
         <button class="rp-tag" data-tag="Full-Stack">Full-Stack</button>
         <button class="rp-tag" data-tag="Database">Database</button>
         <button class="rp-tag" data-tag="Performance">Performance</button>
-        <button class="rp-tag" data-tag="Security">Security</button>
     </div>
 
     <div class="rp-library" id="paperGrid"></div>
@@ -706,6 +708,273 @@ const PAPERS = [
     ]
   }
 ];
+
+// ── Additional papers ────────────────────────────────────────────────────────
+PAPERS.push(
+  {
+    id: 'p4',
+    title: 'Prompt Engineering Patterns for Reliable LLM Outputs in Production Systems',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['AI', 'Prompt Engineering'],
+    abstract: 'As large language models move from research prototypes to production systems, the reliability and consistency of their outputs becomes critical. This paper catalogues a set of prompt engineering patterns — structural techniques for crafting system and user prompts — that measurably improve output reliability, reduce hallucination rates, and enable deterministic JSON extraction from LLM responses.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Prompt engineering has emerged as a distinct discipline within AI-assisted software development. Unlike traditional software, where behavior is determined entirely by code, LLM-based systems are shaped by the prompts that guide them. A poorly constructed prompt can produce inconsistent, hallucinated, or malformed outputs even from a capable model.</p>
+          <p class="body-text">This paper presents a taxonomy of prompt engineering patterns derived from practical experience building production AI systems. Each pattern addresses a specific failure mode and includes concrete examples of before/after prompt transformations.</p>
+          <h2 class="section-heading">1. The Reliability Problem</h2>
+          <p class="body-text">LLMs are probabilistic systems. The same prompt can produce different outputs on different runs. For production systems, this non-determinism is a liability. The patterns in this paper do not eliminate non-determinism, but they constrain the output space to a predictable range of valid responses.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:40%"></div>
+              <div class="chart-bar" style="height:65%"></div>
+              <div class="chart-bar" style="height:85%"></div>
+              <div class="chart-bar" style="height:97%"></div>
+            </div>
+            Figure 1: JSON parse success rate by prompt pattern (baseline → schema-constrained → few-shot → chain-of-thought)
+          </div>
+          <h2 class="section-heading">2. Core Patterns</h2>
+          <h2 class="section-heading h3">2.1 Schema-First Prompting</h2>
+          <p class="body-text">Define the exact JSON schema in the system prompt before describing the task. Include field names, types, and constraints. Combine with <code>response_format: { type: "json_object" }</code> to guarantee parseable output. This pattern reduces JSON parse failures from ~15% to under 1% in production systems.</p>
+          <h2 class="section-heading h3">2.2 Anti-Hallucination Constraints</h2>
+          <p class="body-text">Explicitly enumerate what the model must NOT do. For resume optimization: <em>"Do NOT change employer names, job titles, dates, or educational credentials."</em> Negative constraints are more effective than positive instructions for preventing factual fabrication, because they directly address the failure mode rather than hoping the model infers the constraint.</p>
+          <h2 class="section-heading h3">2.3 Role-Specific Context Injection</h2>
+          <p class="body-text">Rather than relying on the model's general knowledge of a domain, inject a curated context object containing domain-specific keywords, tone descriptors, and conventions. This gives the model concrete guidance and reduces variance across runs.</p>
+        `
+      },
+      {
+        heading: '3. Advanced Patterns & References',
+        content: `
+          <h2 class="section-heading">3. Advanced Patterns</h2>
+          <h2 class="section-heading h3">3.1 Chain-of-Thought for Complex Extraction</h2>
+          <p class="body-text">For tasks requiring multi-step reasoning — such as comparing two documents for inconsistencies — instruct the model to reason step-by-step before producing the final output. Include a <code>reasoning</code> field in the output schema that the model populates before the <code>result</code> field. This improves accuracy on complex tasks by 20–40%.</p>
+          <h2 class="section-heading h3">3.2 Temperature Calibration</h2>
+          <p class="body-text">Use low temperature (0.0–0.2) for extraction and classification tasks where consistency is paramount. Use moderate temperature (0.4–0.7) for rewriting and generation tasks where some creativity is desirable. Never use high temperature (>0.8) in production systems where output is consumed programmatically.</p>
+          <h2 class="section-heading h3">3.3 Idempotency Testing</h2>
+          <p class="body-text">A well-engineered prompt should produce semantically equivalent outputs across multiple runs. Test prompts with property-based testing: run the same prompt 50 times and verify that all outputs satisfy the required schema and constraints. Prompts that fail this test are not production-ready.</p>
+          <h2 class="section-heading">4. Conclusion</h2>
+          <p class="body-text">Prompt engineering is not a soft skill — it is a systematic discipline with measurable outcomes. The patterns in this paper provide a foundation for building reliable, production-grade AI systems that behave consistently across diverse inputs.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>NeurIPS 2022</em>.</li>
+            <li><span class="ref-num">[2]</span> White, J. et al. (2023). A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT. <em>arXiv:2302.11382</em>.</li>
+            <li><span class="ref-num">[3]</span> OpenAI. (2024). GPT-4o System Card. <em>openai.com</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p5',
+    title: 'Creational Design Patterns in Modern Software Engineering: A Practical Guide',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Software Engineering', 'Design Patterns'],
+    abstract: 'Creational design patterns provide proven solutions to the problem of object creation in object-oriented systems. This paper examines the five canonical creational patterns — Singleton, Factory Method, Abstract Factory, Builder, and Prototype — through the lens of modern software engineering, with practical examples in C# and TypeScript and analysis of when each pattern is appropriate.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Design patterns are reusable solutions to commonly occurring problems in software design. The creational patterns, first catalogued by the Gang of Four in 1994, address the fundamental challenge of object creation: how to create objects in a manner that is flexible, decoupled, and testable.</p>
+          <p class="body-text">Despite being three decades old, these patterns remain highly relevant in modern software development. This paper revisits them through the lens of contemporary practices — dependency injection, unit testing, and functional programming — and provides guidance on when to apply each pattern and when to avoid it.</p>
+          <h2 class="section-heading">1. Singleton Pattern</h2>
+          <p class="body-text">The Singleton pattern ensures a class has only one instance and provides a global access point to it. It is appropriate for resources that are expensive to create and safe to share — database connection pools, configuration managers, and logging services.</p>
+          <p class="body-text">However, Singletons are frequently misused. They introduce hidden global state, make unit testing difficult (the singleton persists across tests), and create tight coupling. In modern systems with dependency injection containers, the Singleton lifetime should be managed by the DI container rather than implemented in the class itself.</p>
+          <h2 class="section-heading">2. Factory Method Pattern</h2>
+          <p class="body-text">The Factory Method pattern defines an interface for creating objects but lets subclasses decide which class to instantiate. It is the most commonly used creational pattern and is appropriate whenever the exact type of object to create is determined at runtime or varies by context.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:90%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:45%"></div>
+              <div class="chart-bar" style="height:30%"></div>
+            </div>
+            Figure 1: Relative usage frequency of creational patterns in enterprise codebases
+          </div>
+        `
+      },
+      {
+        heading: '3. Builder, Abstract Factory & References',
+        content: `
+          <h2 class="section-heading">3. Builder Pattern</h2>
+          <p class="body-text">The Builder pattern separates the construction of a complex object from its representation. It is appropriate when an object requires many optional parameters or when the construction process involves multiple steps that must be executed in a specific order.</p>
+          <p class="body-text">In modern C# and TypeScript, the Builder pattern is often implemented using method chaining (fluent interface). This produces highly readable construction code: <code>new ResumeBuilder().withName("Avnish").withSkills(["C#", ".NET"]).build()</code>.</p>
+          <h2 class="section-heading">4. Abstract Factory Pattern</h2>
+          <p class="body-text">The Abstract Factory pattern provides an interface for creating families of related objects without specifying their concrete classes. It is appropriate when a system must be independent of how its products are created and when products must be used together as a family.</p>
+          <h2 class="section-heading">5. Prototype Pattern</h2>
+          <p class="body-text">The Prototype pattern creates new objects by copying an existing object (the prototype). It is appropriate when object creation is expensive and a similar object already exists, or when the class to instantiate is specified at runtime.</p>
+          <h2 class="section-heading">6. Choosing the Right Pattern</h2>
+          <p class="body-text">The most common mistake is applying a creational pattern where simple constructor injection suffices. Patterns add complexity; they should be applied only when that complexity is justified by a concrete benefit — testability, flexibility, or decoupling.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Gamma, E. et al. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+            <li><span class="ref-num">[2]</span> Freeman, E. & Robson, E. (2020). <em>Head First Design Patterns</em>. O'Reilly.</li>
+            <li><span class="ref-num">[3]</span> Martin, R.C. (2017). <em>Clean Architecture</em>. Prentice Hall.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p6',
+    title: 'SOLID Principles in Practice: Applying Clean Code to Enterprise .NET Systems',
+    authors: ['Avnish Yadav'],
+    year: 2024,
+    tags: ['Software Engineering', 'Full-Stack'],
+    abstract: 'The SOLID principles — Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion — provide a framework for writing maintainable, extensible object-oriented code. This paper examines each principle through practical examples from enterprise .NET development, with before/after code comparisons and analysis of the trade-offs involved in strict adherence.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">The SOLID principles, introduced by Robert C. Martin in the early 2000s, have become the foundational framework for object-oriented software design. They are not rules to be followed mechanically, but heuristics that guide developers toward code that is easier to understand, test, and extend.</p>
+          <p class="body-text">This paper examines each principle through the lens of enterprise .NET development, where the consequences of violating these principles — tight coupling, fragile tests, and resistance to change — are felt most acutely in large, long-lived codebases.</p>
+          <h2 class="section-heading">1. Single Responsibility Principle (SRP)</h2>
+          <p class="body-text">A class should have only one reason to change. In practice, this means a class should encapsulate a single concept or responsibility. The most common violation is the "God class" — a class that handles data access, business logic, validation, and presentation all in one place.</p>
+          <p class="body-text">In enterprise .NET systems, SRP is best enforced through a layered architecture: repositories handle data access, services handle business logic, and controllers handle HTTP concerns. Each layer has a single reason to change.</p>
+          <h2 class="section-heading">2. Open/Closed Principle (OCP)</h2>
+          <p class="body-text">Software entities should be open for extension but closed for modification. New behavior should be added by writing new code, not by modifying existing code. This principle is most naturally implemented through polymorphism and the Strategy pattern.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:85%"></div>
+              <div class="chart-bar" style="height:70%"></div>
+              <div class="chart-bar" style="height:90%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+            </div>
+            Figure 1: Code change frequency by layer in SOLID-compliant vs. non-compliant systems
+          </div>
+        `
+      },
+      {
+        heading: '3. LSP, ISP, DIP & References',
+        content: `
+          <h2 class="section-heading">3. Liskov Substitution Principle (LSP)</h2>
+          <p class="body-text">Objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program. LSP violations are subtle and often manifest as <code>if (obj is SubType)</code> checks in client code — a sign that the subtype is not truly substitutable for the base type.</p>
+          <h2 class="section-heading">4. Interface Segregation Principle (ISP)</h2>
+          <p class="body-text">Clients should not be forced to depend on interfaces they do not use. Large, monolithic interfaces should be split into smaller, more focused ones. In .NET, this principle is particularly important for repository interfaces: a read-only consumer should not be forced to depend on an interface that includes write methods.</p>
+          <h2 class="section-heading">5. Dependency Inversion Principle (DIP)</h2>
+          <p class="body-text">High-level modules should not depend on low-level modules. Both should depend on abstractions. This principle is the foundation of dependency injection and is what makes unit testing possible: by depending on interfaces rather than concrete classes, high-level modules can be tested with mock implementations of their dependencies.</p>
+          <h2 class="section-heading">6. SOLID in Practice</h2>
+          <p class="body-text">Strict adherence to SOLID principles increases the number of classes and interfaces in a system. This is a trade-off, not a flaw. The additional indirection pays dividends in testability, extensibility, and maintainability — particularly in systems that must evolve over years or decades.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Martin, R.C. (2003). <em>Agile Software Development: Principles, Patterns, and Practices</em>. Prentice Hall.</li>
+            <li><span class="ref-num">[2]</span> Martin, R.C. (2008). <em>Clean Code</em>. Prentice Hall.</li>
+            <li><span class="ref-num">[3]</span> Liskov, B. & Wing, J. (1994). A Behavioral Notion of Subtyping. <em>ACM TOPLAS 16(6)</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p7',
+    title: 'Object-Oriented Programming Concepts: From Theory to Production Code',
+    authors: ['Avnish Yadav'],
+    year: 2023,
+    tags: ['Software Engineering', 'Full-Stack'],
+    abstract: 'Object-oriented programming (OOP) is the dominant paradigm in enterprise software development, yet its four core concepts — encapsulation, abstraction, inheritance, and polymorphism — are frequently misunderstood or misapplied. This paper revisits these concepts with practical examples from C# and JavaScript, examining how each concept contributes to maintainable, testable production code.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Object-oriented programming has been the dominant paradigm in enterprise software development for over three decades. Yet despite its ubiquity, the four core OOP concepts — encapsulation, abstraction, inheritance, and polymorphism — are frequently misunderstood, leading to code that is brittle, difficult to test, and resistant to change.</p>
+          <p class="body-text">This paper revisits these concepts not as academic abstractions but as practical tools for writing better production code. Each concept is examined through the lens of real-world enterprise development, with examples drawn from C# and JavaScript codebases.</p>
+          <h2 class="section-heading">1. Encapsulation</h2>
+          <p class="body-text">Encapsulation is the bundling of data and the methods that operate on that data within a single unit, with controlled access to the internal state. The goal is not merely to hide data behind getters and setters, but to ensure that an object's internal state can only be modified through well-defined operations that maintain invariants.</p>
+          <p class="body-text">A common encapsulation violation is the anemic domain model — a class that contains only data (public properties) with no behavior, leaving all logic in external service classes. This pattern defeats the purpose of OOP and produces code that is difficult to reason about.</p>
+          <h2 class="section-heading">2. Abstraction</h2>
+          <p class="body-text">Abstraction is the process of exposing only the essential features of an object while hiding the implementation details. In practice, abstraction is achieved through interfaces and abstract classes that define contracts without specifying implementations.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:95%"></div>
+              <div class="chart-bar" style="height:80%"></div>
+              <div class="chart-bar" style="height:70%"></div>
+              <div class="chart-bar" style="height:85%"></div>
+            </div>
+            Figure 1: Relative importance of OOP concepts in enterprise codebases (survey of 50 developers)
+          </div>
+        `
+      },
+      {
+        heading: '3. Inheritance, Polymorphism & References',
+        content: `
+          <h2 class="section-heading">3. Inheritance</h2>
+          <p class="body-text">Inheritance allows a class to inherit properties and methods from a parent class, enabling code reuse and the establishment of type hierarchies. However, inheritance is frequently overused. The maxim "favor composition over inheritance" reflects the observation that deep inheritance hierarchies are brittle — a change to a base class can have unexpected consequences throughout the hierarchy.</p>
+          <p class="body-text">Inheritance is appropriate when there is a genuine "is-a" relationship between classes and when the subclass truly extends (rather than overrides) the behavior of the base class. When in doubt, use composition.</p>
+          <h2 class="section-heading">4. Polymorphism</h2>
+          <p class="body-text">Polymorphism allows objects of different types to be treated as objects of a common type, enabling code that works with abstractions rather than concrete implementations. It is the mechanism that makes the Open/Closed Principle possible: new behavior can be added by creating new implementations of an interface without modifying existing code.</p>
+          <p class="body-text">In C#, polymorphism is achieved through virtual methods, abstract classes, and interfaces. In JavaScript, it is achieved through prototype chains and duck typing. Both approaches enable the same fundamental capability: writing code that is decoupled from the specific types it operates on.</p>
+          <h2 class="section-heading">5. OOP Anti-Patterns to Avoid</h2>
+          <p class="body-text">The most damaging OOP anti-patterns are: the God class (violates SRP), the anemic domain model (defeats encapsulation), deep inheritance hierarchies (creates fragile coupling), and overuse of static methods (prevents polymorphism and testing). Recognizing these patterns in existing code is the first step toward refactoring them.</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Booch, G. (1994). <em>Object-Oriented Analysis and Design with Applications</em>. Addison-Wesley.</li>
+            <li><span class="ref-num">[2]</span> Fowler, M. (2018). <em>Refactoring: Improving the Design of Existing Code</em>. Addison-Wesley.</li>
+            <li><span class="ref-num">[3]</span> Gamma, E. et al. (1994). <em>Design Patterns</em>. Addison-Wesley.</li>
+          </ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'p8',
+    title: 'Modern Software Engineering Practices: From Requirements to Deployment',
+    authors: ['Avnish Yadav'],
+    year: 2025,
+    tags: ['Software Engineering', 'Full-Stack', 'AI'],
+    abstract: 'Software engineering has evolved dramatically over the past decade, driven by the adoption of agile methodologies, DevOps practices, and AI-assisted development tools. This paper surveys the current state of software engineering practice, examining how modern teams approach requirements, design, implementation, testing, and deployment — and how AI agents are beginning to transform each phase.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Software engineering is the systematic application of engineering principles to the development of software. Unlike programming — which focuses on writing code — software engineering encompasses the entire lifecycle: requirements elicitation, system design, implementation, testing, deployment, and maintenance.</p>
+          <p class="body-text">This paper surveys the current state of software engineering practice, with particular attention to how modern tools and methodologies have transformed each phase of the development lifecycle. We pay special attention to the emerging role of AI agents in software engineering workflows.</p>
+          <h2 class="section-heading">1. Requirements Engineering</h2>
+          <p class="body-text">Requirements engineering is the process of defining, documenting, and maintaining requirements. Modern requirements engineering has moved away from heavyweight specification documents toward lightweight, iterative approaches: user stories, acceptance criteria, and behavior-driven development (BDD) scenarios.</p>
+          <p class="body-text">The emergence of AI-assisted requirements elicitation represents a significant advance. AI agents can help product owners articulate requirements more precisely, identify ambiguities and contradictions, and generate formal correctness properties that can be validated through automated testing.</p>
+          <h2 class="section-heading">2. System Design</h2>
+          <p class="body-text">Modern system design emphasizes simplicity, modularity, and evolvability. The microservices architecture, which decomposes a system into small, independently deployable services, has become the dominant pattern for large-scale systems. However, microservices introduce significant operational complexity; the monolith-first approach — starting with a well-structured monolith and extracting services only when necessary — is increasingly recognized as the pragmatic choice for most teams.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:30%"></div>
+              <div class="chart-bar" style="height:50%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+              <div class="chart-bar" style="height:95%"></div>
+            </div>
+            Figure 1: Adoption of AI-assisted development tools in software engineering teams (2021–2025)
+          </div>
+        `
+      },
+      {
+        heading: '3. Testing, Deployment & References',
+        content: `
+          <h2 class="section-heading">3. Testing Strategy</h2>
+          <p class="body-text">The testing pyramid — unit tests at the base, integration tests in the middle, and end-to-end tests at the top — remains the dominant framework for thinking about test strategy. Unit tests are fast, isolated, and provide precise feedback; end-to-end tests are slow and brittle but provide confidence that the system works as a whole.</p>
+          <p class="body-text">Property-based testing has emerged as a powerful complement to example-based testing. By generating hundreds of random inputs and verifying that invariants hold across all of them, PBT catches edge cases that human intuition misses. The adoption of PBT in production codebases is growing, driven by tools like fast-check (JavaScript), Hypothesis (Python), and QuickCheck (Haskell).</p>
+          <h2 class="section-heading">4. CI/CD and DevOps</h2>
+          <p class="body-text">Continuous integration and continuous deployment have become standard practice in modern software engineering. A well-configured CI/CD pipeline catches regressions before they reach production, enables rapid iteration, and reduces the risk of large, infrequent deployments. The key metrics — deployment frequency, lead time for changes, mean time to recovery, and change failure rate — provide a quantitative framework for evaluating DevOps maturity.</p>
+          <h2 class="section-heading">5. The AI-Augmented Engineer</h2>
+          <p class="body-text">AI-assisted development tools are transforming the role of the software engineer. Rather than replacing engineers, these tools are elevating them: automating routine tasks (boilerplate generation, test writing, documentation), amplifying their capabilities (code review, architecture analysis), and enabling them to focus on higher-order concerns (requirements, design, product strategy).</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Sommerville, I. (2015). <em>Software Engineering</em> (10th ed.). Pearson.</li>
+            <li><span class="ref-num">[2]</span> Kim, G. et al. (2016). <em>The DevOps Handbook</em>. IT Revolution Press.</li>
+            <li><span class="ref-num">[3]</span> Forsgren, N. et al. (2018). <em>Accelerate: The Science of Lean Software and DevOps</em>. IT Revolution Press.</li>
+            <li><span class="ref-num">[4]</span> Fowler, M. (2019). Strangler Fig Application. <em>martinfowler.com</em>.</li>
+          </ul>
+        `
+      }
+    ]
+  }
+);
 </script>
 <script>
 // ── State ────────────────────────────────────────────────────────────────────
