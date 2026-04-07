@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic AI in Software Development — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research paper by Avnish Yadav: Agentic AI in Software Development — A Spec-Driven Approach using LLM agents, property-based testing, and formal correctness properties." />
+    <meta name="author" content="Avnish Yadav" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p1.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Agentic AI in Software Development — Avnish Yadav" />
+    <meta property="og:description" content="How spec-driven development combined with LLM agents reduces development time while maintaining correctness guarantees through property-based testing." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p1.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Agentic AI in Software Development — Avnish Yadav" />
+    <meta name="twitter:description" content="How spec-driven development combined with LLM agents reduces development time while maintaining correctness guarantees through property-based testing." />
+    <meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "Agentic AI in Software Development: A Spec-Driven Approach",
+      "author": { "@type": "Person", "name": "Avnish Yadav", "jobTitle": "Software Developer", "url": "https://avnish-portfolio-c14e6.web.app/" },
+      "datePublished": "2025",
+      "url": "https://avnish-portfolio-c14e6.web.app/papers/p1.html",
+      "keywords": ["Agentic AI", "Spec-Driven Development", "Property-Based Testing", "LLM", "Software Engineering"]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<link rel="stylesheet" href="paper.css" />
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">Agentic AI in Software Development</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn" aria-label="Share paper"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn" aria-label="Toggle reading mode"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+
+<div class="pages-container">
+
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">AI</span><span class="paper-tag">Full-Stack</span></div>
+    <div class="abstract-label">Research Paper · 2025</div>
+    <h1 class="paper-title-main">Agentic AI in Software Development: A Spec-Driven Approach</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta">
+        <span><i class="fas fa-calendar-alt"></i> 2025</span>
+        <span><i class="fas fa-tags"></i> AI · Full-Stack</span>
+        <span><i class="fas fa-file-alt"></i> 3 pages</span>
+    </div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">This paper explores the application of agentic AI systems in modern software development workflows. We examine how spec-driven development — formalizing requirements, design, and implementation tasks before writing code — combined with large language model agents can dramatically reduce development time while maintaining correctness guarantees through property-based testing.</p>
+    <hr class="paper-divider">
+    <p class="body-text">The emergence of large language model (LLM) agents capable of executing multi-step software development tasks represents a paradigm shift in how software is produced. Traditional development workflows rely on human developers to translate requirements into code, a process that is both time-consuming and error-prone.</p>
+    <p class="body-text">This paper presents a methodology we term <em>Spec-Driven Agentic Development</em> (SDAD), in which formal specification documents — requirements, design, and task lists — are produced collaboratively between a human product owner and an AI agent before any implementation begins.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:30%"></div><div class="chart-bar" style="height:55%"></div>
+        <div class="chart-bar" style="height:80%"></div><div class="chart-bar" style="height:100%"></div>
+        <div class="chart-bar" style="height:70%"></div>
+      </div>
+      Figure 1: Development velocity improvement across project phases with SDAD methodology
+    </div>
+    <h2 class="section-heading">1. Introduction</h2>
+    <p class="body-text">Software development has historically been constrained by the cognitive bandwidth of individual developers. The introduction of AI-assisted coding tools such as GitHub Copilot marked the first wave of AI augmentation. However, these tools operate at the line-of-code level, leaving the higher-order tasks of architecture, requirements analysis, and test design to humans.</p>
+    <p class="body-text">Agentic AI systems — those capable of planning, executing, and iterating on multi-step tasks — represent the second wave. When combined with formal specification methodologies, these systems can operate at the feature level, producing complete, tested implementations from natural language descriptions.</p>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">2. Methodology</h2>
+    <h2 class="section-heading h3">2.1 The Specification Phase</h2>
+    <p class="body-text">The SDAD methodology begins with a structured requirements elicitation phase. The human product owner describes the desired feature in natural language. The AI agent then produces a formal requirements document containing user stories, acceptance criteria, and correctness properties.</p>
+    <p class="body-text">Correctness properties are formal statements about system behavior that must hold for all valid inputs. These properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees, enabling property-based testing (PBT) to validate the implementation.</p>
+    <h2 class="section-heading h3">2.2 Design and Task Decomposition</h2>
+    <p class="body-text">Following requirements approval, the agent produces a technical design document covering architecture, data models, API contracts, and component interfaces. The design is then decomposed into an ordered task list, where each task is atomic, testable, and references specific requirements.</p>
+    <div class="figure-wrap" style="margin:1.5rem 0;border-radius:8px;overflow:hidden;border:1px solid var(--paper-border);background:var(--paper-bg);">
+      <div style="padding:1.5rem;text-align:center;font-family:var(--sans);font-size:0.8rem;color:var(--ink-muted);">
+        <div style="display:flex;justify-content:center;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+          <div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.6rem 0.9rem;font-weight:600;">Requirements</div>
+          <span>→</span><div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.6rem 0.9rem;font-weight:600;">Design</div>
+          <span>→</span><div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.6rem 0.9rem;font-weight:600;">Tasks</div>
+          <span>→</span><div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.6rem 0.9rem;font-weight:600;">Implementation</div>
+          <span>→</span><div style="background:rgba(139,105,20,0.12);border-radius:8px;padding:0.6rem 0.9rem;font-weight:600;">PBT Validation</div>
+        </div>
+        <div style="margin-top:0.5rem;">Figure 2: The SDAD pipeline from natural language to validated implementation</div>
+      </div>
+    </div>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">3. Results</h2>
+    <p class="body-text">We applied the SDAD methodology across five software projects of varying complexity, ranging from a Chrome extension to a full-stack SaaS application. In all cases, the methodology produced working, tested implementations with measurably fewer defects than comparable projects developed without formal specification.</p>
+    <p class="body-text">The most significant finding was the reduction in specification ambiguity. By requiring the AI agent to produce formal correctness properties before implementation, the methodology forced early resolution of edge cases that would otherwise surface as bugs in production.</p>
+    <h2 class="section-heading">4. Conclusion</h2>
+    <p class="body-text">Spec-Driven Agentic Development represents a viable methodology for producing high-quality software with AI agents. The key insight is that the value of AI agents in software development is maximized not by replacing developers, but by elevating them to the role of product owners who define correctness rather than implement it.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Brown, T. et al. (2020). Language Models are Few-Shot Learners. <em>NeurIPS 2020</em>.</li>
+      <li><span class="ref-num">[2]</span> Claessen, K. & Hughes, J. (2000). QuickCheck: A Lightweight Tool for Random Testing. <em>ICFP 2000</em>.</li>
+      <li><span class="ref-num">[3]</span> Chen, M. et al. (2021). Evaluating Large Language Models Trained on Code. <em>arXiv:2107.03374</em>.</li>
+      <li><span class="ref-num">[4]</span> Parnas, D.L. (1972). On the Criteria To Be Used in Decomposing Systems into Modules. <em>CACM 15(12)</em>.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
+  </div>
+
+</div>
+
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+
+<script>
+const isDarkStored = localStorage.getItem('rp_dark') === '1';
+if (isDarkStored) document.body.classList.add('reading-dark');
+
+document.getElementById('darkBtn').addEventListener('click', () => {
+    document.body.classList.toggle('reading-dark');
+    localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0');
+});
+
+// Reading progress
+window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+});
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    const title = 'Agentic AI in Software Development — Avnish Yadav';
+    const text = 'Research paper by Avnish Yadav, Software Developer';
+    if (navigator.share) {
+        try { await navigator.share({ title, text, url }); return; } catch(_) {}
+    }
+    await navigator.clipboard.writeText(url);
+    const toast = document.getElementById('shareToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+});
+</script>
+</body>
+</html>

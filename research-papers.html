@@ -517,6 +517,9 @@ body.reading-dark {
             <button class="icon-btn" id="readerBookmark" title="Bookmark" aria-label="Bookmark paper">
                 <i class="far fa-bookmark"></i>
             </button>
+            <button class="icon-btn" id="readerShare" title="Share" aria-label="Share paper">
+                <i class="fas fa-share-nodes"></i>
+            </button>
             <button class="icon-btn" id="readerDark" title="Reading mode" aria-label="Toggle reading mode">
                 <i class="fas fa-moon"></i>
             </button>
@@ -1250,6 +1253,20 @@ applyDark();
 document.getElementById('darkModeBtn').addEventListener('click', () => { isDark = !isDark; applyDark(); });
 document.getElementById('readerDark').addEventListener('click', () => { isDark = !isDark; applyDark(); });
 
+// ── Toast helper ─────────────────────────────────────────────────────────────
+function showToast(msg) {
+    let toast = document.getElementById('libToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'libToast';
+        toast.style.cssText = 'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:#2c2416;color:#f9f6f0;font-family:var(--sans);font-size:0.82rem;padding:0.6rem 1.25rem;border-radius:50px;opacity:0;transition:opacity 0.3s,transform 0.3s;pointer-events:none;z-index:999;white-space:nowrap;';
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = '<i class="fas fa-check" style="margin-right:0.4rem"></i>' + msg;
+    toast.style.opacity = '1'; toast.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(-50%) translateY(20px)'; }, 2500);
+}
+
 // ── Render library ────────────────────────────────────────────────────────────
 function renderLibrary(papers) {
     paperGrid.innerHTML = '';
@@ -1272,11 +1289,22 @@ function renderLibrary(papers) {
             <p class="card-abstract">${p.abstract}</p>
             <div class="card-footer">
                 <span class="card-year"><i class="fas fa-calendar-alt" style="margin-right:0.3rem"></i>${p.year}</span>
-                <span class="read-btn">Read Paper <i class="fas fa-arrow-right"></i></span>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                    <button class="share-card-btn" data-id="${p.id}" data-title="${p.title.replace(/"/g,'&quot;')}" title="Share" aria-label="Share paper" style="background:none;border:1px solid var(--paper-border);border-radius:8px;padding:0.25rem 0.55rem;color:var(--ink-muted);cursor:pointer;font-size:0.75rem;transition:all 0.2s;"><i class="fas fa-share-nodes"></i></button>
+                    <span class="read-btn">Read <i class="fas fa-arrow-right"></i></span>
+                </div>
             </div>`;
         card.querySelector('.bookmark-icon').addEventListener('click', e => { e.stopPropagation(); toggleBookmark(p.id, card); });
-        card.addEventListener('click', () => openReader(p));
-        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openReader(p); });
+        card.querySelector('.share-card-btn').addEventListener('click', async e => {
+            e.stopPropagation();
+            const url = `${location.origin}/papers/${p.id}.html`;
+            const title = p.title;
+            if (navigator.share) { try { await navigator.share({ title, text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+            await navigator.clipboard.writeText(url);
+            showToast('Link copied!');
+        });
+        card.addEventListener('click', () => window.location.href = `papers/${p.id}.html`);
+        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') window.location.href = `papers/${p.id}.html`; });
         paperGrid.appendChild(card);
     });
 }
@@ -1344,6 +1372,14 @@ readerBookmark.addEventListener('click', () => {
     localStorage.setItem('rp_bookmarks', JSON.stringify(bookmarks));
     updateBookmarkBtn();
     renderLibrary(getFiltered());
+});
+
+document.getElementById('readerShare').addEventListener('click', async () => {
+    if (!currentPaper) return;
+    const url = `${location.origin}/papers/${currentPaper.id}.html`;
+    if (navigator.share) { try { await navigator.share({ title: currentPaper.title, text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    showToast('Link copied!');
 });
 
 function buildPages(paper) {

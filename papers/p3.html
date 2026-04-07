@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property-Based Testing for Frontend Applications — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research by Avnish Yadav: Property-Based Testing for Frontend Applications — practical patterns using fast-check for UI invariants, state machines, and CI/CD integration." />
+    <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p3.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="Property-Based Testing for Frontend Applications — Avnish Yadav" />
+    <meta property="og:description" content="Practical patterns for applying property-based testing with fast-check to frontend JavaScript applications, including UI invariants and CI/CD integration." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p3.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Property-Based Testing for Frontend Applications — Avnish Yadav" /><meta name="twitter:description" content="Practical patterns for applying property-based testing with fast-check to frontend JavaScript applications." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Property-Based Testing for Frontend Applications: Patterns and Pitfalls","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p3.html","keywords":["Property-Based Testing","fast-check","Frontend","JavaScript","Testing"]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" /><link rel="stylesheet" href="paper.css" />
+</head>
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">Property-Based Testing for Frontend Applications</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+<div class="pages-container">
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">Full-Stack</span><span class="paper-tag">AI</span></div>
+    <div class="abstract-label">Research Paper · 2025</div>
+    <h1 class="paper-title-main">Property-Based Testing for Frontend Applications: Patterns and Pitfalls</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> Full-Stack · Testing</span><span><i class="fas fa-file-alt"></i> 2 pages</span></div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">Property-based testing (PBT) has proven highly effective in functional programming contexts but remains underutilized in frontend JavaScript development. This paper examines practical patterns for applying PBT with fast-check to frontend applications, including UI invariants, state machine properties, and integration with CI/CD pipelines.</p>
+    <hr class="paper-divider">
+    <p class="body-text">Property-based testing is a testing methodology in which the developer specifies invariants — properties that must hold for all valid inputs — and a testing framework generates hundreds of random inputs to attempt to falsify those invariants. When a falsifying example is found, the framework shrinks it to the minimal counterexample.</p>
+    <h2 class="section-heading">1. Why PBT for Frontend?</h2>
+    <p class="body-text">Frontend applications are characterized by complex state machines, user input validation, and rendering logic that must handle a wide variety of inputs correctly. Traditional example-based tests cover only the cases the developer thought to write. PBT systematically explores the input space, finding edge cases that human intuition misses.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars"><div class="chart-bar" style="height:25%"></div><div class="chart-bar" style="height:60%"></div><div class="chart-bar" style="height:90%"></div><div class="chart-bar" style="height:100%"></div></div>
+      Figure 1: Bug detection rate by testing methodology (unit, integration, E2E, PBT)
+    </div>
+    <div class="page-number">Page 1 of 2</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Practical Patterns</h2>
+    <h2 class="section-heading h3">2.1 Idempotency Properties</h2>
+    <p class="body-text">Many UI operations should be idempotent: applying them twice should produce the same result as applying them once. Theme toggling, form reset, and filter clearing are common examples. PBT can verify idempotency by generating arbitrary application states and verifying that double-application produces the same result as single-application.</p>
+    <h2 class="section-heading h3">2.2 Round-Trip Properties</h2>
+    <p class="body-text">Serialization and deserialization operations should be inverses of each other. For any valid data structure, serialize(deserialize(serialize(x))) should equal serialize(x). This pattern is particularly useful for testing JSON serialization, URL encoding, and form data handling.</p>
+    <h2 class="section-heading h3">2.3 Monotonicity Properties</h2>
+    <p class="body-text">Scoring functions, sort orders, and pagination should exhibit monotonic behavior. An ATS score should always be between 0 and 100. A sort operation should always produce a result where every element is less than or equal to the next. PBT can verify these properties across thousands of randomly generated inputs.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Claessen, K. & Hughes, J. (2000). QuickCheck: A Lightweight Tool for Random Testing. <em>ICFP 2000</em>.</li>
+      <li><span class="ref-num">[2]</span> Dubien, N. (2019). fast-check: Property Based Testing Framework for JavaScript. <em>GitHub</em>.</li>
+      <li><span class="ref-num">[3]</span> MacIver, D. (2019). Hypothesis: A new approach to property-based testing. <em>JOSS 4(43)</em>.</li>
+    </ul>
+    <div class="page-number">Page 2 of 2</div>
+  </div>
+</div>
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+<script>
+const isDark = localStorage.getItem('rp_dark') === '1';
+if (isDark) document.body.classList.add('reading-dark');
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: 'Property-Based Testing for Frontend — Avnish Yadav', text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    const t = document.getElementById('shareToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500);
+});
+</script>
+</body></html>
