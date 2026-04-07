@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOLID Principles in Practice: Applying Clean Code to Enterprise .NET Systems — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research by Avnish Yadav, Software Developer: SRP, OCP, LSP, ISP, DIP — each SOLID principle examined with before/after code comparisons from real enterprise .NET development." />
+    <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p6.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="SOLID Principles in Practice — Avnish Yadav" />
+    <meta property="og:description" content="SRP, OCP, LSP, ISP, DIP — each SOLID principle examined with before/after code comparisons from real enterprise .NET development." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p6.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="SOLID Principles in Practice — Avnish Yadav" />
+    <meta name="twitter:description" content="SRP, OCP, LSP, ISP, DIP — each SOLID principle examined with before/after code comparisons from real enterprise .NET development." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"SOLID Principles in Practice: Applying Clean Code to Enterprise .NET Systems","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p6.html","keywords":[]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" /><link rel="stylesheet" href="paper.css" />
+</head>
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">SOLID Principles in Practice</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+<div class="pages-container">
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">Software Engineering</span><span class="paper-tag">Full-Stack</span></div>
+    <div class="abstract-label">Research Paper · 2024</div>
+    <h1 class="paper-title-main">SOLID Principles in Practice: Applying Clean Code to Enterprise .NET Systems</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Software Engineering · Full-Stack</span></div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">SRP, OCP, LSP, ISP, DIP — each SOLID principle examined with before/after code comparisons from real enterprise .NET development.</p>
+    <hr class="paper-divider">
+    <p class="body-text">Full content for this paper is available in the interactive reader on the <a href="../research-papers.html" style="color:var(--accent-paper);text-decoration:none;font-weight:600;">Research Library</a> page, where you can read all pages, navigate sections, and toggle reading mode.</p>
+    <div style="margin-top:2rem;text-align:center;">
+      <a href="../research-papers.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-paper);color:#fff;text-decoration:none;font-family:var(--sans);font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:50px;">
+        <i class="fas fa-book-open"></i> Read Full Paper in Library
+      </a>
+    </div>
+  </div>
+</div>
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+<script>
+const isDark = localStorage.getItem('rp_dark') === '1';
+if (isDark) document.body.classList.add('reading-dark');
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: 'SOLID Principles in Practice — Avnish Yadav', text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    const t = document.getElementById('shareToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500);
+});
+</script>
+</body></html>

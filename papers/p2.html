@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Query Optimization in Enterprise .NET — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research by Avnish Yadav: SQL Query Optimization Patterns in Enterprise .NET Applications — systematic approach showing up to 30% improvement in query response times." />
+    <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p2.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="SQL Query Optimization in Enterprise .NET — Avnish Yadav" />
+    <meta property="og:description" content="Systematic approach to identifying and resolving SQL performance anti-patterns, with empirical results showing up to 30% improvement in query response times." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p2.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="SQL Query Optimization in Enterprise .NET — Avnish Yadav" />
+    <meta name="twitter:description" content="Systematic approach to identifying and resolving SQL performance anti-patterns, with empirical results showing up to 30% improvement in query response times." />
+    <meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"SQL Query Optimization Patterns in Enterprise .NET Applications","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2024","url":"https://avnish-portfolio-c14e6.web.app/papers/p2.html","keywords":["SQL","Query Optimization",".NET","Database","Performance"]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" /><link rel="stylesheet" href="paper.css" />
+</head>
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">SQL Query Optimization in Enterprise .NET</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+<div class="pages-container">
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">Database</span><span class="paper-tag">Performance</span><span class="paper-tag">Full-Stack</span></div>
+    <div class="abstract-label">Research Paper · 2024</div>
+    <h1 class="paper-title-main">SQL Query Optimization Patterns in Enterprise .NET Applications</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2024</span><span><i class="fas fa-tags"></i> Database · Performance</span><span><i class="fas fa-file-alt"></i> 2 pages</span></div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">Enterprise applications built on .NET and SQL Server frequently suffer from query performance degradation as data volumes grow. This paper documents a systematic approach to identifying, analyzing, and resolving common SQL performance anti-patterns, with empirical results from production systems showing up to 30% improvement in query response times.</p>
+    <hr class="paper-divider">
+    <p class="body-text">Database performance is one of the most impactful and frequently neglected aspects of enterprise application development. As data volumes grow, queries that performed adequately at launch can become critical bottlenecks, affecting user experience and system reliability.</p>
+    <h2 class="section-heading">1. Common Anti-Patterns</h2>
+    <h2 class="section-heading h3">1.1 N+1 Query Problem</h2>
+    <p class="body-text">The N+1 problem occurs when an application executes one query to retrieve N records, then executes an additional query for each record to retrieve related data. This pattern is particularly common in ORM-based applications where lazy loading is the default behavior.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars"><div class="chart-bar" style="height:100%;background:#e74c3c;opacity:0.7"></div><div class="chart-bar" style="height:35%;background:#2ecc71;opacity:0.7"></div></div>
+      Figure 1: Query execution time before (red) and after (green) N+1 remediation
+    </div>
+    <div class="page-number">Page 1 of 2</div>
+  </div>
+  <div class="book-page">
+    <h2 class="section-heading">2. Optimization Strategies</h2>
+    <h2 class="section-heading h3">2.1 Index Strategy</h2>
+    <p class="body-text">Proper indexing is the single most impactful optimization available. Covering indexes — those that include all columns referenced in a query — eliminate the need for key lookups and can reduce query cost by orders of magnitude. However, indexes have a write cost; each index must be maintained on every INSERT, UPDATE, and DELETE operation.</p>
+    <h2 class="section-heading h3">2.2 Stored Procedure Optimization</h2>
+    <p class="body-text">Stored procedures offer several performance advantages: execution plan caching, reduced network round-trips, and the ability to use set-based operations instead of cursor-based row-by-row processing. We document a pattern for converting common cursor-based operations to set-based equivalents using window functions.</p>
+    <h2 class="section-heading h3">2.3 Query Plan Analysis</h2>
+    <p class="body-text">SQL Server Management Studio's execution plan viewer provides detailed cost estimates for each operation. The most expensive operations — table scans, hash joins on large tables, and sort operations — are the primary targets for optimization.</p>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Fritchey, G. (2018). <em>SQL Server Query Performance Tuning</em>. Apress.</li>
+      <li><span class="ref-num">[2]</span> Nielsen, P. (2009). <em>SQL Server 2008 Bible</em>. Wiley.</li>
+      <li><span class="ref-num">[3]</span> Delaney, K. (2007). <em>Inside Microsoft SQL Server 2005: Query Tuning and Optimization</em>. Microsoft Press.</li>
+    </ul>
+    <div class="page-number">Page 2 of 2</div>
+  </div>
+</div>
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+<script>
+const isDark = localStorage.getItem('rp_dark') === '1';
+if (isDark) document.body.classList.add('reading-dark');
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: 'SQL Query Optimization — Avnish Yadav', text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    const t = document.getElementById('shareToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500);
+});
+</script>
+</body></html>
