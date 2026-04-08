@@ -1219,6 +1219,57 @@ PAPERS.push(
       }
     ]
   }
+  },
+  {
+    id: 'p14',
+    year: 2025,
+    tags: ['Software Engineering', 'Design Patterns'],
+    title: 'Creational Design Patterns in Java: A Practical Guide with Code Examples',
+    authors: ['Avnish Yadav'],
+    abstract: 'Creational design patterns solve the problem of object creation — not just how to create objects, but how to create them in a flexible, reusable, and decoupled way. This paper explains Singleton, Factory, Builder, Prototype, and Abstract Factory through practical Java code examples, real-world analogies, and clear guidance on when each pattern is the right tool.',
+    pages: [
+      {
+        heading: null,
+        content: `
+          <p class="body-text">Creating objects with the <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">new</code> keyword is easy. Creating them in a maintainable, testable, and flexible way is harder. Think of it like a car factory — you don't build each car by hand. You build a system that produces cars consistently. That system is the creational pattern.</p>
+          <h2 class="section-heading">1. Singleton Pattern</h2>
+          <p class="body-text">Ensures only one instance exists. Used for database connections and loggers. The constructor is private; a static <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">getInstance()</code> method creates the instance on first call and returns the same instance thereafter.</p>
+          <h2 class="section-heading">2. Factory Pattern</h2>
+          <p class="body-text">Hides object creation behind a method. The caller asks for an object by type; the factory decides which concrete class to instantiate. Adding new types only requires a new class and a factory update — existing callers are untouched.</p>
+          <h2 class="section-heading">3. Builder Pattern</h2>
+          <p class="body-text">Constructs complex objects step by step using fluent method chaining. Each setter returns <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">this</code>; the terminal <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">build()</code> call validates state and returns the final immutable object.</p>
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:80%"></div>
+              <div class="chart-bar" style="height:45%"></div>
+              <div class="chart-bar" style="height:90%"></div>
+              <div class="chart-bar" style="height:35%"></div>
+            </div>
+            Figure 1: Complexity vs. flexibility trade-off across the five creational patterns
+          </div>
+        `
+      },
+      {
+        heading: '4. Prototype, Abstract Factory & Summary',
+        content: `
+          <h2 class="section-heading">4. Prototype Pattern</h2>
+          <p class="body-text">Creates new objects by cloning an existing one. Use when object creation is expensive and you need many similar objects — clone the expensive one and modify the copy. Java's <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">Cloneable</code> interface provides shallow cloning; implement a copy constructor for deep cloning.</p>
+          <h2 class="section-heading">5. Abstract Factory Pattern</h2>
+          <p class="body-text">Produces families of related objects. The classic example is UI theming — a Dark theme factory produces dark buttons, dialogs, and inputs; a Light theme factory produces the light equivalents. Application code works with the factory interface and never knows which theme is active.</p>
+          <h2 class="section-heading">6. Pattern Selection Guide</h2>
+          <p class="body-text"><strong>Singleton</strong> — one shared instance (DB connection, logger). <strong>Factory</strong> — type determined at runtime. <strong>Builder</strong> — complex object with many optional fields. <strong>Prototype</strong> — cloning cheaper than creating from scratch. <strong>Abstract Factory</strong> — families of related objects (themes, platforms).</p>
+          <hr class="paper-divider">
+          <div class="abstract-label">References</div>
+          <ul class="references-list">
+            <li><span class="ref-num">[1]</span> Gamma, E. et al. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+            <li><span class="ref-num">[2]</span> Bloch, J. (2018). <em>Effective Java</em>, 3rd ed. Addison-Wesley.</li>
+            <li><span class="ref-num">[3]</span> Freeman, E. & Robson, E. (2020). <em>Head First Design Patterns</em>, 2nd ed. O'Reilly.</li>
+          </ul>
+        `
+      }
+    ]
+  }
 );
 // ── State ────────────────────────────────────────────────────────────────────
 let currentPaper = null;

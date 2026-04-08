@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creational Design Patterns in Java: A Practical Guide with Code Examples — Avnish Yadav, Software Developer</title>
+    <meta name="description" content="Research by Avnish Yadav: Singleton, Factory, Builder, Prototype, and Abstract Factory patterns explained in simple terms with Java code examples and real-world use cases." />
+    <meta name="author" content="Avnish Yadav" /><meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://avnish-portfolio-c14e6.web.app/papers/p14.html" />
+    <link rel="icon" href="../images/favicon.ico" />
+    <meta property="og:type" content="article" /><meta property="og:title" content="Creational Design Patterns in Java — Avnish Yadav" />
+    <meta property="og:description" content="Singleton, Factory, Builder, Prototype, and Abstract Factory patterns explained in simple terms with Java code examples and real-world use cases." />
+    <meta property="og:url" content="https://avnish-portfolio-c14e6.web.app/papers/p14.html" />
+    <meta property="og:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Creational Design Patterns in Java — Avnish Yadav" />
+    <meta name="twitter:description" content="Singleton, Factory, Builder, Prototype, and Abstract Factory patterns explained in simple terms with Java code examples and real-world use cases." /><meta name="twitter:image" content="https://avnish-portfolio-c14e6.web.app/images/avnish-transparent.png" />
+    <meta name="google-site-verification" content="g9Wm09oArip0L0kcpdxdlOXMjnWOHNII-H-66Lp4HK4" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Creational Design Patterns in Java: A Practical Guide with Code Examples","author":{"@type":"Person","name":"Avnish Yadav","jobTitle":"Software Developer","url":"https://avnish-portfolio-c14e6.web.app/"},"datePublished":"2025","url":"https://avnish-portfolio-c14e6.web.app/papers/p14.html","keywords":["Design Patterns","Creational Patterns","Java","Software Engineering","OOP"]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css" /><link rel="stylesheet" href="paper.css" />
+</head>
+<body class="paper-page dark">
+<div class="reading-progress" id="rp"></div>
+<div class="paper-topbar">
+    <a href="../research-papers.html" class="back-btn"><i class="fas fa-arrow-left"></i> Library</a>
+    <span class="topbar-title">Creational Design Patterns in Java</span>
+    <div class="topbar-actions">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i><span class="btn-label">Share</span></button>
+        <button class="icon-btn" id="darkBtn"><i class="fas fa-moon"></i></button>
+    </div>
+</div>
+<div class="pages-container">
+
+  <div class="book-page">
+    <div class="paper-tags"><span class="paper-tag">Software Engineering</span><span class="paper-tag">Design Patterns</span></div>
+    <div class="abstract-label">Research Paper · 2025</div>
+    <h1 class="paper-title-main">Creational Design Patterns in Java: A Practical Guide with Code Examples</h1>
+    <div class="paper-authors-main"><i class="fas fa-user-pen" style="margin-right:0.4rem;font-size:0.8rem"></i>Avnish Yadav</div>
+    <div class="paper-meta"><span><i class="fas fa-calendar-alt"></i> 2025</span><span><i class="fas fa-tags"></i> Software Engineering · Design Patterns</span><span><i class="fas fa-file-alt"></i> 3 pages</span></div>
+    <hr class="paper-divider">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">Creational design patterns solve the problem of object creation — not just how to create objects, but how to create them in a flexible, reusable, and decoupled way. This paper explains the five canonical creational patterns (Singleton, Factory, Builder, Prototype, Abstract Factory) through practical Java code examples, real-world analogies, and clear guidance on when each pattern is the right tool for the job.</p>
+    <hr class="paper-divider">
+    <p class="body-text">Creating objects with the <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">new</code> keyword is easy. Creating them in a way that is maintainable, testable, and open to change is harder. Creational patterns are the answer to that harder problem. Think of it like a car factory — you don't build each car by hand every time. You build a system that produces cars consistently and efficiently. That system is the creational pattern.</p>
+    <h2 class="section-heading">1. Singleton Pattern</h2>
+    <p class="body-text">Singleton ensures that a class has only one instance and provides a global access point to it. The classic use cases are database connections and loggers — resources that are expensive to create and should be shared across the application.</p>
+    <pre style="background:rgba(139,105,20,0.08);border:1px solid rgba(139,105,20,0.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;line-height:1.6;margin:1rem 0;">class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}</pre>
+    <p class="body-text">The constructor is private so no external code can call <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">new Singleton()</code>. The static <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">getInstance()</code> method creates the instance on first call and returns the same instance on every subsequent call. In modern Java, prefer using a DI container with singleton scope over implementing this pattern manually — it avoids the hidden global state problem.</p>
+    <div class="chart-placeholder">
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:60%"></div>
+        <div class="chart-bar" style="height:80%"></div>
+        <div class="chart-bar" style="height:45%"></div>
+        <div class="chart-bar" style="height:90%"></div>
+        <div class="chart-bar" style="height:35%"></div>
+      </div>
+      Figure 1: Relative complexity vs. flexibility trade-off across the five creational patterns
+    </div>
+    <div class="page-number">Page 1 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">2. Factory Pattern</h2>
+    <p class="body-text">Factory Pattern hides object creation behind a method. The caller asks for an object by type; the factory decides which concrete class to instantiate. This decouples the caller from the implementation — you can add new types without changing the calling code.</p>
+    <pre style="background:rgba(139,105,20,0.08);border:1px solid rgba(139,105,20,0.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;line-height:1.6;margin:1rem 0;">interface Shape { void draw(); }
+
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class ShapeFactory {
+    public Shape getShape(String type) {
+        if (type.equals("circle")) return new Circle();
+        return null;
+    }
+}</pre>
+    <p class="body-text">The caller never uses <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">new Circle()</code> directly — it calls <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">factory.getShape("circle")</code>. Adding a new shape (Triangle, Rectangle) only requires adding a new class and updating the factory — existing callers are untouched.</p>
+    <h2 class="section-heading">3. Builder Pattern</h2>
+    <p class="body-text">Builder constructs complex objects step by step. It is the right pattern when an object has many optional fields — the alternative (telescoping constructors) becomes unreadable fast.</p>
+    <pre style="background:rgba(139,105,20,0.08);border:1px solid rgba(139,105,20,0.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;line-height:1.6;margin:1rem 0;">class User {
+    private String name;
+    private int age;
+
+    public static class Builder {
+        private String name;
+        private int age;
+
+        public Builder setName(String name) {
+            this.name = name; return this;
+        }
+        public Builder setAge(int age) {
+            this.age = age; return this;
+        }
+        public User build() {
+            User u = new User();
+            u.name = this.name;
+            u.age = this.age;
+            return u;
+        }
+    }
+}
+
+// Usage:
+User user = new User.Builder()
+    .setName("Avnish")
+    .setAge(25)
+    .build();</pre>
+    <p class="body-text">Each setter returns <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">this</code>, enabling fluent method chaining. The <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">build()</code> call at the end validates the accumulated state and returns the final immutable object.</p>
+    <div class="page-number">Page 2 of 3</div>
+  </div>
+
+  <div class="book-page">
+    <h2 class="section-heading">4. Prototype Pattern</h2>
+    <p class="body-text">Prototype creates new objects by cloning an existing one. Use this when object creation is expensive (e.g., loading from a database or network) and you need many similar objects — clone the expensive one and modify the copy.</p>
+    <pre style="background:rgba(139,105,20,0.08);border:1px solid rgba(139,105,20,0.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;line-height:1.6;margin:1rem 0;">class Prototype implements Cloneable {
+    public String data;
+
+    public Prototype clone()
+            throws CloneNotSupportedException {
+        return (Prototype) super.clone();
+    }
+}
+
+// Usage:
+Prototype original = new Prototype();
+original.data = "original";
+Prototype copy = original.clone();
+copy.data = "copy"; // original unchanged</pre>
+    <p class="body-text">Java's <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">Cloneable</code> interface and <code style="font-family:monospace;font-size:0.85em;background:rgba(139,105,20,0.1);padding:0.1em 0.3em;border-radius:3px;">super.clone()</code> provide shallow cloning. For deep cloning (when the object contains references to other objects), implement a custom copy constructor or use serialization.</p>
+    <h2 class="section-heading">5. Abstract Factory Pattern</h2>
+    <p class="body-text">Abstract Factory produces families of related objects. The classic example is UI theming — a Dark theme factory produces dark buttons, dark dialogs, and dark inputs; a Light theme factory produces the light equivalents. The application code works with the factory interface and never knows which theme is active.</p>
+    <pre style="background:rgba(139,105,20,0.08);border:1px solid rgba(139,105,20,0.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;line-height:1.6;margin:1rem 0;">interface UIFactory {
+    Button createButton();
+    Dialog createDialog();
+}
+
+class DarkUIFactory implements UIFactory {
+    public Button createButton() {
+        return new DarkButton();
+    }
+    public Dialog createDialog() {
+        return new DarkDialog();
+    }
+}</pre>
+    <h2 class="section-heading">6. When to Use Each Pattern</h2>
+    <div style="overflow-x:auto;margin:1rem 0;">
+      <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;">
+        <thead><tr style="background:rgba(139,105,20,0.12);">
+          <th style="padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--paper-border);">Pattern</th>
+          <th style="padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--paper-border);">Use When</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Singleton</td><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">One shared instance needed (DB connection, logger)</td></tr>
+          <tr><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Factory</td><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Type to create is determined at runtime</td></tr>
+          <tr><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Builder</td><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Complex object with many optional fields</td></tr>
+          <tr><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Prototype</td><td style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--paper-border);">Cloning is cheaper than creating from scratch</td></tr>
+          <tr><td style="padding:0.5rem 0.75rem;">Abstract Factory</td><td style="padding:0.5rem 0.75rem;">Families of related objects (themes, platforms)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <hr class="paper-divider">
+    <div class="abstract-label">References</div>
+    <ul class="references-list">
+      <li><span class="ref-num">[1]</span> Gamma, E., Helm, R., Johnson, R., Vlissides, J. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+      <li><span class="ref-num">[2]</span> Bloch, J. (2018). <em>Effective Java</em>, 3rd ed. Addison-Wesley.</li>
+      <li><span class="ref-num">[3]</span> Freeman, E. & Robson, E. (2020). <em>Head First Design Patterns</em>, 2nd ed. O'Reilly.</li>
+    </ul>
+    <div class="page-number">Page 3 of 3</div>
+  </div>
+
+</div>
+<div class="share-toast" id="shareToast"><i class="fas fa-check" style="margin-right:0.4rem"></i>Link copied to clipboard!</div>
+<script>
+const isDark = localStorage.getItem('rp_dark') === '1';
+if (isDark) document.body.classList.add('reading-dark');
+document.getElementById('darkBtn').addEventListener('click', () => { document.body.classList.toggle('reading-dark'); localStorage.setItem('rp_dark', document.body.classList.contains('reading-dark') ? '1' : '0'); });
+window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('rp').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%'; });
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: 'Creational Design Patterns in Java — Avnish Yadav', text: 'Research paper by Avnish Yadav, Software Developer', url }); return; } catch(_) {} }
+    await navigator.clipboard.writeText(url);
+    const t = document.getElementById('shareToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500);
+});
+</script>
+</body></html>
