@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | Avnish Yadav</title>
+    <meta name="description" content="The page you're looking for doesn't exist." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(156deg, #000000 0%, #7e00ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        /* Starfield */
+        .starfield {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            animation: twinkle var(--d, 3s) var(--delay, 0s) infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: var(--op, 0.7); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            max-width: 560px;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 20vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(45deg, #667eea, #E0BBE4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #f0f0f0;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #c7c9d1;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(102,126,234,0.35); }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: #fff;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #E0BBE4;
+            border: 1.5px solid #E0BBE4;
+        }
+        .btn-secondary:hover { background: rgba(224,187,228,0.1); }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="starfield" id="starfield"></div>
+
+<div class="container">
+    <div class="error-code">404</div>
+    <span class="error-icon">🔭</span>
+    <h1>Page Not Found</h1>
+    <div class="divider"></div>
+    <p>Looks like this page drifted off into space.<br>The URL you entered doesn't exist.</p>
+    <div class="actions">
+        <a href="/" class="btn btn-primary">
+            <i class="fas fa-house"></i> Go Home
+        </a>
+        <a href="/research-papers.html" class="btn btn-secondary">
+            <i class="fas fa-book-open"></i> Research Library
+        </a>
+    </div>
+</div>
+
+<script>
+    // Starfield
+    const sf = document.getElementById('starfield');
+    for (let i = 0; i < 120; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2.5 + 0.5;
+        s.style.cssText = `
+            width:${size}px; height:${size}px;
+            top:${Math.random()*100}%; left:${Math.random()*100}%;
+            --d:${(Math.random()*4+2).toFixed(1)}s;
+            --delay:${(Math.random()*5).toFixed(1)}s;
+            --op:${(Math.random()*0.6+0.3).toFixed(2)};
+        `;
+        sf.appendChild(s);
+    }
+</script>
+</body>
+</html>
