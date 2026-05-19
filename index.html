@@ -466,16 +466,68 @@
         <section id="contact">
             <div class="container">
                 <h2>Get In Touch</h2>
-                <div class="contact-content">
-                    <p style="color: #c7c9d1;">I'm always interested in new opportunities and exciting projects. Let's
-                        connect and build
-                        something amazing together!</p>
-                    <form id="contact-form">
-                        <input type="text" name="from_name" placeholder="Your Name" required />
-                        <input type="email" name="reply_to" placeholder="Your Email" required />
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
+                <p style="    display: flex; color: #c7c9d1; justify-content: center;">I'm always interested in new opportunities and exciting projects. Let's
+                    connect and build
+                    something amazing together!</p>
+                <div class="contact-columns">
+                    <div class="contact-form-col linkedin-panel">
+                        <form id="contact-form">
+                            <input type="text" name="from_name" placeholder="Your Name" required />
+                            <input type="email" name="reply_to" placeholder="Your Email" required />
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="linkedin-panel" aria-label="LinkedIn profile summary">
+                        <!-- Avatar -->
+                        <div class="lp-avatar-wrap">
+                            <img
+                                src="images/Linkedin.png"
+                                alt="Avnish Yadav's LinkedIn profile photo"
+                                class="lp-avatar"
+                                width="80" height="80"
+                                onerror="this.style.display='none';this.nextElementSibling.style.opacity='1'"
+                            />
+                            <div class="lp-avatar-fallback" aria-hidden="true">AY</div>
+                        </div>
+
+                        <!-- Identity -->
+                        <div class="lp-identity">
+                            <h3 class="lp-name">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                Avnish Yadav
+                            </h3>
+                            <p class="lp-role">Software Engineer · Full-Stack Developer</p>
+                            <a
+                                href="https://www.linkedin.com/in/avnishy84/"
+                                class="lp-profile-url"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Avnish Yadav's LinkedIn profile"
+                            >linkedin.com/in/avnishy84</a>
+                        </div>
+
+                        <!-- Divider -->
+                        <hr class="lp-divider" aria-hidden="true" />
+
+                        <!-- Tagline / summary -->
+                        <p class="lp-summary">
+                            Full-Stack Developer (.NET + React) | Building Scalable Web Apps | AI-Integrated Solutions | SQL & Microservices
+                            <br>Software Engineer with 4+ years building enterprise applications in C#, .NET, and JavaScript.
+                        </p>
+
+                        <!-- CTA -->
+                        <a
+                            href="https://www.linkedin.com/in/avnishy84/"
+                            class="lp-cta"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Connect with Avnish Yadav on LinkedIn"
+                        >
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

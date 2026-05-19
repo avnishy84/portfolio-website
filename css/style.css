@@ -427,7 +427,7 @@ section h2::after {
 }
 
 #contact-form textarea {
-    min-height: 120px;
+    min-height: 122px;
     resize: vertical;
 }
 
@@ -448,6 +448,148 @@ section h2::after {
 #contact-form button:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* ── Contact Columns Layout ─────────────────────────────────────── */
+.contact-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+@media (max-width: 767px) {
+    .contact-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── LinkedIn Panel Card ─────────────────────────────────────────── */
+.linkedin-panel {
+    background: var(--color-surface);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ── LinkedIn Panel Sub-components ──────────────────────────────── */
+.lp-avatar-wrap {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.lp-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.lp-avatar-fallback {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.lp-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.lp-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0;
+}
+
+.lp-name i {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+.lp-role {
+    font-family: 'Lato', 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.lp-profile-url {
+    font-family: 'Lato', 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.lp-profile-url:hover {
+    text-decoration: underline;
+}
+
+.lp-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 0;
+}
+
+.lp-summary {
+    font-family: 'Lato', 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── LinkedIn Panel CTA Button ───────────────────────────────────── */
+.lp-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-2));
+    color: #fff;
+    font-family: 'Lato', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lp-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.lp-cta:focus,
+.lp-cta:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
 /* Footer */

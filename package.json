@@ -8,7 +8,7 @@
     "build": "echo 'Build completed - static site ready for deployment'",
     "start": "npx http-server . -p 3000",
     "dev": "npx http-server . -p 3000 -o",
-    "test": "node --test tests/seo-google-verification.test.js"
+    "test": "node --test tests/seo-google-verification.test.js tests/linkedin-contact-layout.test.js"
   },
   "dependencies": {
     "firebase": "^12.2.1"
