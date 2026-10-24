@@ -87,6 +87,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#ai">AI</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -104,6 +105,9 @@
             <h1><span class="hero-greeting">Hi, I'm</span> Avnish Yadav</h1>
             <h2 class="hero-subtitle">Software Engineer Portfolio</h2>
             <p class="hero-tagline">Software Engineer &nbsp;·&nbsp; Full-Stack Developer &nbsp;·&nbsp; Agentic AI Architect</p>
+            <div class="exp-pill" data-exp="pill-aria" aria-label="4 years and 8 months of experience" role="status">
+                <span class="exp-pill__nums" data-exp="pill-text"><span class="exp-num">4&nbsp;yrs</span><span class="exp-num">8&nbsp;mos</span><span class="exp-pill__label">of experience</span></span>
+            </div>
             <a href="#projects" class="cta">View My Work</a>
         </div>
     </header>
@@ -117,7 +121,7 @@
                         <img src="./images/avnish-transparent.png" alt="Avnish Yadav — Software Engineer Portfolio" width="300" height="300">
                     </div>
                     <div class="about-text">
-                        <p>I'm a Software Engineer with 4+ years of experience developing and supporting enterprise
+                        <p>I'm a Software Engineer with <span data-exp="about-span">4 years 8 months</span> of experience developing and supporting enterprise
                             applications using C#, .NET, SQL Server, and JavaScript frameworks. I specialize in
                             debugging production issues, optimizing database performance, and maintaining complex legacy
                             systems while driving modernization initiatives.</p>
@@ -125,6 +129,7 @@
                             AI-assisted automation to enhance modern software systems. I'm passionate about leveraging
                             prompt engineering and agentic AI tools to accelerate development workflows and solve
                             real-world problems. This Avnish Yadav portfolio showcases projects built across the full stack — from enterprise .NET systems to AI-powered web apps.</p>
+                        <p>Recently, I've been building AI agents, workflow tools and MCP servers, and training developers to use AI effectively.</p>
                     </div>
                 </div>
             </div>
@@ -193,6 +198,80 @@
                             <span>AI-Assisted Dev</span>
                             <span>Agentic IDE</span>                            
                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- AI & Agentic Engineering Section -->
+        <section id="ai" aria-labelledby="ai-heading">
+            <div class="container">
+                <h2 id="ai-heading">AI &amp; Agentic Engineering</h2>
+                <p class="section-subtitle">Building AI tools that make developers faster, and teaching teams how to use them.</p>
+
+                <!-- Stat -->
+                <div class="ai-stat" aria-label="Up to 60% developer efficiency gain">
+                    <span class="ai-stat__number" aria-hidden="true">Up to 60%</span>
+                    <span class="ai-stat__label">developer efficiency gain</span>
+                    <span class="ai-stat__footnote">Internal team estimate</span>
+                </div>
+
+                <!-- Cards -->
+                <div class="ai-grid" role="list">
+
+                    <div class="ai-card" role="listitem">
+                        <div class="ai-card__icon" aria-hidden="true">
+                            <!-- Robot / agent icon -->
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="8" width="18" height="12" rx="3"/>
+                                <path d="M8 8V6a4 4 0 0 1 8 0v2"/>
+                                <circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/>
+                                <circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/>
+                                <path d="M9 18h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="ai-card__title">AI Agents</h3>
+                        <p class="ai-card__body">Designing and shipping AI agents that handle repetitive engineering tasks alongside the team.</p>
+                        <ul class="ai-chip-row" aria-label="Related topics">
+                            <li>AI Agents</li>
+                            <li>Developer Productivity</li>
+                        </ul>
+                    </div>
+
+                    <div class="ai-card" role="listitem">
+                        <div class="ai-card__icon" aria-hidden="true">
+                            <!-- Workflow / nodes icon -->
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <circle cx="5" cy="12" r="2.5"/>
+                                <circle cx="19" cy="6" r="2.5"/>
+                                <circle cx="19" cy="18" r="2.5"/>
+                                <path d="M7.4 11.1 16.6 6.9"/>
+                                <path d="M7.4 12.9 16.6 17.1"/>
+                            </svg>
+                        </div>
+                        <h3 class="ai-card__title">Workflow Tools &amp; MCP Servers</h3>
+                        <p class="ai-card__body">Building workflow automations and MCP servers that plug AI into the tools developers already use, for in-house and outsourced junior developers.</p>
+                        <ul class="ai-chip-row" aria-label="Related topics">
+                            <li>MCP</li>
+                            <li>Workflow Automation</li>
+                        </ul>
+                    </div>
+
+                    <div class="ai-card" role="listitem">
+                        <div class="ai-card__icon" aria-hidden="true">
+                            <!-- Training / book icon -->
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="ai-card__title">AI Training</h3>
+                        <p class="ai-card__body">Training developers to apply AI to everyday coding, debugging and development work — from prompting basics to agent-assisted workflows.</p>
+                        <ul class="ai-chip-row" aria-label="Related topics">
+                            <li>Team Training</li>
+                            <li>Developer Productivity</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -513,7 +592,7 @@
                         <!-- Tagline / summary -->
                         <p class="lp-summary">
                             Full-Stack Developer (.NET + React) | Building Scalable Web Apps | AI-Integrated Solutions | SQL & Microservices
-                            <br>Software Engineer with 4+ years building enterprise applications in C#, .NET, and JavaScript.
+                            <br>Software Engineer with <span data-exp="about-span"></span> building enterprise applications in C#, .NET, and JavaScript.
                         </p>
 
                         <!-- CTA -->
@@ -633,6 +712,10 @@
     </script>
 
     <script src="js/app.js"></script>
+    <script type="module">
+        import { initExperience } from './js/experience.js';
+        initExperience();
+    </script>
 
     <script>
     // ── Portfolio Page Game ────────────────────────────────────────────────

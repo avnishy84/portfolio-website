@@ -78,6 +78,22 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
+    // Staggered entrance for AI section cards.
+    // Cards are visible by default (opacity:1). The --animate class plays the
+    // aiCardIn keyframe. We add it once per card on first intersection.
+    const aiCardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('ai-card--animate');
+                aiCardObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.ai-card').forEach(card => {
+        aiCardObserver.observe(card);
+    });
+
     // Contact form handling — EmailJS
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
