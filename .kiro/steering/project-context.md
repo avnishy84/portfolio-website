@@ -170,7 +170,7 @@ Each detail page is self-contained with:
 **AI Focus:** Prompt Engineering, LLM APIs, Generative AI, AI-assisted development
 **Education:** MCA — AKTU Lucknow (77.80%) · BCA — CSJMU Kanpur (63.00%)
 
-**Current Role:** Software Engineer at Aloha Technology (EleVia Platform), Jan 2022 – Present
+**Current Role:** Software Engineer at Aloha Technology (EleVia Platform), Jan 2022-2024
 - 30% SQL performance improvement via query and stored procedure optimization
 - 20% faster query response via database normalization initiative
 - Full-stack: Sencha Ext JS (legacy) + React (modernization) + C#/.NET backend

@@ -127,7 +127,7 @@ Four project cards:
 ### Experience
 Three experience cards:
 
-1. **Software Engineer — Aloha Technology (EleVia Platform)** | Jan 2022 – Present, Pune
+1. **Software Engineer — Aloha Technology (EleVia Platform)** | Jan 2022-2024, Pune
    - Full-stack work across legacy (Sencha Ext JS) and modernization (React) tracks
    - C#/.NET backend, SQL Server optimization (30% performance improvement)
    - 20% faster query response via database normalization initiative
